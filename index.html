@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#05070b">
+<meta name="description" content="Офіційний персональний сайт Ярослава Войденка — студента-медика НМУ імені Богомольця, автора LIGA.net та дослідника.">
+<meta property="og:title" content="Ярослав Войденко — Офіційний сайт">
+<meta property="og:description" content="Медицина. Журналістика. Суспільні ідеї. Професійний шлях.">
+<meta property="og:type" content="website">
+<title>Ярослав Войденко — Official Personal Website</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #05070b;
+  --bg-surface: #0a0f18;
+  --panel: #0e1420;
+  --panel-glass: rgba(14, 20, 32, 0.8);
+  --text: #f4f1e8;
+  --muted: #9aa3b5;
+  --subtle: #68738a;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-bright: rgba(216, 183, 120, 0.4);
+  --gold: #d8b778;
+  --gold-light: #f5e1b8;
+  --gold-dim: rgba(216, 183, 120, 0.1);
+  --accent-glow: rgba(216, 183, 120, 0.15);
+  --shadow: 0 30px 100px rgba(0, 0, 0, 0.6);
+  --radius: 22px;
+  --max: 1260px;
+}
+
+body.light {
+  --bg: #f8f6f0;
+  --bg-surface: #ede8dc;
+  --panel: #ffffff;
+  --panel-glass: rgba(255, 255, 255, 0.88);
+  --text: #121721;
+  --muted: #586374;
+  --subtle: #808c9e;
+  --line: rgba(18, 23, 33, 0.1);
+  --line-bright: rgba(152, 115, 61, 0.4);
+  --gold: #98733d;
+  --gold-light: #c29b5e;
+  --gold-dim: rgba(152, 115, 61, 0.08);
+  --accent-glow: rgba(152, 115, 61, 0.08);
+  --shadow: 0 30px 80px rgba(35, 30, 20, 0.1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.75;
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+
+/* FX & BACKGROUNDS */
+.noise {
+  position: fixed; inset: 0; pointer-events: none; z-index: 40; opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+.grid-bg {
+  position: fixed; inset: 0; pointer-events: none; opacity: 0.15; z-index: -1;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: linear-gradient(to bottom, black 30%, transparent 85%);
+}
+
+.ambient-glow {
+  position: absolute; width: 650px; height: 650px; border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+  top: 40px; right: -100px; pointer-events: none; z-index: -1; filter: blur(50px);
+}
+
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  z-index: 1000; transition: width 0.1s linear;
+}
+
+.cursor-glow {
+  position: fixed; width: 400px; height: 400px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(216, 183, 120, 0.07), transparent 75%);
+  transform: translate(-50%, -50%); z-index: -1; transition: transform 0.1s ease-out;
+}
+
+.container { width: min(var(--max), calc(100% - 56px)); margin: auto; }
+
+/* HEADER */
+header {
+  position: sticky; top: 0; z-index: 300;
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-bottom: 1px solid var(--line);
+  transition: border-color 0.3s;
+}
+
+.nav {
+  height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+}
+
+.brand {
+  display: flex; align-items: center; gap: 14px; font-weight: 800; letter-spacing: -0.5px;
+}
+
+.brand-mark {
+  width: 44px; height: 44px; border: 1px solid var(--line-bright);
+  background: var(--gold-dim); color: var(--gold);
+  display: grid; place-items: center; font-family: 'Playfair Display', serif; font-size: 19px;
+  transform: rotate(-4deg); transition: transform 0.3s ease;
+}
+.brand:hover .brand-mark { transform: rotate(0deg) scale(1.06); }
+
+.brand small {
+  display: block; font: 9px 'DM Mono', monospace; color: var(--muted); letter-spacing: 2.5px; margin-top: 2px;
+}
+
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); transition: color 0.25s; }
+.nav-links a:hover { color: var(--gold); }
+
+.nav-actions { display: flex; gap: 10px; align-items: center; }
+.action-btn, .menu-btn {
+  border: 1px solid var(--line); background: var(--panel); color: var(--text);
+  border-radius: 30px; padding: 10px 16px; cursor: pointer; font-size: 12px; font-weight: 600;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.action-btn:hover, .menu-btn:hover {
+  border-color: var(--gold); color: var(--gold); transform: translateY(-2px);
+}
+.menu-btn { display: none; }
+
+/* HERO */
+.hero {
+  min-height: calc(100vh - 88px); display: flex; align-items: center; position: relative; padding: 60px 0;
+}
+
+.hero-grid {
+  display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 70px; align-items: center; width: 100%;
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 12px; color: var(--gold);
+  font: 11px 'DM Mono', monospace; letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 22px;
+}
+.eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--gold); }
+
+.hero h1 {
+  font: 600 clamp(50px, 6.8vw, 96px) / 1.02 'Playfair Display', serif;
+  letter-spacing: -3.5px; margin-bottom: 25px;
+}
+.hero h1 span { display: block; color: var(--gold); font-style: italic; }
+
+.hero-lead {
+  font-size: clamp(16px, 1.8vw, 21px); color: var(--muted); max-width: 620px; line-height: 1.8;
+  margin-bottom: 38px;
+}
+.hero-lead strong { color: var(--text); font-weight: 600; }
+
+.hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 50px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 12px; padding: 16px 30px;
+  border-radius: 6px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; border: 1px solid transparent;
+}
+.btn-primary { background: var(--gold); color: #080b12; border-color: var(--gold); }
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-4px); box-shadow: 0 12px 35px rgba(216, 183, 120, 0.35); }
+
+.btn-outline { background: var(--panel); border-color: var(--line); color: var(--text); }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-4px); }
+
+.hero-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-top: 1px solid var(--line); padding-top: 32px;
+}
+.stat-box strong { display: block; font: 28px 'Playfair Display', serif; color: var(--gold); }
+.stat-box span { font: 10px 'DM Mono', monospace; color: var(--muted); letter-spacing: 1.5px; }
+
+/* HERO PHOTO CONTAINER WITH YOUR REAL PHOTO */
+.hero-visual {
+  position: relative; display: flex; justify-content: center; align-items: center;
+}
+
+.photo-frame {
+  position: relative; width: 100%; max-width: 420px; aspect-ratio: 4 / 5;
+  border-radius: var(--radius); overflow: hidden; background: var(--panel);
+  border: 1px solid var(--line-bright); box-shadow: var(--shadow);
+  transform: perspective(1000px) rotateY(-4deg) rotateX(3deg);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.photo-frame:hover {
+  transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.02);
+  border-color: var(--gold);
+}
+
+.photo-frame img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  filter: contrast(1.04) brightness(0.98);
+  transition: transform 0.6s ease;
+}
+.photo-frame:hover img { transform: scale(1.04); }
+
+.photo-badge {
+  position: absolute; bottom: 20px; left: 20px; right: 20px;
+  background: rgba(8, 12, 19, 0.85); backdrop-filter: blur(14px);
+  border: 1px solid var(--line-bright); padding: 16px 20px; border-radius: 14px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+body.light .photo-badge { background: rgba(255, 255, 255, 0.92); }
+
+.photo-badge strong { display: block; font: 16px 'Playfair Display', serif; }
+.photo-badge span { font: 10px 'DM Mono', monospace; color: var(--gold); letter-spacing: 1.5px; }
+
+/* SECTION BASE */
+section { padding: 130px 0; border-top: 1px solid var(--line); position: relative; }
+.section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 60px; }
+.section-index { font: 11px 'DM Mono', monospace; color: var(--gold); letter-spacing: 2.5px; margin-bottom: 12px; text-transform: uppercase; }
+.section h2 { font: 600 clamp(38px, 4.8vw, 64px) / 1.1 'Playfair Display', serif; letter-spacing: -1.5px; }
+.section-intro { max-width: 440px; color: var(--muted); font-size: 15px; }
+.gold { color: var(--gold); }
+
+/* ABOUT & PILLARS */
+.about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: stretch; }
+.about-card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 50px; display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: var(--shadow); transition: border-color 0.3s;
+}
+.about-card:hover { border-color: var(--line-bright); }
+
+.about-copy p { font-size: 17px; color: var(--muted); line-height: 1.9; }
+.about-copy p + p { margin-top: 22px; }
+.about-copy strong { color: var(--text); font-weight: 600; }
+
+.pillars-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.pillar {
+  background: var(--bg-surface); border: 1px solid var(--line); border-radius: 18px;
+  padding: 32px 26px; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pillar:hover { transform: translateY(-6px); border-color: var(--gold); background: var(--panel); }
+.pillar-num { font: 32px 'Playfair Display', serif; color: var(--gold); margin-bottom: 15px; }
+.pillar h3 { font: 18px 'Playfair Display', serif; margin-bottom: 8px; }
+.pillar p { font-size: 13px; color: var(--muted); }
+
+/* DIRECTIONS / FIELDS */
+.directions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.direction-card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 45px 40px; position: relative; overflow: hidden; display: flex; flex-direction: column;
+  justify-content: space-between; min-height: 360px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow);
+}
+.direction-card::after {
+  content: attr(data-num); position: absolute; right: 20px; top: 10px;
+  font: 120px 'Playfair Display', serif; color: rgba(216, 183, 120, 0.04); pointer-events: none;
+  transition: transform 0.4s;
+}
+.direction-card:hover { transform: translateY(-8px); border-color: var(--gold); }
+.direction-card:hover::after { transform: scale(1.05) translateY(-5px); }
+
+.dir-icon {
+  width: 52px; height: 52px; border-radius: 14px; background: var(--gold-dim);
+  border: 1px solid var(--line-bright); display: grid; place-items: center; color: var(--gold); font-size: 22px;
+}
+.direction-card h3 { font: 26px 'Playfair Display', serif; margin: 25px 0 12px; }
+.direction-card p { font-size: 14px; color: var(--muted); line-height: 1.8; }
+.dir-tag { font: 10px 'DM Mono', monospace; color: var(--subtle); letter-spacing: 1.5px; margin-top: 30px; }
+
+/* TIMELINE / JOURNEY */
+.journey-timeline { position: relative; max-width: 920px; margin: auto; }
+.journey-timeline::before {
+  content: ""; position: absolute; left: 130px; top: 10px; bottom: 10px; width: 1px; background: var(--line-bright);
+}
+.timeline-row { display: grid; grid-template-columns: 130px 1fr; gap: 40px; padding-bottom: 50px; position: relative; }
+.timeline-badge { font: 11px 'DM Mono', monospace; color: var(--gold); padding-top: 6px; letter-spacing: 1px; }
+.timeline-box {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 38px; position: relative; box-shadow: var(--shadow); transition: border-color 0.3s;
+}
+.timeline-box::before {
+  content: ""; position: absolute; left: -46px; top: 16px; width: 11px; height: 11px;
+  background: var(--bg); border: 2px solid var(--gold); border-radius: 50%; box-shadow: 0 0 15px var(--gold);
+}
+.timeline-box:hover { border-color: var(--gold); }
+.timeline-box h3 { font: 24px 'Playfair Display', serif; margin-bottom: 10px; }
+.timeline-box p { font-size: 14px; color: var(--muted); line-height: 1.8; }
+
+/* PUBLICATIONS */
+.pub-showcase {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 50px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center;
+  box-shadow: var(--shadow); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pub-showcase:hover { border-color: var(--gold); transform: translateY(-5px); }
+.pub-badge { font: 11px 'DM Mono', monospace; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; display: inline-block; }
+.pub-showcase h3 { font: clamp(26px, 3.5vw, 40px) 'Playfair Display', serif; margin-bottom: 15px; }
+.pub-showcase p { font-size: 15px; color: var(--muted); max-width: 700px; line-height: 1.8; }
+.pub-btn {
+  width: 70px; height: 70px; border-radius: 50%; background: var(--gold-dim); border: 1px solid var(--line-bright);
+  color: var(--gold); display: grid; place-items: center; font-size: 28px; transition: all 0.3s;
+}
+.pub-showcase:hover .pub-btn { background: var(--gold); color: #080b12; transform: scale(1.08); }
+
+/* VALUES */
+.values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.value-card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 38px 30px; border-top: 3px solid var(--gold); box-shadow: var(--shadow);
+  transition: transform 0.3s;
+}
+.value-card:hover { transform: translateY(-6px); }
+.value-card strong { display: block; font: 22px 'Playfair Display', serif; margin-bottom: 12px; }
+.value-card span { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* QUOTE BANNER */
+.quote-banner {
+  padding: 95px 0; text-align: center; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  background: radial-gradient(circle at center, var(--panel) 0%, var(--bg) 100%);
+  position: relative; overflow: hidden;
+}
+.quote-symbol { font: 90px 'Playfair Display', serif; color: var(--gold); opacity: 0.3; line-height: 0.5; margin-bottom: 20px; }
+.quote-banner blockquote {
+  font: italic clamp(24px, 3.8vw, 42px) / 1.35 'Playfair Display', serif; max-width: 900px; margin: 0 auto 25px;
+}
+.quote-banner small { font: 11px 'DM Mono', monospace; color: var(--muted); letter-spacing: 3px; }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: start; }
+.contact-info p { font-size: 17px; color: var(--muted); line-height: 1.8; margin-top: 20px; max-width: 500px; }
+.contact-links { display: grid; gap: 15px; }
+.contact-link-item {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+  padding: 22px 28px; display: flex; justify-content: space-between; align-items: center;
+  box-shadow: var(--shadow); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.contact-link-item:hover { border-color: var(--gold); transform: translateX(6px); }
+.contact-link-item small { display: block; font: 10px 'DM Mono', monospace; color: var(--muted); letter-spacing: 1.5px; margin-bottom: 4px; }
+.contact-link-item strong { font-size: 15px; font-weight: 600; }
+.contact-link-item span { font-size: 20px; color: var(--gold); }
+
+/* FOOTER */
+footer { padding: 45px 0; border-top: 1px solid var(--line); background: var(--bg-surface); }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.footer-brand { font: 18px 'Playfair Display', serif; }
+.footer-meta { font: 11px 'DM Mono', monospace; color: var(--muted); letter-spacing: 1px; }
+.to-top { font: 11px 'DM Mono', monospace; color: var(--gold); letter-spacing: 1px; cursor: pointer; transition: opacity 0.2s; }
+.to-top:hover { opacity: 0.7; }
+
+/* MOBILE PANEL */
+.mobile-panel {
+  display: none; position: absolute; top: 88px; left: 0; width: 100%;
+  background: var(--panel); border-bottom: 1px solid var(--line); padding: 25px;
+  flex-direction: column; gap: 18px; box-shadow: var(--shadow); z-index: 250;
+}
+.mobile-panel.open { display: flex; }
+.mobile-panel a { font-size: 15px; font-weight: 600; color: var(--muted); }
+.mobile-panel a:hover { color: var(--gold); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* RESPONSIVE */
+@media(max-width: 1024px) {
+  .hero-grid, .about-grid, .contact-grid, .pub-showcase { grid-template-columns: 1fr; gap: 40px; }
+  .directions-grid, .values-grid { grid-template-columns: 1fr 1fr; }
+  .hero-visual { order: -1; max-width: 360px; margin: 0 auto; }
+}
+
+@media(max-width: 768px) {
+  .nav-links { display: none; }
+  .menu-btn { display: block; }
+  .directions-grid, .values-grid, .pillars-grid { grid-template-columns: 1fr; }
+  .journey-timeline::before { left: 20px; }
+  .timeline-row { grid-template-columns: 20px 1fr; gap: 20px; }
+  .timeline-badge { display: none; }
+  .timeline-box::before { left: -26px; }
+  .hero h1 { font-size: 48px; letter-spacing: -2px; }
+  .about-card, .direction-card, .timeline-box, .pub-showcase { padding: 25px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="noise"></div>
+<div class="grid-bg"></div>
+<div class="ambient-glow"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="progress-bar" id="progressBar"></div>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="Головна">
+      <span class="brand-mark">YV</span>
+      <span>YAROSLAV VOIDENKO<small>OFFICIAL WEBSITE</small></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Навігація">
+      <a href="#about" data-ua="Про мене" data-en="About">Про мене</a>
+      <a href="#biography" data-ua="Біографія" data-en="Biography">Біографія</a>
+      <a href="#directions" data-ua="Напрями" data-en="Fields">Напрями</a>
+      <a href="#journey" data-ua="Шлях" data-en="Journey">Шлях</a>
+      <a href="#journalism" data-ua="Публікації" data-en="Writing">Публікації</a>
+      <a href="#contact" data-ua="Контакти" data-en="Contact">Контакти</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="action-btn" id="langBtn" aria-label="Змінити мову">EN</button>
+      <button class="action-btn" id="themeBtn" aria-label="Змінити тему">☼</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Меню">☰</button>
+    </div>
+  </div>
+
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#about">Про мене</a>
+    <a href="#biography">Біографія</a>
+    <a href="#directions">Напрями</a>
+    <a href="#journey">Мій шлях</a>
+    <a href="#journalism">Публікації</a>
+    <a href="#contact">Контакти</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO SECTION WITH YOUR PHOTO -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="hero-content reveal">
+      <div class="eyebrow" data-ua="Офіційний персональний сайт · Україна" data-en="Official personal website · Ukraine">Офіційний персональний сайт · Україна</div>
+      <h1>Ярослав <span>Войденко.</span></h1>
+      <p class="hero-lead" data-ua="Студент-медик Національного медичного університету імені О. О. Богомольця, автор <strong>LIGA.net</strong>, дослідник та автор ідей, що формують майбутнє." data-en="Medical student at Bogomolets National Medical University, author at <strong>LIGA.net</strong>, researcher, and creator of ideas shaping the future.">
+        Студент-медик Національного медичного університету імені О. О. Богомольця, автор <strong>LIGA.net</strong>, дослідник та автор ідей, що формують майбутнє.
+      </p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="#biography" data-ua="Читати біографію ↗" data-en="Read biography ↗">Читати біографію ↗</a>
+        <a class="btn btn-outline" href="#journalism" data-ua="Переглянути статті" data-en="View articles">Переглянути статті</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-box"><strong>НМУ</strong><span>ІМ. БОГОМОЛЬЦЯ</span></div>
+        <div class="stat-box"><strong>LIGA.NET</strong><span>АВТОРСЬКІ КОЛОНКИ</span></div>
+        <div class="stat-box"><strong>2026</strong><span>РОК АКТИВНОСТІ</span></div>
+      </div>
+    </div>
+
+    <!-- YOUR REAL PHOTO INTEGRATED -->
+    <div class="hero-visual reveal">
+      <div class="photo-frame">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Ярослав Войденко" id="userPhoto">
+        <div class="photo-badge">
+          <div>
+            <strong>Ярослав Войденко</strong>
+            <span>KYIV · UKRAINE</span>
+          </div>
+          <span style="color: var(--gold); font-size: 20px;">✦</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="section-index">01 / PHILOSOPHY</div><h2>На перетині<br><span class="gold">науки та слова.</span></h2></div>
+      <p class="section-intro" data-ua="Мій підхід базується на глибокому зануренні в професію, аналітичному мисленні та постійному самовдосконаленні." data-en="My approach is built on deep professional immersion, analytical thinking, and relentless self-improvement.">Мій підхід базується на глибокому зануренні в професію, аналітичному мисленні та постійному самовдосконаленні.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <div class="about-copy">
+          <p data-ua="Я вірю, що сучасний світ потребує фахівців нового типу — тих, хто однаково впевнено почувається і в точних науках, і в публічному дискурсі." data-en="I believe the modern world requires a new type of professional — those who feel equally confident in exact sciences and public discourse.">
+            Я вірю, що сучасний світ потребує фахівців нового типу — тих, хто однаково впевнено почувається і в точних науках, і в публічному дискурсі.
+          </p>
+          <p data-ua="Навчання в медичному університеті виховує залізну дисципліну, розуміння людської природи та критичне мислення. Водночас робота з текстами та медіа дозволяє трансформувати складні ідеї у зрозумілі суспільству сенси." data-en="Studying at a medical university builds iron discipline, an understanding of human nature, and critical thinking. Meanwhile, working with texts and media allows transforming complex ideas into clear societal meanings.">
+            Навчання в медичному університеті виховує залізну дисципліну, розуміння людської природи та критичне мислення. Водночас робота з текстами та медіа дозволяє трансформувати складні ідеї у зрозумілі суспільству сенси.
+          </p>
+        </div>
+        <div style="margin-top: 30px; font: 11px 'DM Mono', monospace; color: var(--gold); letter-spacing: 2px;">
+          ✦ COMMITMENT TO EXCELLENCE IN EVERY UNDERTAKING
+        </div>
+      </div>
+      <div class="pillars-grid reveal">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <h3>Медицина</h3>
+          <p>Фундаментальна наука, клінічна практика та відповідальність за здоров'я людини.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <h3>Журналістика</h3>
+          <p>Аналіз суспільних процесів, авторські колонки на LIGA.net та робота зі смислами.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <h3>Лідерство</h3>
+          <p>Участь у студентському представництві, ініціативність та організація проєктів.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">04</div>
+          <h3>Розвиток</h3>
+          <p>Постійне навчання, володіння цифровими інструментами та довгострокове бачення.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILED BIOGRAPHY (UPDATED WITHOUT COMPETITIONS) -->
+<section class="section" id="biography">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="section-index">02 / BIOGRAPHY</div><h2>Детальна<br><span class="gold">біографія.</span></h2></div>
+      <p class="section-intro" data-ua="Шлях від формування академічних інтересів до професійного становлення в Києві." data-en="The journey from academic foundation to professional growth in Kyiv.">Шлях від формування академічних інтересів до професійного становлення в Києві.</p>
+    </div>
+    <div class="about-card reveal" style="max-width: 100%;">
+      <div class="about-copy">
+        <p><strong>Ярослав Сергійович Войденко</strong> народився 5 вересня 2009 року. Академічний шлях розпочав у рідному Чорнобаї на Черкащині, де закінчив Чорнобаївський ліцей з відзнакою, демонструючи високі результати в точних і гуманітарних науках, а також активно долучаючись до освітніх та суспільних ініціатив.</p>
+        <p style="margin-top: 20px;">Сьогодні Ярослав є студентом-медиком першого курсу Національного медичного університету імені О. О. Богомольця в Києві (група 16120). Його академічний інтерес зосереджений на фундаментальних медичних дисциплінах, таких як анатомія та гістологія, а також на клінічному мисленні з перспективою спеціалізації в хірургії.</p>
+        <p style="margin-top: 20px;">Окрім медицини, Ярослав активно реалізує себе у публіцистиці. Як автор і оглядач для платформи <strong>LIGA.net</strong>, він публікує аналітичні матеріали, присвячені реформуванню системи охорони здоров'я, медичній освіті, викликам молоді та трансформаціям українського суспільства. Його тексти відзначаються зваженою аргументацією, глибоким розумінням контексту та чіткою громадянською позицією.</p>
+        <p style="margin-top: 20px;">Активна життєва позиція також проявляється у студентському представництві НМУ та освітніх проєктах (зокрема сертифікованих програмах із першої допомоги та стратегічного мислення). У повсякденному житті суворо дотримується принципів самодисципліни та безперервного саморозвитку.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTIONS / FIELDS -->
+<section class="section" id="directions">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="section-index">03 / FIELDS OF FOCUS</div><h2>Три вектори<br><span class="gold">діяльності.</span></h2></div>
+      <p class="section-intro">Сфери, які гармонійно доповнюють одна одну та визначають мій професійний вектор.</p>
+    </div>
+    <div class="directions-grid">
+      <article class="direction-card reveal" data-num="01">
+        <div>
+          <div class="dir-icon">✚</div>
+          <h3>Медицина</h3>
+          <p>Ґрунтовне вивчення морфологічних дисциплін, анатомії, фізіології та підготовка до майбутньої клінічної практики.</p>
+        </div>
+        <div class="dir-tag">FOUNDATION · CLINICAL THINKING</div>
+      </article>
+
+      <article class="direction-card reveal" data-num="02">
+        <div>
+          <div class="dir-icon">✎</div>
+          <h3>Журналістика</h3>
+          <p>Створення експертних колонок, робота з фактами, аналітика суспільних процесів та публікації на LIGA.net.</p>
+        </div>
+        <div class="dir-tag">MEDIA · PUBLIC VOICE</div>
+      </article>
+
+      <article class="direction-card reveal" data-num="03">
+        <div>
+          <div class="dir-icon">◎</div>
+          <h3>Громадська робота</h3>
+          <p>Представлення інтересів студентської спільноти, комунікація, організація та участь у важливих ініціативах.</p>
+        </div>
+        <div class="dir-tag">LEADERSHIP · IMPACT</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY / TIMELINE -->
+<section class="section" id="journey">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="section-index">04 / TIMELINE</div><h2>Хронологія<br><span class="gold">успіху.</span></h2></div>
+      <p class="section-intro">Ключові етапи становлення, навчання та професійного зростання.</p>
+    </div>
+    <div class="journey-timeline">
+      <div class="timeline-row reveal">
+        <div class="timeline-badge">ШКІЛЬНІ РОКИ</div>
+        <div class="timeline-box">
+          <h3>Чорнобаївський ліцей</h3>
+          <p>Завершення навчання з відзнакою. Активна участь в освітніх проєктах, олімпіадах та формування міцного фундаменту знань.</p>
+        </div>
+      </div>
+
+      <div class="timeline-row reveal">
+        <div class="timeline-badge">ВЕРЕСЕНЬ 2026</div>
+        <div class="timeline-box">
+          <h3>НМУ імені О. О. Богомольця</h3>
+          <p>Успішне зарахування на перший курс медичного факультету (група 16120). Старт інтенсивного занурення у медичну науку в Києві.</p>
+        </div>
+      </div>
+
+      <div class="timeline-row reveal">
+        <div class="timeline-badge">ОСІНЬ 2026</div>
+        <div class="timeline-box">
+          <h3>Дебют на LIGA.net</h3>
+          <p>Вихід першої резонансної авторської публікації на платформі LIGA.net, присвяченої актуальним питанням медицини та суспільства.</p>
+        </div>
+      </div>
+
+      <div class="timeline-row reveal">
+        <div class="timeline-badge">МАЙБУТНЄ</div>
+        <div class="timeline-box">
+          <h3>Масштабні цілі</h3>
+          <p>Поглиблення клінічної спеціалізації, розвиток у галузі хірургії, розширення публіцистичної діяльності та реалізація нових проєктів.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="section" id="journalism">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="section-index">05 / PUBLICATIONS</div><h2>Медіа та<br><span class="gold">публікації.</span></h2></div>
+      <p class="section-intro">Тексти, що викликають дискусії та привертають увагу до важливих проблем.</p>
+    </div>
+    <a class="pub-showcase reveal" href="https://blog.liga.net/user/yavoidenko/article/60698" target="_blank" rel="noopener noreferrer">
+      <div>
+        <span class="pub-badge">LIGA.NET · АВТОРСЬКА КОЛОНКА</span>
+        <h3>Стаття на провідній медіаплатформі України</h3>
+        <p>Аналітичний матеріал Ярослава Войденка, опублікований на блог-платформі LIGA.net. Ознайомтеся з повним текстом за посиланням.</p>
+      </div>
+      <div class="pub-btn">↗</div>
+    </a>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section" id="principles">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="section-index">06 / CORE VALUES</div><h2>Життєві<br><span class="gold">принципи.</span></h2></div>
+      <p class="section-intro">Фундамент, на якому будується кожне рішення, текст чи професійний крок.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <strong>Дисципліна</strong>
+        <span>Системність та щоденна праця є ключем до будь-якого видатного результату.</span>
+      </div>
+      <div class="value-card reveal">
+        <strong>Допитливість</strong>
+        <span>Постійне прагнення розібратися у суті речей, а не зупинятися на поверхні.</span>
+      </div>
+      <div class="value-card reveal">
+        <strong>Відповідальність</strong>
+        <span>Усвідомлення важливості кожного слова у публіцистиці та кожного кроку в медицині.</span>
+      </div>
+      <div class="value-card reveal">
+        <strong>Прогрес</strong>
+        <span>Невпинний рух вперед, оновлення знань та адаптація до викликів часу.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BANNER -->
+<div class="quote-banner">
+  <div class="container reveal">
+    <div class="quote-symbol">“</div>
+    <blockquote>«Медицина дає розуміння цінності людського життя, а слова дають можливість змінювати суспільство на краще.»</blockquote>
+    <small>YAROSLAV VOIDENKO · CREED</small>
+  </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="section-index">07 / CONTACTS</div><h2>Контакти та<br><span class="gold">співпраця.</span></h2></div>
+      <p class="section-intro">Відкритий до професійних пропозицій, медійних проєктів та обговорення ідей.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="eyebrow">ЗВ'ЯЖІТЬСЯ ЗІ МНОЮ</div>
+        <p class="contact-info">Якщо у вас є пропозиція щодо співпраці, запитання чи ідея для спільного проєкту — пишіть на електронну пошту або у месенджери.</p>
+      </div>
+      <div class="contact-links reveal">
+        <a class="contact-link-item" href="mailto:yaroclavvoydenko@gmail.com">
+          <div><small>EMAIL</small><strong>yaroclavvoydenko@gmail.com</strong></div>
+          <span>↗</span>
+        </a>
+        <a class="contact-link-item" href="https://www.instagram.com/y.voydenko/" target="_blank" rel="noopener noreferrer">
+          <div><small>INSTAGRAM</small><strong>@y.voydenko</strong></div>
+          <span>↗</span>
+        </a>
+        <a class="contact-link-item" href="https://t.me/y_a_r_i_k" target="_blank" rel="noopener noreferrer">
+          <div><small>TELEGRAM</small><strong>@y_a_r_i_k</strong></div>
+          <span>↗</span>
+        </a>
+        <a class="contact-link-item" href="https://blog.liga.net/user/yavoidenko" target="_blank" rel="noopener noreferrer">
+          <div><small>LIGA.NET</small><strong>Авторський профіль</strong></div>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand">Yaroslav Voidenko<span class="gold">.</span></div>
+      <div class="footer-meta">OFFICIAL WEBSITE · KYIV / CHERKASY</div>
+    </div>
+    <div class="footer-meta">© <span id="year"></span> · УСІ ПРАВА ЗАХИЩЕНО</div>
+    <div class="to-top" id="toTop">НАГОРУ ↑</div>
+  </div>
+</footer>
+
+<script>
+const body = document.body;
+const themeBtn = document.getElementById('themeBtn');
+const langBtn = document.getElementById('langBtn');
+const menuBtn = document.getElementById('menuBtn');
+const mobilePanel = document.getElementById('mobilePanel');
+const toTop = document.getElementById('toTop');
+const progressBar = document.getElementById('progressBar');
+const cursorGlow = document.getElementById('cursorGlow');
+
+// Dynamic Year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Theme Switcher with Memory
+themeBtn.addEventListener('click', () => {
+  body.classList.toggle('light');
+  const isLight = body.classList.contains('light');
+  themeBtn.textContent = isLight ? '☾' : '☼';
+  localStorage.setItem('yv_theme', isLight ? 'light' : 'dark');
+});
+
+if(localStorage.getItem('yv_theme') === 'light') {
+  body.classList.add('light');
+  themeBtn.textContent = '☾';
+}
+
+// Language Switcher (UA / EN)
+let isEnglish = false;
+langBtn.addEventListener('click', () => {
+  isEnglish = !isEnglish;
+  document.documentElement.lang = isEnglish ? 'en' : 'uk';
+  langBtn.textContent = isEnglish ? 'UA' : 'EN';
+  document.querySelectorAll('[data-ua][data-en]').forEach(el => {
+    el.innerHTML = isEnglish ? el.dataset.en : el.dataset.ua;
+  });
+});
+
+// Mobile Menu
+menuBtn.addEventListener('click', () => {
+  mobilePanel.classList.toggle('open');
+});
+mobilePanel.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => mobilePanel.classList.remove('open'));
+});
+
+// Scroll Progress & To Top
+window.addEventListener('scroll', () => {
+  const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+  progressBar.style.width = progress + '%';
+});
+
+toTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Reveal Animation on Scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Interactive Cursor Glow Tracker
+window.addEventListener('pointermove', e => {
+  cursorGlow.style.left = e.clientX + 'px';
+  cursorGlow.style.top = e.clientY + 'px';
+});
+</script>
+
+</body>
+</html>
