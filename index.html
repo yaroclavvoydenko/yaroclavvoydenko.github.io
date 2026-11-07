@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#04060a">
+<meta name="description" content="Офіційний персональний сайт Ярослава Войденка — студента-медика НМУ імені О. О. Богомольця, автора LIGA.net[span_5](start_span)[span_5](end_span).">
+<meta property="og:title" content="Ярослав Войденко — Офіційний сайт">
+<meta property="og:description" content="Медицина. Журналістика. Суспільні ідеї.">
+<meta property="og:type" content="website">
+<title>Ярослав Войденко — Official Website</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #04060a;
+  --bg-surface: #080d16;
+  --panel: #0c121e;
+  --panel-glass: rgba(12, 18, 30, 0.84);
+  --text: #f5f2eb;
+  --muted: #949eb2;
+  --subtle: #626e84;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-bright: rgba(216, 183, 120, 0.45);
+  --gold: #d8b778;
+  --gold-light: #f6e2ba;
+  --gold-dim: rgba(216, 183, 120, 0.12);
+  --shadow: 0 35px 100px rgba(0, 0, 0, 0.65);
+  --radius: 22px;
+  --max: 1280px;
+  --base-size: 16px;
+}
+
+body.light {
+  --bg: #f8f6f0;
+  --bg-surface: #ede9de;
+  --panel: #ffffff;
+  --panel-glass: rgba(255, 255, 255, 0.92);
+  --text: #111620;
+  --muted: #556072;
+  --subtle: #7c889b;
+  --line: rgba(17, 22, 32, 0.1);
+  --line-bright: rgba(152, 115, 61, 0.45);
+  --gold: #98733d;
+  --gold-light: #b88f52;
+  --gold-dim: rgba(152, 115, 61, 0.08);
+  --shadow: 0 30px 80px rgba(30, 25, 18, 0.1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; font-size: var(--base-size); }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.75;
+  overflow-x: hidden;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+
+/* PRELOADER */
+#preloader {
+  position: fixed; inset: 0; background: var(--bg); z-index: 9999;
+  display: grid; place-items: center; transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+#preloader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-mark {
+  font: 700 48px 'Playfair Display', serif; color: var(--gold);
+  border: 1px solid var(--line-bright); padding: 20px 30px; border-radius: 16px;
+  animation: pulseLoader 1.2s ease-in-out infinite;
+}
+@keyframes pulseLoader { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.06); opacity: 1; } }
+
+/* CANVAS & FX */
+#bgCanvas { position: fixed; inset: 0; z-index: -2; pointer-events: none; opacity: 0.55; }
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light)); z-index: 1000;
+}
+.cursor-glow {
+  position: fixed; width: 420px; height: 420px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(216, 183, 120, 0.07), transparent 70%);
+  transform: translate(-50%, -50%); z-index: -1;
+}
+
+.container { width: min(var(--max), calc(100% - 56px)); margin: auto; }
+
+/* HEADER */
+header {
+  position: sticky; top: 0; z-index: 400;
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+.nav { height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 800; }
+.brand-mark {
+  width: 42px; height: 42px; border: 1px solid var(--line-bright); border-radius: 10px;
+  background: var(--gold-dim); color: var(--gold); display: grid; place-items: center;
+  font-family: 'Playfair Display', serif; font-size: 18px; transition: transform 0.3s;
+}
+.brand:hover .brand-mark { transform: rotate(-6deg) scale(1.05); }
+.brand small { display: block; font: 9px 'DM Mono', monospace; color: var(--muted); letter-spacing: 2px; }
+
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); transition: color 0.2s; position: relative; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-links a.active::after {
+  content: ""; position: absolute; bottom: -6px; left: 0; width: 100%; height: 2px; background: var(--gold);
+}
+
+.nav-actions { display: flex; gap: 8px; align-items: center; }
+.action-btn, .menu-btn {
+  border: 1px solid var(--line); background: var(--panel); color: var(--text);
+  border-radius: 24px; padding: 8px 13px; cursor: pointer; font-size: 12px; font-weight: 600;
+  transition: all 0.2s ease;
+}
+.action-btn:hover, .menu-btn:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+.menu-btn { display: none; }
+
+/* LIVE CLOCK BAR */
+.status-bar {
+  display: inline-flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 50px;
+  padding: 8px 18px; margin-bottom: 24px; font: 11px 'DM Mono', monospace; color: var(--muted);
+}
+.live-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #4ade80;
+  box-shadow: 0 0 10px #4ade80; animation: blink 2s infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.clock-display { color: var(--gold); font-weight: 500; }
+
+/* HERO */
+.hero { min-height: calc(100vh - 84px); display: flex; align-items: center; padding: 60px 0; }
+.hero-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 60px; align-items: center; width: 100%; }
+.hero h1 { font: 600 clamp(48px, 6.5vw, 92px) / 1.03 'Playfair Display', serif; letter-spacing: -3px; margin-bottom: 20px; }
+.hero h1 span { display: block; color: var(--gold); font-style: italic; }
+.typewriter-wrap { font: 18px 'DM Mono', monospace; color: var(--gold); margin-bottom: 20px; min-height: 28px; }
+.typewriter-cursor { animation: blink 0.8s infinite; }
+.hero-lead { font-size: 1.15rem; color: var(--muted); max-width: 600px; margin-bottom: 34px; }
+.hero-lead strong { color: var(--text); }
+
+.hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 45px; }
+.btn {
+  position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 26px; border-radius: 8px; font-size: 13px; font-weight: 700;
+  transition: all 0.25s ease; cursor: pointer; border: 1px solid transparent;
+}
+.btn-primary { background: var(--gold); color: #04060a; border-color: var(--gold); }
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(216, 183, 120, 0.35); }
+.btn-outline { background: var(--panel); border-color: var(--line); color: var(--text); }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+
+.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-top: 1px solid var(--line); padding-top: 28px; }
+.stat-box strong { display: block; font: 26px 'Playfair Display', serif; color: var(--gold); }
+.stat-box span { font: 10px 'DM Mono', monospace; color: var(--muted); letter-spacing: 1.5px; }
+
+/* 3D HOLOGRAPHIC ORBIT */
+.hero-visual { position: relative; display: flex; justify-content: center; align-items: center; min-height: 420px; }
+.holo-wrapper { position: relative; width: 360px; height: 360px; display: grid; place-items: center; }
+.orbit-ring {
+  position: absolute; border: 1px solid var(--line-bright); border-radius: 50%;
+  animation: spinOrbit 30s linear infinite;
+}
+.orbit-ring.r1 { width: 360px; height: 360px; animation-duration: 32s; border-color: rgba(216, 183, 120, 0.25); }
+.orbit-ring.r2 { width: 270px; height: 270px; animation-duration: 20s; animation-direction: reverse; border-style: dashed; }
+.orbit-ring.r3 { width: 185px; height: 185px; animation-duration: 14s; border-color: var(--gold); }
+@keyframes spinOrbit { to { transform: rotate(360deg); } }
+
+.holo-core {
+  width: 140px; height: 140px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--panel), var(--bg));
+  border: 2px solid var(--gold); box-shadow: 0 0 70px rgba(216, 183, 120, 0.3);
+  display: grid; place-items: center; font: 50px 'Playfair Display', serif; color: var(--gold);
+  z-index: 5; animation: pulseCore 4s ease-in-out infinite;
+}
+@keyframes pulseCore { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+/* SECTIONS */
+section { padding: 110px 0; border-top: 1px solid var(--line); position: relative; }
+.section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 50px; flex-wrap: wrap; }
+.section-index { font: 11px 'DM Mono', monospace; color: var(--gold); letter-spacing: 2.5px; margin-bottom: 10px; }
+.section h2 { font: 600 clamp(34px, 4.5vw, 56px) / 1.1 'Playfair Display', serif; letter-spacing: -1.5px; }
+.section-intro { max-width: 440px; color: var(--muted); font-size: 0.95rem; }
+.gold { color: var(--gold); }
+
+/* CARDS & TILT */
+.card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 40px; box-shadow: var(--shadow); transition: border-color 0.3s, transform 0.2s ease-out;
+  position: relative; overflow: hidden;
+}
+.card:hover { border-color: var(--line-bright); }
+
+/* BIOGRAPHY TABS */
+.bio-controls { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+.tab-group { display: flex; gap: 8px; flex-wrap: wrap; }
+.tab-btn {
+  padding: 8px 18px; border-radius: 30px; border: 1px solid var(--line); background: var(--bg-surface);
+  color: var(--muted); cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s;
+}
+.tab-btn.active, .tab-btn:hover { background: var(--gold); color: #04060a; border-color: var(--gold); }
+.reading-meta { font: 12px 'DM Mono', monospace; color: var(--gold); }
+.bio-panel { display: none; animation: fadeIn 0.4s ease; }
+.bio-panel.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.bio-panel p { color: var(--muted); font-size: 1.05rem; margin-bottom: 18px; }
+.bio-panel strong { color: var(--text); }
+
+/* SKILLS MATRIX */
+.skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 30px; }
+.skill-item { background: var(--bg-surface); padding: 22px; border-radius: 16px; border: 1px solid var(--line); }
+.skill-top { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+.skill-bar { height: 6px; background: var(--line); border-radius: 10px; overflow: hidden; }
+.skill-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); width: 0%; transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* DIRECTIONS */
+.directions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.dir-icon {
+  width: 50px; height: 50px; border-radius: 14px; background: var(--gold-dim);
+  border: 1px solid var(--line-bright); display: grid; place-items: center; color: var(--gold); font-size: 22px; margin-bottom: 22px;
+}
+.direction-card h3 { font: 24px 'Playfair Display', serif; margin-bottom: 12px; }
+.direction-card p { font-size: 14px; color: var(--muted); }
+
+/* TIMELINE & FILTER */
+.timeline-list { display: grid; gap: 20px; max-width: 900px; margin: auto; }
+.timeline-item { display: grid; grid-template-columns: 140px 1fr; gap: 24px; align-items: start; }
+.timeline-item.hidden { display: none; }
+.timeline-date { font: 12px 'DM Mono', monospace; color: var(--gold); padding-top: 8px; }
+
+/* QUOTE CAROUSEL */
+.quote-banner { padding: 90px 0; text-align: center; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-surface); }
+.quote-banner blockquote { font: italic clamp(22px, 3.2vw, 38px) / 1.4 'Playfair Display', serif; max-width: 860px; margin: 0 auto 24px; min-height: 100px; }
+.quote-controls { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
+
+/* CONTACT & FORM */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+.contact-links { display: grid; gap: 14px; }
+.contact-link-item {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+  padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; transition: all 0.25s;
+}
+.contact-link-item:hover { border-color: var(--gold); transform: translateX(5px); }
+.contact-link-item small { display: block; font: 10px 'DM Mono', monospace; color: var(--muted); letter-spacing: 1px; }
+
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font: 11px 'DM Mono', monospace; color: var(--gold); margin-bottom: 6px; letter-spacing: 1px; }
+.form-control {
+  width: 100%; background: var(--bg-surface); border: 1px solid var(--line); color: var(--text);
+  padding: 14px 16px; border-radius: 10px; font-family: inherit; font-size: 14px; transition: border-color 0.2s;
+}
+.form-control:focus { outline: none; border-color: var(--gold); }
+textarea.form-control { min-height: 110px; resize: vertical; }
+
+/* FLOATING TOP BUTTON WITH SVG PROGRESS */
+.top-wrap {
+  position: fixed; bottom: 26px; right: 26px; width: 52px; height: 52px; z-index: 500;
+  cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s;
+}
+.top-wrap.show { opacity: 1; pointer-events: auto; }
+.top-wrap:hover { transform: translateY(-4px); }
+.top-wrap svg { transform: rotate(-90deg); width: 52px; height: 52px; }
+.top-wrap circle { fill: var(--panel); stroke: var(--line); stroke-width: 3; }
+.top-wrap circle.prog { fill: none; stroke: var(--gold); stroke-dasharray: 138; stroke-dashoffset: 138; transition: stroke-dashoffset 0.1s; }
+.top-arrow { position: absolute; inset: 0; display: grid; place-items: center; color: var(--gold); font-size: 18px; font-weight: bold; }
+
+/* COMMAND PALETTE MODAL */
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px);
+  z-index: 2000; display: none; place-items: center; padding: 20px;
+}
+.modal-backdrop.open { display: grid; }
+.cmd-modal {
+  width: 100%; max-width: 540px; background: var(--panel); border: 1px solid var(--line-bright);
+  border-radius: 18px; overflow: hidden; box-shadow: var(--shadow);
+}
+.cmd-input {
+  width: 100%; padding: 18px 22px; background: transparent; border: none; border-bottom: 1px solid var(--line);
+  color: var(--text); font-size: 16px; outline: none;
+}
+.cmd-list { max-height: 300px; overflow-y: auto; padding: 10px; }
+.cmd-item {
+  padding: 12px 16px; border-radius: 10px; cursor: pointer; display: flex; justify-content: space-between;
+  font-size: 14px; color: var(--muted); transition: background 0.15s, color 0.15s;
+}
+.cmd-item:hover { background: var(--gold-dim); color: var(--gold); }
+
+/* TOAST */
+#toast {
+  position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--gold); color: #04060a; padding: 12px 24px; border-radius: 30px;
+  font-size: 13px; font-weight: 700; z-index: 3000; opacity: 0; pointer-events: none; transition: all 0.3s;
+}
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* MOBILE MENU */
+.mobile-panel {
+  display: none; position: absolute; top: 84px; left: 0; width: 100%;
+  background: var(--panel); border-bottom: 1px solid var(--line); padding: 24px;
+  flex-direction: column; gap: 16px; z-index: 350;
+}
+.mobile-panel.open { display: flex; }
+
+.reveal { opacity: 0; transform: translateY(25px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+footer { padding: 40px 0; border-top: 1px solid var(--line); background: var(--bg-surface); }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+
+@media(max-width: 960px) {
+  .hero-grid, .contact-grid, .directions-grid, .skills-grid { grid-template-columns: 1fr; }
+  .hero-visual { order: -1; min-height: 320px; }
+  .holo-wrapper { width: 280px; height: 280px; }
+  .orbit-ring.r1 { width: 280px; height: 280px; }
+  .orbit-ring.r2 { width: 210px; height: 210px; }
+  .orbit-ring.r3 { width: 140px; height: 140px; }
+}
+@media(max-width: 768px) {
+  .nav-links { display: none; }
+  .menu-btn { display: block; }
+  .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+  .card { padding: 26px; }
+}
+@media print {
+  header, #bgCanvas, .cursor-glow, .top-wrap, .hero-visual, .nav-actions, .tab-group, form, footer { display: none !important; }
+  body { background: #fff; color: #000; }
+  .card { border: 1px solid #ccc; box-shadow: none; }
+  .bio-panel { display: block !important; }
+}
+</style>
+</head>
+<body>
+
+<div id="preloader"><div class="loader-mark">YV</div></div>
+<canvas id="bgCanvas"></canvas>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="progress-bar" id="progressBar"></div>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">
+      <span class="brand-mark">YV</span>
+      <span>YAROSLAV VOIDENKO<small>KYIV · UKRAINE</small></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#biography" data-ua="Біографія" data-en="Biography">Біографія</a>
+      <a href="#directions" data-ua="Напрями" data-en="Fields">Напрями</a>
+      <a href="#journey" data-ua="Хронологія" data-en="Timeline">Хронологія</a>
+      <a href="#journalism" data-ua="Публікації" data-en="Writing">Публікації</a>
+      <a href="#contact" data-ua="Контакти" data-en="Contact">Контакти</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="action-btn" id="cmdBtn" title="Пошук (Ctrl+K)">⌘K</button>
+      <button class="action-btn" id="fontBtn" title="Розмір шрифту">A+</button>
+      <button class="action-btn" id="langBtn">EN</button>
+      <button class="action-btn" id="themeBtn">☼</button>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#biography">Біографія</a>
+    <a href="#directions">Напрями</a>
+    <a href="#journey">Хронологія</a>
+    <a href="#journalism">Публікації</a>
+    <a href="#contact">Контакти</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="status-bar">
+        <span class="live-dot"></span>
+        <span id="greetingText">Доброго вечора</span>
+        <span>·</span>
+        <span class="clock-display" id="kyivClock">00:00:00</span>
+        <span>(Київ)</span>
+      </div>
+
+      <h1>Ярослав <span>Войденко.</span></h1>
+      <div class="typewriter-wrap"><span id="typewriter"></span><span class="typewriter-cursor">|</span></div>
+
+      <p class="hero-lead" data-ua="Студент-медик Національного медичного університету імені О. О. Богомольця (група 16120), публіцист <strong>LIGA.net</strong>[span_6](start_span)[span_6](end_span). Поєдную клінічне мислення та аналітичну журналістику." data-en="Medical student at Bogomolets National Medical University (Group 16120), contributor at <strong>LIGA.net</strong>[span_7](start_span)[span_7](end_span). Combining clinical thinking with analytical journalism.">
+        Студент-медик Національного медичного університету імені О. О. Богомольця (група 16120), публіцист <strong>LIGA.net</strong>[span_8](start_span)[span_8](end_span). Поєдную клінічне мислення та аналітичну журналістику.
+      </p>
+
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="#biography" data-ua="Читати біографію ↗" data-en="Read biography ↗">Читати біографію ↗</a>
+        <button class="btn btn-outline" id="printCvBtn" data-ua="Зберегти як CV" data-en="Save as CV">Зберегти як CV</button>
+        <button class="btn btn-outline" id="shareBtn" data-ua="Поділитися" data-en="Share">Поділитися</button>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-box"><strong>НМУ</strong><span>ІМ. БОГОМОЛЬЦЯ</span></div>
+        <div class="stat-box"><strong>LIGA.NET</strong><span>ПУБЛІЦИСТИКА</span></div>
+        <div class="stat-box"><strong>16120</strong><span>МЕДИЧНА ГРУПА</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+      <div class="holo-wrapper">
+        <div class="orbit-ring r1"></div>
+        <div class="orbit-ring r2"></div>
+        <div class="orbit-ring r3"></div>
+        <div class="holo-core">YV</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="biography">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="section-index">01 / BIOGRAPHY</div><h2 data-ua="Детальна <span class='gold'>біографія.</span>" data-en="Detailed <span class='gold'>biography.</span>">Детальна <span class="gold">біографія.</span></h2></div>
+      <p class="section-intro" data-ua="Оберіть розділ для перегляду ключових фактів." data-en="Select a tab to explore key milestones.">Оберіть розділ для перегляду ключових фактів.</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="bio-controls">
+        <div class="tab-group">
+          <button class="tab-btn active" data-tab="bio-all" data-ua="Загальна" data-en="Overview">Загальна</button>
+          <button class="tab-btn" data-tab="bio-edu" data-ua="Освіта" data-en="Education">Освіта</button>
+          <button class="tab-btn" data-tab="bio-media" data-ua="Медіа" data-en="Media">Медіа</button>
+        </div>
+        <div class="reading-meta" id="readingTime">~ 1 хв читання</div>
+      </div>
+
+      <div class="bio-panel active" id="bio-all">
+        <p><strong>Ярослав Сергійович Войденко</strong> народився 5 вересня 2009 року[span_9](start_span)[span_9](end_span). Свій освітній шлях розпочав у Чорнобаївському ліцеї на Черкащині, який закінчив із відзнакою, зосередившись на природничих і гуманітарних науках.</p>
+        <p>Сьогодні навчається на першому курсі медичного факультету Національного медичного університету імені О. О. Богомольця в Києві (група 16120)[span_10](start_span)[span_10](end_span). Паралельно активно розвивається як автор аналітичних колонок на платформі <strong>LIGA.net</strong>[span_11](start_span)[span_11](end_span).</p>
+      </div>
+      <div class="bio-panel" id="bio-edu">
+        <p><strong>Медична освіта:</strong> поглиблене вивчення анатомії людини, гістології та філософії в НМУ імені О. О. Богомольця[span_12](start_span)[span_12](end_span). Інтеграція сучасних цифрових інструментів (Complete Anatomy, ScienceDirect) у навчальний процес.</p>
+        <p>Додатково пройшов сертифіковані курси з домедичної допомоги в умовах війни, стрес-менеджменту та організаційного дизайну.</p>
+      </div>
+      <div class="bio-panel" id="bio-media">
+        <p><strong>Публіцистика:</strong> автор матеріалів на платформі <strong>LIGA.net</strong>[span_13](start_span)[span_13](end_span), присвячених реформуванню системи охорони здоров'я, трансформації медичної освіти та розвитку молоді в Україні.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-top"><span>Анатомія та медичні науки</span><span class="gold">92%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>Аналітична публіцистика</span><span class="gold">95%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="95%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="directions">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="section-index">02 / FOCUS</div><h2 data-ua="Три вектори <span class='gold'>розвитку.</span>" data-en="Three core <span class='gold'>pillars.</span>">Три вектори <span class="gold">розвитку.</span></h2></div>
+    </div>
+    <div class="directions-grid">
+      <article class="card direction-card tilt-card reveal">
+        <div class="dir-icon">✚</div>
+        <h3>Медицина</h3>
+        <p>Фундаментальні науки, клінічне мислення та підготовка до майбутньої лікарської практики.</p>
+      </article>
+      <article class="card direction-card tilt-card reveal">
+        <div class="dir-icon">✎</div>
+        <h3>Журналістика</h3>
+        <p>Робота з фактами, аналітика суспільних процесів та авторські колонки на LIGA.net[span_14](start_span)[span_14](end_span).</p>
+      </article>
+      <article class="card direction-card tilt-card reveal">
+        <div class="dir-icon">◎</div>
+        <h3>Комунікації</h3>
+        <p>Студентське представництво, організація ініціатив та розбудова професійних зв'язків.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="section-index">03 / TIMELINE</div><h2 data-ua="Хронологія <span class='gold'>шляху.</span>" data-en="Key <span class='gold'>milestones.</span>">Хронологія <span class="gold">шляху.</span></h2></div>
+      <div class="tab-group">
+        <button class="tab-btn active filter-btn" data-filter="all">Усі</button>
+        <button class="tab-btn filter-btn" data-filter="edu">Освіта</button>
+        <button class="tab-btn filter-btn" data-filter="media">Медіа</button>
+      </div>
+    </div>
+    <div class="timeline-list">
+      <div class="timeline-item reveal" data-cat="edu">
+        <div class="timeline-date">2025 – 2026</div>
+        <div class="card"><h3>Чорнобаївський ліцей</h3><p>Завершення шкільної освіти з відзнакою та підготовка до вступу в медичний університет.</p></div>
+      </div>
+      <div class="timeline-item reveal" data-cat="edu">
+        <div class="timeline-date">ВЕРЕСЕНЬ 2026</div>
+        <div class="card"><h3>НМУ імені О. О. Богомольця</h3><p>Зарахування на перший курс медичного факультету (група 16120)[span_15](start_span)[span_15](end_span), переїзд до Києва.</p></div>
+      </div>
+      <div class="timeline-item reveal" data-cat="media">
+        <div class="timeline-date">ОСІНЬ 2026</div>
+        <div class="card"><h3>Публікація на LIGA.net</h3><p>Вихід авторської колонки[span_16](start_span)[span_16](end_span), присвяченої розвитку системи охорони здоров'я та освіти.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="journalism">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="section-index">04 / PUBLICATIONS</div><h2 data-ua="Медіа та <span class='gold'>статті.</span>" data-en="Media & <span class='gold'>articles.</span>">Медіа та <span class="gold">статті.</span></h2></div>
+    </div>
+    <a class="card reveal" style="display:flex; justify-content:space-between; align-items:center; gap:20px;" href="https://blog.liga.net/user/yavoidenko/article/60698" target="_blank" rel="noopener noreferrer">
+      <div>
+        <div class="section-index">LIGA.NET[span_17](start_span)[span_17](end_span) · АВТОРСЬКА КОЛОНКА</div>
+        <h3 style="font: 28px 'Playfair Display', serif; margin-bottom:10px;">Читати публікацію на LIGA.net[span_18](start_span)[span_18](end_span)</h3>
+        <p style="color:var(--muted);">Аналітичний матеріал Ярослава Войденка про сучасні виклики та розвиток.</p>
+      </div>
+      <span style="font-size:32px; color:var(--gold);">↗</span>
+    </a>
+  </div>
+</section>
+
+<div class="quote-banner">
+  <div class="container reveal">
+    <blockquote id="quoteText">«Медицина дає розуміння цінності людського життя, а слова дають можливість змінювати суспільство на краще.»</blockquote>
+    <div class="quote-controls">
+      <button class="action-btn" id="prevQuote">←</button>
+      <button class="action-btn" id="nextQuote">→</button>
+    </div>
+  </div>
+</div>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="section-index">05 / CONTACT</div><h2 data-ua="Прямий <span class='gold'>зв'язок.</span>" data-en="Get in <span class='gold'>touch.</span>">Прямий <span class="gold">зв'язок.</span></h2></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-links reveal">
+        <div class="contact-link-item" style="cursor:pointer;" id="copyEmailBtn">
+          <div><small>EMAIL (КЛІКНІТЬ ДЛЯ КОПІЮВАННЯ)</small><strong>yaroclavvoydenko@gmail.com</strong>[span_19](start_span)[span_19](end_span)</div>
+          <span class="gold">❐</span>
+        </div>
+        <a class="contact-link-item" href="https://t.me/y_a_r_i_k" target="_blank" rel="noopener noreferrer">
+          <div><small>TELEGRAM</small><strong>@y_a_r_i_k</strong></div>
+          <span class="gold">↗</span>
+        </a>
+        <a class="contact-link-item" href="https://www.instagram.com/y.voydenko/" target="_blank" rel="noopener noreferrer">
+          <div><small>INSTAGRAM</small><strong>@y.voydenko</strong></div>
+          <span class="gold">↗</span>
+        </a>
+        <a class="contact-link-item" href="https://blog.liga.net/user/yavoidenko" target="_blank" rel="noopener noreferrer">
+          <div><small>LIGA.NET[span_20](start_span)[span_20](end_span)</small><strong>Авторський профіль</strong></div>
+          <span class="gold">↗</span>
+        </a>
+      </div>
+
+      <form class="card reveal" action="https://formspree.io/f/xblygjjv" method="POST" id="contactForm">
+        <div class="form-group">
+          <label for="name">ІМ'Я</label>
+          <input type="text" id="name" name="name" class="form-control" required placeholder="Ваше ім'я">
+        </div>
+        <div class="form-group">
+          <label for="email">EMAIL</label>
+          <input type="email" id="email" name="email" class="form-control" required placeholder="example@gmail.com">
+        </div>
+        <div class="form-group">
+          <label for="message">ПОВІДОМЛЕННЯ</label>
+          <textarea id="message" name="message" class="form-control" required placeholder="Ваша пропозиція або запитання..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Надіслати повідомлення ↗</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div><strong>Yaroslav Voidenko<span class="gold">.</span></strong></div>
+    <div>© <span id="year"></span> · Київ / Чорнобай[span_21](start_span)[span_21](end_span)</div>
+  </div>
+</footer>
+
+<div class="top-wrap" id="topBtn" title="Нагору">
+  <svg><circle cx="26" cy="26" r="22"></circle><circle class="prog" id="topProg" cx="26" cy="26" r="22"></circle></svg>
+  <div class="top-arrow">↑</div>
+</div>
+
+<div class="modal-backdrop" id="cmdModal">
+  <div class="cmd-modal">
+    <input type="text" class="cmd-input" id="cmdInput" placeholder="Пошук розділу або команди...">
+    <div class="cmd-list" id="cmdList">
+      <div class="cmd-item" data-action="goto:#biography"><span>Перейти до Біографії</span><span>↵</span></div>
+      <div class="cmd-item" data-action="goto:#directions"><span>Перейти до Напрямів</span><span>↵</span></div>
+      <div class="cmd-item" data-action="goto:#contact"><span>Перейти до Контактів</span><span>↵</span></div>
+      <div class="cmd-item" data-action="theme"><span>Змінити тему (Темна / Світла)</span><span>T</span></div>
+      <div class="cmd-item" data-action="lang"><span>Змінити мову (UA / EN)</span><span>L</span></div>
+      <div class="cmd-item" data-action="copy"><span>Скопіювати Email</span><span>C</span></div>
+    </div>
+  </div>
+</div>
+
+<div id="toast">Сповіщення</div>
+
+<script>
+// 1. Preloader
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('preloader').classList.add('hide'), 400);
+});
+
+// 2. Toast System
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// 3. Live Kyiv Clock & Dynamic Greeting
+function updateClock() {
+  const now = new Date();
+  const options = { timeZone: 'Europe/Kyiv', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+  document.getElementById('kyivClock').textContent = now.toLocaleTimeString('uk-UA', options);
+  const hour = parseInt(now.toLocaleTimeString('uk-UA', { timeZone: 'Europe/Kyiv', hour: '2-digit', hour12: false }));
+  const greet = hour < 12 ? 'Доброго ранку' : hour < 18 ? 'Доброго дня' : 'Доброго вечора';
+  document.getElementById('greetingText').textContent = greet;
+}
+setInterval(updateClock, 1000);
+updateClock();
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// 4. Typewriter Effect
+const roles = ['Студент-медик НМУ', 'Автор LIGA.net[span_22](start_span)[span_22](end_span)', 'Дослідник'];
+let rIdx = 0, cIdx = 0, isDel = false;
+function typeLoop() {
+  const el = document.getElementById('typewriter');
+  const current = roles[rIdx];
+  el.textContent = isDel ? current.substring(0, cIdx--) : current.substring(0, cIdx++);
+  if (!isDel && cIdx > current.length) { isDel = true; setTimeout(typeLoop, 1500); return; }
+  if (isDel && cIdx < 0) { isDel = false; rIdx = (rIdx + 1) % roles.length; cIdx = 0; }
+  setTimeout(typeLoop, isDel ? 50 : 100);
+}
+typeLoop();
+
+// 5. Particle Constellation Canvas
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let w, h, particles = [];
+function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+window.addEventListener('resize', resize);
+resize();
+for (let i = 0; i < 40; i++) particles.push({ x: Math.random()*w, y: Math.random()*h, vx: (Math.random()-0.5)*0.4, vy: (Math.random()-0.5)*0.4 });
+function drawParticles() {
+  ctx.clearRect(0, 0, w, h);
+  ctx.fillStyle = 'rgba(216, 183, 120, 0.5)';
+  particles.forEach((p, i) => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0 || p.x > w) p.vx *= -1;
+    if (p.y < 0 || p.y > h) p.vy *= -1;
+    ctx.beginPath(); ctx.arc(p.x, p.y, 1.5, 0, Math.PI*2); ctx.fill();
+    for (let j = i + 1; j < particles.length; j++) {
+      const p2 = particles[j];
+      const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+      if (dist < 120) {
+        ctx.strokeStyle = `rgba(216, 183, 120, ${0.15 - dist/800})`;
+        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+      }
+    }
+  });
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// 6. Theme, Language & Font Size
+const body = document.body;
+const themeBtn = document.getElementById('themeBtn');
+function toggleTheme() {
+  body.classList.toggle('light');
+  const isLight = body.classList.contains('light');
+  themeBtn.textContent = isLight ? '☾' : '☼';
+  localStorage.setItem('yv_theme', isLight ? 'light' : 'dark');
+  showToast(isLight ? 'Світла тема' : 'Темна тема');
+}
+themeBtn.addEventListener('click', toggleTheme);
+if (localStorage.getItem('yv_theme') === 'light') { body.classList.add('light'); themeBtn.textContent = '☾'; }
+
+let isEn = false;
+const langBtn = document.getElementById('langBtn');
+function toggleLang() {
+  isEn = !isEn;
+  langBtn.textContent = isEn ? 'UA' : 'EN';
+  document.querySelectorAll('[data-ua][data-en]').forEach(el => el.innerHTML = isEn ? el.dataset.en : el.dataset.ua);
+  showToast(isEn ? 'English enabled' : 'Українська мова');
+}
+langBtn.addEventListener('click', toggleLang);
+
+let fontScale = 16;
+document.getElementById('fontBtn').addEventListener('click', () => {
+  fontScale = fontScale === 16 ? 18 : fontScale === 18 ? 14 : 16;
+  document.documentElement.style.setProperty('--base-size', fontScale + 'px');
+  showToast(`Розмір шрифту: ${fontScale}px`);
+});
+
+// 7. Scroll Progress, Active Spy & Top Button
+const topBtn = document.getElementById('topBtn');
+const topProg = document.getElementById('topProg');
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = max > 0 ? window.scrollY / max : 0;
+  document.getElementById('progressBar').style.width = (pct * 100) + '%';
+  topBtn.classList.toggle('show', window.scrollY > 300);
+  topProg.style.strokeDashoffset = 138 - (138 * pct);
+
+  document.querySelectorAll('section[id]').forEach(sec => {
+    const top = sec.offsetTop - 120;
+    if (window.scrollY >= top && window.scrollY < top + sec.offsetHeight) {
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + sec.id));
+    }
+  });
+});
+topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// 8. Bio Tabs & Timeline Filter
+document.querySelectorAll('.tab-btn[data-tab]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn[data-tab]').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.bio-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      item.classList.toggle('hidden', f !== 'all' && item.dataset.cat !== f);
+    });
+  });
+});
+
+// 9. Quote Carousel
+const quotes = [
+  '«Медицина дає розуміння цінності людського життя, а слова дають можливість змінювати суспільство на краще.»',
+  '«Великий шлях починається не з гучних заяв, а з рішень, які ти приймаєш щодня.»',
+  '«Дисципліна та допитливість — головні інструменти майбутнього лікаря і публіциста.»'
+];
+let qIdx = 0;
+document.getElementById('nextQuote').addEventListener('click', () => { qIdx = (qIdx + 1) % quotes.length; document.getElementById('quoteText').textContent = quotes[qIdx]; });
+document.getElementById('prevQuote').addEventListener('click', () => { qIdx = (qIdx - 1 + quotes.length) % quotes.length; document.getElementById('quoteText').textContent = quotes[qIdx]; });
+
+// 10. Copy Email, Print CV, Share
+function copyEmail() {
+  navigator.clipboard.writeText('yaroclavvoydenko@gmail.com');
+  showToast('Email скопійовано!');
+}
+document.getElementById('copyEmailBtn').addEventListener('click', copyEmail);
+document.getElementById('printCvBtn').addEventListener('click', () => window.print());
+document.getElementById('shareBtn').addEventListener('click', () => {
+  if (navigator.share) navigator.share({ title: document.title, url: window.location.href });
+  else { navigator.clipboard.writeText(window.location.href); showToast('Посилання скопійовано!'); }
+});
+
+// 11. Command Palette & Shortcuts
+const cmdModal = document.getElementById('cmdModal');
+document.getElementById('cmdBtn').addEventListener('click', () => cmdModal.classList.add('open'));
+cmdModal.addEventListener('click', e => { if (e.target === cmdModal) cmdModal.classList.remove('open'); });
+document.querySelectorAll('.cmd-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const act = item.dataset.action;
+    if (act.startsWith('goto:')) window.location.hash = act.split(':')[1];
+    if (act === 'theme') toggleTheme();
+    if (act === 'lang') toggleLang();
+    if (act === 'copy') copyEmail();
+    cmdModal.classList.remove('open');
+  });
+});
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); cmdModal.classList.toggle('open'); }
+  if (e.key === 'Escape') cmdModal.classList.remove('open');
+});
+
+// 12. Mobile Menu & Reveal & Skill Bars & Cursor Glow
+document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('mobilePanel').classList.toggle('open'));
+document.querySelectorAll('.mobile-panel a').forEach(a => a.addEventListener('click', () => document.getElementById('mobilePanel').classList.remove('open')));
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('.skill-fill').forEach(bar => bar.style.width = bar.dataset.width);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+window.addEventListener('pointermove', e => {
+  const glow = document.getElementById('cursorGlow');
+  glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px';
+});
+
+// 13. Formspree AJAX
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  try {
+    const res = await fetch(this.action, { method: this.method, body: new FormData(this), headers: { 'Accept': 'application/json' } });
+    if (res.ok) { showToast('Повідомлення надіслано!'); this.reset(); }
+    else showToast('Помилка відправки.');
+  } catch { showToast('Помилка з\'єднання.'); }
+});
+</script>
+</body>
+</html>
