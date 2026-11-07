@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f3ed">
+<meta name="description" content="Ярослав Войденко — студент-медик, автор LIGA.net. Особистий сайт, професійний шлях, медицина та журналістика.">
+<meta property="og:title" content="Yaroslav Voidenko | Personal Portfolio">
+<meta property="og:description" content="Medicine, journalism and ideas that matter.">
+<meta property="og:type" content="website">
+<title>Yaroslav Voidenko — Personal Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f5f3ed;
+  --surface: #eeece4;
+  --card: #fbfaf6;
+  --text: #1c2924;
+  --muted: #68736b;
+  --faint: #929a91;
+  --line: #dedfd5;
+  --green: #244c3d;
+  --green-dark: #18382e;
+  --gold: #b3945e;
+  --coral: #c87962;
+  --sage: #dce4d9;
+  --shadow: 0 22px 65px rgba(30, 48, 38, .08);
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
+  --mono: "DM Mono", monospace;
+  --max: 1180px;
+}
+
+body.dark {
+  --bg: #111a17;
+  --surface: #18241f;
+  --card: #1c2a24;
+  --text: #f0f0e8;
+  --muted: #b1b9af;
+  --faint: #849187;
+  --line: #304139;
+  --green: #9bbda8;
+  --green-dark: #c5d9ca;
+  --gold: #d0b17b;
+  --coral: #d58c75;
+  --sage: #26372e;
+  --shadow: 0 22px 65px rgba(0,0,0,.2);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 95px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.7;
+  transition: background .3s, color .3s;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+::selection { background: var(--green); color: white; }
+
+.container {
+  width: min(var(--max), calc(100% - 64px));
+  margin: auto;
+}
+
+.topline {
+  height: 3px;
+  background: var(--green);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  z-index: 1000;
+}
+
+/* HEADER */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+
+.navigation {
+  min-height: 88px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.logo-symbol {
+  width: 47px;
+  height: 47px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: var(--green);
+  color: #f5f3ed;
+  border-radius: 15px 4px 15px 4px;
+  font-family: var(--serif);
+  font-size: 19px;
+  letter-spacing: -2px;
+  box-shadow: 0 5px 15px rgba(36,76,61,.12);
+}
+
+.logo-symbol::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  top: 7px;
+  right: 7px;
+}
+
+.logo-name {
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 1.4px;
+  line-height: 1.35;
+}
+
+.logo-caption {
+  display: block;
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  transition: color .2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--green);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control {
+  height: 38px;
+  min-width: 40px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 10px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.control:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: white;
+}
+
+.menu-button { display: none; }
+
+.mobile-menu {
+  display: none;
+  padding: 15px 32px 25px;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 10px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 760px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0 110px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  right: -270px;
+  top: -180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--sage), transparent 70%);
+  opacity: .7;
+  pointer-events: none;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  align-items: center;
+  gap: 80px;
+  position: relative;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--green);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--coral);
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(65px, 8.5vw, 108px);
+  font-weight: 500;
+  line-height: .99;
+  letter-spacing: -4px;
+  margin: 30px 0;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--green);
+  font-style: italic;
+}
+
+.hero-description {
+  max-width: 550px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.hero-description strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.button {
+  min-height: 49px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 23px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  transition: .25s;
+  cursor: pointer;
+}
+
+.button-primary {
+  background: var(--green);
+  color: white;
+}
+
+.button-primary:hover {
+  background: var(--green-dark);
+  transform: translateY(-3px);
+}
+
+.button-secondary {
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+
+.button-secondary:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.hero-details {
+  display: flex;
+  gap: 35px;
+  margin-top: 65px;
+  flex-wrap: wrap;
+}
+
+.hero-detail {
+  border-left: 2px solid var(--gold);
+  padding-left: 13px;
+}
+
+.hero-detail strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.hero-detail span {
+  display: block;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 440px;
+}
+
+.monogram-frame {
+  width: min(100%, 390px);
+  aspect-ratio: 1 / 1.08;
+  background: var(--green);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 180px 180px 12px 12px;
+}
+
+.monogram-frame::before {
+  content: "";
+  position: absolute;
+  width: 78%;
+  height: 78%;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 50%;
+}
+
+.monogram-frame::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 50%;
+}
+
+.monogram-large {
+  font-family: var(--serif);
+  color: #f5f3ed;
+  font-size: clamp(105px, 14vw, 170px);
+  letter-spacing: -15px;
+  position: relative;
+  z-index: 2;
+  transform: translateX(-7px);
+}
+
+.monogram-caption {
+  position: absolute;
+  bottom: 28px;
+  color: rgba(255,255,255,.7);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  z-index: 3;
+}
+
+.hero-note {
+  position: absolute;
+  right: -22px;
+  bottom: 30px;
+  background: var(--card);
+  padding: 18px 22px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  max-width: 205px;
+}
+
+.hero-note small {
+  display: block;
+  color: var(--coral);
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+
+.hero-note strong {
+  display: block;
+  margin-top: 7px;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+/* GENERAL SECTIONS */
+
+.section {
+  padding: 115px 0;
+  border-top: 1px solid var(--line);
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: 1fr .7fr;
+  gap: 60px;
+  align-items: end;
+  margin-bottom: 55px;
+}
+
+.section-number {
+  color: var(--coral);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 17px;
+}
+
+.section-heading h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(40px, 5vw, 65px);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+
+.section-heading h2 em {
+  color: var(--green);
+  font-weight: 500;
+}
+
+.section-intro {
+  max-width: 390px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+  padding-bottom: 5px;
+}
+
+/* ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr .85fr;
+  gap: 90px;
+}
+
+.about-text {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 2;
+}
+
+.about-text p + p { margin-top: 22px; }
+.about-text strong { color: var(--text); }
+
+.about-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.fact {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 23px;
+  min-height: 145px;
+  transition: .25s;
+}
+
+.fact:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+}
+
+.fact-symbol {
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: var(--green);
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 17px;
+  margin-bottom: 18px;
+}
+
+.fact small {
+  display: block;
+  font-family: var(--mono);
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.fact strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+/* FIELDS */
+
+.fields-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.field-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 34px 30px;
+  min-height: 335px;
+  display: flex;
+  flex-direction: column;
+  transition: .3s;
+}
+
+.field-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+  border-color: var(--gold);
+}
+
+.field-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.field-symbol {
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--sage);
+  color: var(--green);
+  font-size: 19px;
+}
+
+.field-number {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--faint);
+}
+
+.field-card h3 {
+  font-family: var(--serif);
+  font-size: 29px;
+  font-weight: 500;
+  margin: 48px 0 14px;
+}
+
+.field-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.field-label {
+  margin-top: auto;
+  padding-top: 27px;
+  color: var(--coral);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 1.2px;
+}
+
+.principle-band {
+  margin-top: 22px;
+  padding: 35px 40px;
+  background: var(--sage);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  border-radius: 4px;
+}
+
+.principle-band h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 25px;
+  margin-bottom: 7px;
+  color: var(--green-dark);
+}
+
+.principle-band p {
+  color: var(--muted);
+  font-size: 13px;
+  max-width: 670px;
+}
+
+/* TIMELINE */
+
+.timeline {
+  max-width: 900px;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 35px;
+  padding-bottom: 43px;
+  position: relative;
+}
+
+.timeline-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 169px;
+  top: 25px;
+  bottom: 0;
+  width: 1px;
+  background: var(--line);
+}
+
+.timeline-date {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--coral);
+  padding-top: 5px;
+}
+
+.timeline-content {
+  position: relative;
+  padding-left: 25px;
+}
+
+.timeline-content::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 5px var(--bg);
+}
+
+.timeline-content h3 {
+  font-family: var(--serif);
+  font-size: 23px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.timeline-content p {
+  color: var(--muted);
+  font-size: 13px;
+  max-width: 650px;
+  line-height: 1.9;
+}
+
+/* JOURNALISM */
+
+.publication {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 40px;
+  align-items: center;
+  background: var(--green);
+  color: #f5f3ed;
+  padding: 48px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.publication::after {
+  content: "L";
+  position: absolute;
+  right: 30px;
+  bottom: -120px;
+  font-family: var(--serif);
+  font-size: 330px;
+  line-height: 1;
+  color: rgba(255,255,255,.055);
+  pointer-events: none;
+}
+
+.publication-label {
+  color: #e5c99b;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.publication h3 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 18px 0 15px;
+}
+
+.publication p {
+  color: rgba(255,255,255,.75);
+  max-width: 600px;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.publication-button {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 1px solid rgba(255,255,255,.5);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.publication-button:hover {
+  background: white;
+  color: var(--green);
+}
+
+.publication-note {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 17px;
+}
+
+/* ACTIVITY */
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.activity-card {
+  display: flex;
+  gap: 22px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  transition: .25s;
+}
+
+.activity-card:hover {
+  border-color: var(--gold);
+}
+
+.activity-symbol {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: var(--green);
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+}
+
+.activity-card h3 {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+
+.activity-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+/* VALUES */
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.value-card {
+  padding: 25px 20px;
+  border-top: 2px solid var(--gold);
+  background: var(--card);
+}
+
+.value-card h3 {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.value-card p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* QUOTE */
+
+.quote-section {
+  padding: 100px 0;
+  background: var(--surface);
+  text-align: center;
+}
+
+.quote-label {
+  font-family: var(--mono);
+  color: var(--coral);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.quote-section blockquote {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.4;
+  max-width: 850px;
+  margin: 25px auto 0;
+  font-weight: 500;
+}
+
+.quote-section cite {
+  display: block;
+  margin-top: 25px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-style: normal;
+  letter-spacing: 2px;
+}
+
+/* VISION */
+
+.vision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+}
+
+.vision-text {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 2;
+}
+
+.vision-text p + p { margin-top: 20px; }
+
+.vision-list {
+  display: grid;
+  gap: 10px;
+}
+
+.vision-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 20px 23px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.vision-item span {
+  color: var(--coral);
+  font-family: var(--mono);
+  font-size: 9px;
+}
+
+.vision-item strong {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 500;
+}
+
+/* CONTACT */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: .85fr 1fr;
+  gap: 80px;
+}
+
+.contact-description {
+  margin-top: 20px;
+  max-width: 400px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.contact-list {
+  display: grid;
+  gap: 10px;
+}
+
+.contact-link {
+  padding: 19px 22px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  transition: .25s;
+}
+
+.contact-link:hover {
+  border-color: var(--green);
+  background: var(--surface);
+}
+
+.contact-link small {
+  display: block;
+  font-family: var(--mono);
+  font-size: 8px;
+  color: var(--muted);
+  letter-spacing: 1.5px;
+  margin-bottom: 5px;
+}
+
+.contact-link strong {
+  font-size: 13px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.contact-mark {
+  color: var(--coral);
+  font-family: var(--serif);
+  font-size: 22px;
+}
+
+/* FOOTER */
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 35px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-name {
+  font-family: var(--serif);
+  font-size: 19px;
+}
+
+.footer-note {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 1.3px;
+  margin-top: 4px;
+}
+
+.footer-right {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  text-align: right;
+}
+
+/* ANIMATIONS */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .75s ease, transform .75s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 950px) {
+  .nav-links { gap: 17px; }
+  .nav-links a { font-size: 11px; }
+  .hero-layout { gap: 35px; }
+  .about-grid { gap: 40px; }
+  .contact-grid { gap: 40px; }
+}
+
+@media(max-width: 760px) {
+  .container { width: calc(100% - 40px); }
+  .navigation { min-height: 75px; }
+  .nav-links { display: none; }
+  .menu-button { display: block; }
+  .hero { padding: 80px 0; min-height: auto; }
+  .hero-layout { grid-template-columns: 1fr; }
+  .hero-visual { min-height: 360px; }
+  .monogram-frame { max-width: 320px; }
+  .hero-note { right: 0; }
+  .section { padding: 85px 0; }
+  .section-heading { grid-template-columns: 1fr; gap: 20px; margin-bottom: 38px; }
+  .about-grid, .vision-grid, .contact-grid { grid-template-columns: 1fr; gap: 35px; }
+  .fields-grid { grid-template-columns: 1fr 1fr; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media(max-width: 520px) {
+  .container { width: calc(100% - 34px); }
+  .logo-name { font-size: 11px; }
+  .logo-symbol { width: 41px; height: 41px; }
+  .hero h1 { font-size: 61px; letter-spacing: -2.5px; }
+  .hero-description { font-size: 15px; }
+  .hero-details { gap: 20px; margin-top: 42px; }
+  .hero-detail strong { font-size: 14px; }
+  .hero-visual { min-height: 320px; }
+  .monogram-frame { max-width: 275px; }
+  .monogram-large { font-size: 120px; }
+  .hero-note { max-width: 175px; padding: 13px 15px; }
+  .section-heading h2 { font-size: 43px; }
+  .about-facts { gap: 9px; }
+  .fact { padding: 16px; min-height: 130px; }
+  .fields-grid { grid-template-columns: 1fr; }
+  .field-card { min-height: 260px; padding: 27px; }
+  .field-card h3 { margin-top: 30px; }
+  .principle-band { display: block; padding: 25px; }
+  .timeline-item { grid-template-columns: 95px 1fr; gap: 15px; }
+  .timeline-item:not(:last-child)::after { left: 94px; }
+  .timeline-content { padding-left: 18px; }
+  .timeline-content::before { left: -21px; }
+  .timeline-content h3 { font-size: 19px; }
+  .publication { grid-template-columns: 1fr; padding: 30px 25px; gap: 25px; }
+  .publication::after { font-size: 220px; bottom: -80px; }
+  .publication-button { justify-self: start; }
+  .activity-grid { grid-template-columns: 1fr; }
+  .activity-card { padding: 23px; }
+  .values-grid { gap: 9px; }
+  .value-card { padding: 18px 15px; }
+  .value-card h3 { font-size: 18px; }
+  .quote-section { padding: 75px 0; }
+  .footer-content { flex-direction: column; align-items: flex-start; }
+  .footer-right { text-align: left; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topline" id="topline"></div>
+
+<header class="header">
+  <div class="container navigation">
+
+    <a class="logo" href="#home" aria-label="Yaroslav Voidenko">
+      <span class="logo-symbol">YV</span>
+      <span class="logo-name">
+        YAROSLAV VOIDENKO
+        <span class="logo-caption">PERSONAL PORTFOLIO</span>
+      </span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#about" data-i18n="navAbout">Про мене</a>
+      <a href="#fields" data-i18n="navFields">Напрями</a>
+      <a href="#journey" data-i18n="navJourney">Освіта</a>
+      <a href="#writing" data-i18n="navWriting">Публікації</a>
+      <a href="#contact" data-i18n="navContact">Контакти</a>
+    </nav>
+
+    <div class="controls">
+      <button class="control" id="languageButton" aria-label="Change language">EN</button>
+      <button class="control" id="themeButton" aria-label="Change theme">◐</button>
+      <button class="control menu-button" id="menuButton" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#about" data-i18n="navAbout">Про мене</a>
+    <a href="#fields" data-i18n="navFields">Напрями</a>
+    <a href="#journey" data-i18n="navJourney">Освіта</a>
+    <a href="#writing" data-i18n="navWriting">Публікації</a>
+    <a href="#contact" data-i18n="navContact">Контакти</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+  <div class="container hero-layout">
+
+    <div class="hero-content reveal">
+      <div class="eyebrow" data-i18n="heroEyebrow">Особистий сайт · Україна</div>
+
+      <h1>
+        Ярослав
+        <span>Войденко.</span>
+      </h1>
+
+      <p class="hero-description" data-i18n="heroDescription">
+        Студент-медик, автор <strong>LIGA.net</strong> та людина, яка прагне поєднувати медицину, журналістику й суспільно важливі ідеї.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#about" class="button button-primary" data-i18n="heroButton1">Дізнатися більше</a>
+        <a href="#writing" class="button button-secondary" data-i18n="heroButton2">Мої публікації</a>
+      </div>
+
+      <div class="hero-details">
+        <div class="hero-detail">
+          <strong>MEDICINE</strong>
+          <span data-i18n="heroMeta1">ОСВІТА</span>
+        </div>
+        <div class="hero-detail">
+          <strong>JOURNALISM</strong>
+          <span data-i18n="heroMeta2">АВТОРСТВО</span>
+        </div>
+        <div class="hero-detail">
+          <strong>UKRAINE</strong>
+          <span data-i18n="heroMeta3">ПОХОДЖЕННЯ</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+      <div class="monogram-frame">
+        <div class="monogram-large">YV</div>
+        <div class="monogram-caption">YAROSLAV VOIDENKO</div>
+      </div>
+
+      <div class="hero-note">
+        <small data-i18n="heroNoteLabel">ОСОБИСТИЙ ПРИНЦИП</small>
+        <strong data-i18n="heroNote">Зміст важливіший за шум.</strong>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section class="section" id="about">
+  <div class="container">
+
+    <div class="section-heading reveal">
+      <div>
+        <div class="section-number">01 / ABOUT</div>
+        <h2 data-i18n="aboutTitle">Більше, ніж<br><em>одна професія.</em></h2>
+      </div>
+      <p class="section-intro" data-i18n="aboutIntro">
+        Мій шлях формується на перетині знань, комунікації, відповідальності та постійного розвитку.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p data-i18n="aboutP1">
+          Мене цікавить не лише те, як влаштований світ, а й те, як зробити його зрозумілішим і кращим. Саме тому в моєму житті поєднуються медицина та журналістика.
+        </p>
+        <p data-i18n="aboutP2">
+          Зараз я навчаюся в Національному медичному університеті імені О. О. Богомольця. Паралельно розвиваю навички письма, досліджую суспільні теми та працюю над власним професійним голосом.
+        </p>
+        <p data-i18n="aboutP3">
+          Для мене важливі допитливість, дисципліна, самостійність і здатність брати відповідальність за власні рішення. Я вірю в силу послідовної роботи та довгострокового мислення.
+        </p>
+      </div>
+
+      <div class="about-facts reveal">
+        <div class="fact">
+          <div class="fact-symbol">✳</div>
+          <small data-i18n="fact1Label">ОСВІТА</small>
+          <strong data-i18n="fact1">Медичний університет</strong>
+        </div>
+        <div class="fact">
+          <div class="fact-symbol">✎</div>
+          <small data-i18n="fact2Label">МЕДІА</small>
+          <strong data-i18n="fact2">Автор LIGA.net</strong>
+        </div>
+        <div class="fact">
+          <div class="fact-symbol">◎</div>
+          <small data-i18n="fact3Label">ІНТЕРЕСИ</small>
+          <strong data-i18n="fact3">Медицина й суспільство</strong>
+        </div>
+        <div class="fact">
+          <div class="fact-symbol">✦</div>
+          <small data-i18n="fact4Label">ПІДХІД</small>
+          <strong data-i18n="fact4">Постійний розвиток</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIELDS -->
+
+<section class="section" id="fields">
+  <div class="container">
+
+    <div class="section-heading reveal">
+      <div>
+        <div class="section-number">02 / FIELDS</div>
+        <h2 data-i18n="fieldsTitle">Три напрями.<br><em>Спільна мета.</em></h2>
+      </div>
+      <p class="section-intro" data-i18n="fieldsIntro">
+        Різні сфери, які доповнюють одна одну та формують моє бачення майбутнього.
+      </p>
+    </div>
+
+    <div class="fields-grid">
+
+      <article class="field-card reveal">
+        <div class="field-top">
+          <div class="field-symbol">✚</div>
+          <span class="field-number">01</span>
+        </div>
+        <h3 data-i18n="field1Title">Медицина</h3>
+        <p data-i18n="field1Text">
+          Фундаментальна освіта, клінічне мислення, доказовий підхід і прагнення стати фахівцем, якому довіряють.
+        </p>
+        <div class="field-label">KNOWLEDGE · CARE · RESPONSIBILITY</div>
+      </article>
+
+      <article class="field-card reveal">
+        <div class="field-top">
+          <div class="field-symbol">✎</div>
+          <span class="field-number">02</span>
+        </div>
+        <h3 data-i18n="field2Title">Журналістика</h3>
+        <p data-i18n="field2Text">
+          Робота з інформацією, пошук змісту, пояснення складних тем і створення текстів, що допомагають краще розуміти події.
+        </p>
+        <div class="field-label">IDEAS · WORDS · CONTEXT</div>
+      </article>
+
+      <article class="field-card reveal">
+        <div class="field-top">
+          <div class="field-symbol">◎</div>
+          <span class="field-number">03</span>
+        </div>
+        <h3 data-i18n="field3Title">Громадська діяльність</h3>
+        <p data-i18n="field3Text">
+          Студентське представництво, комунікація, командна робота та інтерес до процесів, які впливають на життя людей.
+        </p>
+        <div class="field-label">COMMUNITY · INITIATIVE · ACTION</div>
+      </article>
+
+    </div>
+
+    <div class="principle-band reveal">
+      <div>
+        <h3 data-i18n="principleTitle">Міждисциплінарне мислення</h3>
+        <p data-i18n="principleText">
+          Медицина вчить відповідальності за людину. Журналістика — відповідальності за інформацію. Обидві сфери починаються з уваги до фактів.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- JOURNEY -->
+
+<section class="section" id="journey">
+  <div class="container">
+
+    <div class="section-heading reveal">
+      <div>
+        <div class="section-number">03 / JOURNEY</div>
+        <h2 data-i18n="journeyTitle">Освіта та<br><em>мій шлях.</em></h2>
+      </div>
+      <p class="section-intro" data-i18n="journeyIntro">
+        Кожен етап — новий досвід, нові виклики та можливість рухатися далі.
+      </p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date" data-i18n="journeyDate1">ШКІЛЬНІ РОКИ</div>
+        <div class="timeline-content">
+          <h3 data-i18n="journeyTitle1">Чорнобаївський ліцей</h3>
+          <p data-i18n="journeyText1">
+            Завершення шкільної освіти з відзнакою. Формування академічної бази, інтересів і прагнення до подальшого розвитку.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2026</div>
+        <div class="timeline-content">
+          <h3 data-i18n="journeyTitle2">Національний медичний університет</h3>
+          <p data-i18n="journeyText2">
+            Початок навчання в НМУ імені О. О. Богомольця на медичному напрямі.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2026</div>
+        <div class="timeline-content">
+          <h3 data-i18n="journeyTitle3">Перші кроки в медіа</h3>
+          <p data-i18n="journeyText3">
+            Публікація авторського матеріалу на платформі LIGA.net та розвиток журналістського напряму.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date" data-i18n="journeyDate4">МАЙБУТНЄ</div>
+        <div class="timeline-content">
+          <h3 data-i18n="journeyTitle4">Розвиток і нові можливості</h3>
+          <p data-i18n="journeyText4">
+            Поглиблення медичних знань, робота над текстами, нові проєкти та професійне зростання.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+
+<section class="section" id="writing">
+  <div class="container">
+
+    <div class="section-heading reveal">
+      <div>
+        <div class="section-number">04 / JOURNALISM</div>
+        <h2 data-i18n="writingTitle">Слова мають<br><em>значення.</em></h2>
+      </div>
+      <p class="section-intro" data-i18n="writingIntro">
+        Журналістика для мене — спосіб досліджувати реальність, ставити запитання та ділитися думками.
+      </p>
+    </div>
+
+    <article class="publication reveal">
+      <div>
+        <div class="publication-label">LIGA.NET · AUTHOR PORTFOLIO</div>
+        <h3 data-i18n="publicationTitle">Моя авторська сторінка на LIGA.net</h3>
+        <p data-i18n="publicationText">
+          Публікація на одній із відомих українських медіаплатформ. Переглянути матеріал та авторський профіль.
+        </p>
+      </div>
+
+      <a class="publication-button"
+         href="https://blog.liga.net/user/yavoidenko/article/60698"
+         target="_blank"
+         rel="noopener noreferrer"
+         data-i18n="publicationButton">
+        ПЕРЕГЛЯНУТИ МАТЕРІАЛ
+      </a>
+    </article>
+
+    <p class="publication-note reveal" data-i18n="publicationNote">
+      Портфоліо оновлюватиметься в міру появи нових опублікованих матеріалів.
+    </p>
+
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+
+<section class="section" id="community">
+  <div class="container">
+
+    <div class="section-heading reveal">
+      <div>
+        <div class="section-number">05 / COMMUNITY</div>
+        <h2 data-i18n="communityTitle">Бути частиною<br><em>спільноти.</em></h2>
+      </div>
+      <p class="section-intro" data-i18n="communityIntro">
+        Університет — це не лише навчання, а й взаємодія, ініціативи та спільна відповідальність.
+      </p>
+    </div>
+
+    <div class="activity-grid">
+      <article class="activity-card reveal">
+        <div class="activity-symbol">◇</div>
+        <div>
+          <h3 data-i18n="activity1Title">Студентське представництво</h3>
+          <p data-i18n="activity1Text">
+            Участь у профспілковій діяльності НМУ та представлення інтересів студентів своєї групи.
+          </p>
+        </div>
+      </article>
+
+      <article class="activity-card reveal">
+        <div class="activity-symbol">✦</div>
+        <div>
+          <h3 data-i18n="activity2Title">Комунікація</h3>
+          <p data-i18n="activity2Text">
+            Взаємодія зі студентами, організація комунікації та участь у спільних ініціативах.
+          </p>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- VALUES -->
+
+<section class="section" id="values">
+  <div class="container">
+
+    <div class="section-heading reveal">
+      <div>
+        <div class="section-number">06 / PRINCIPLES</div>
+        <h2 data-i18n="valuesTitle">На чому<br><em>будую шлях.</em></h2>
+      </div>
+      <p class="section-intro" data-i18n="valuesIntro">
+        Принципи, які визначають мій підхід до навчання, роботи та взаємодії з людьми.
+      </p>
+    </div>
+
+    <div class="values-grid">
+      <article class="value-card reveal">
+        <h3 data-i18n="value1Title">Дисципліна</h3>
+        <p data-i18n="value1Text">Послідовність у діях і навчанні.</p>
+      </article>
+      <article class="value-card reveal">
+        <h3 data-i18n="value2Title">Допитливість</h3>
+        <p data-i18n="value2Text">Бажання розуміти більше.</p>
+      </article>
+      <article class="value-card reveal">
+        <h3 data-i18n="value3Title">Відповідальність</h3>
+        <p data-i18n="value3Text">Усвідомлення власних рішень.</p>
+      </article>
+      <article class="value-card reveal">
+        <h3 data-i18n="value4Title">Розвиток</h3>
+        <p data-i18n="value4Text">Готовність вчитися та змінюватися.</p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- QUOTE -->
+
+<section class="quote-section">
+  <div class="container reveal">
+    <div class="quote-label" data-i18n="quoteLabel">ОСОБИСТА ФІЛОСОФІЯ</div>
+    <blockquote data-i18n="quoteText">
+      Великий шлях починається не з гучних заяв, а з рішень, які ти приймаєш щодня.
+    </blockquote>
+    <cite>YAROSLAV VOIDENKO</cite>
+  </div>
+</section>
+
+<!-- VISION -->
+
+<section class="section" id="vision">
+  <div class="container">
+
+    <div class="section-heading reveal">
+      <div>
+        <div class="section-number">07 / VISION</div>
+        <h2 data-i18n="visionTitle">Погляд<br><em>у майбутнє.</em></h2>
+      </div>
+      <p class="section-intro" data-i18n="visionIntro">
+        Мета — не просто здобути освіту, а перетворити знання на реальну цінність для людей.
+      </p>
+    </div>
+
+    <div class="vision-grid">
+      <div class="vision-text reveal">
+        <p data-i18n="visionP1">
+          Мій професійний орієнтир — медицина, у якій поєднуються глибокі знання, людяність і висока відповідальність.
+        </p>
+        <p data-i18n="visionP2">
+          У перспективі я прагну розвиватися в хірургії, здобувати практичний досвід і працювати над тим, щоб ставати компетентним лікарем.
+        </p>
+        <p data-i18n="visionP3">
+          Водночас хочу зберегти журналістський напрям — досліджувати важливі теми, писати та брати участь у суспільному діалозі.
+        </p>
+      </div>
+
+      <div class="vision-list reveal">
+        <div class="vision-item">
+          <strong data-i18n="visionItem1">Медична освіта</strong>
+          <span>01</span>
+        </div>
+        <div class="vision-item">
+          <strong data-i18n="visionItem2">Хірургія</strong>
+          <span>02</span>
+        </div>
+        <div class="vision-item">
+          <strong data-i18n="visionItem3">Журналістика</strong>
+          <span>03</span>
+        </div>
+        <div class="vision-item">
+          <strong data-i18n="visionItem4">Користь людям</strong>
+          <span>04</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="section" id="contact">
+  <div class="container">
+
+    <div class="section-heading reveal">
+      <div>
+        <div class="section-number">08 / CONTACT</div>
+        <h2 data-i18n="contactTitle">Відкритий<br><em>до діалогу.</em></h2>
+      </div>
+      <p class="section-intro" data-i18n="contactIntro">
+        Для професійних пропозицій, медійних проєктів, співпраці та цікавих ідей.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="eyebrow" data-i18n="contactEyebrow">ЗАЛИШАЙМОСЯ НА ЗВ'ЯЗКУ</div>
+        <p class="contact-description" data-i18n="contactDescription">
+          Якщо у вас є цікава пропозиція, ідея для матеріалу або можливість співпраці — буду радий обговорити її.
+        </p>
+      </div>
+
+      <div class="contact-list reveal">
+
+        <a class="contact-link" href="mailto:yaroslavvoydenko@gmail.com">
+          <div>
+            <small>EMAIL</small>
+            <strong>yaroslavvoydenko@gmail.com</strong>
+          </div>
+          <span class="contact-mark">✳</span>
+        </a>
+
+        <a class="contact-link" href="https://www.instagram.com/y.voydenko/" target="_blank" rel="noopener noreferrer">
+          <div>
+            <small>INSTAGRAM</small>
+            <strong>@y.voydenko</strong>
+          </div>
+          <span class="contact-mark">◎</span>
+        </a>
+
+        <a class="contact-link" href="https://t.me/y_a_r_i_k" target="_blank" rel="noopener noreferrer">
+          <div>
+            <small>TELEGRAM</small>
+            <strong>@y_a_r_i_k</strong>
+          </div>
+          <span class="contact-mark">◈</span>
+        </a>
+
+        <a class="contact-link" href="https://blog.liga.net/user/yavoidenko" target="_blank" rel="noopener noreferrer">
+          <div>
+            <small>AUTHOR PROFILE</small>
+            <strong>LIGA.net</strong>
+          </div>
+          <span class="contact-mark">✦</span>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-content">
+    <div>
+      <div class="footer-name">Yaroslav Voidenko<span style="color:var(--coral)">.</span></div>
+      <div class="footer-note">PERSONAL PORTFOLIO · UKRAINE</div>
+    </div>
+
+    <div class="footer-right">
+      © <span id="currentYear"></span> YAROSLAV VOIDENKO<br>
+      <span data-i18n="footerText">УСІ ПРАВА ЗАХИЩЕНО</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const translations = {
+  uk: {
+    navAbout: "Про мене",
+    navFields: "Напрями",
+    navJourney: "Освіта",
+    navWriting: "Публікації",
+    navContact: "Контакти",
+
+    heroEyebrow: "Особистий сайт · Україна",
+    heroDescription: "Студент-медик, автор <strong>LIGA.net</strong> та людина, яка прагне поєднувати медицину, журналістику й суспільно важливі ідеї.",
+    heroButton1: "Дізнатися більше",
+    heroButton2: "Мої публікації",
+    heroMeta1: "ОСВІТА",
+    heroMeta2: "АВТОРСТВО",
+    heroMeta3: "ПОХОДЖЕННЯ",
+    heroNoteLabel: "ОСОБИСТИЙ ПРИНЦИП",
+    heroNote: "Зміст важливіший за шум.",
+
+    aboutTitle: "Більше, ніж<br><em>одна професія.</em>",
+    aboutIntro: "Мій шлях формується на перетині знань, комунікації, відповідальності та постійного розвитку.",
+    aboutP1: "Мене цікавить не лише те, як влаштований світ, а й те, як зробити його зрозумілішим і кращим. Саме тому в моєму житті поєднуються медицина та журналістика.",
+    aboutP2: "Зараз я навчаюся в Національному медичному університеті імені О. О. Богомольця. Паралельно розвиваю навички письма, досліджую суспільні теми та працюю над власним професійним голосом.",
+    aboutP3: "Для мене важливі допитливість, дисципліна, самостійність і здатність брати відповідальність за власні рішення. Я вірю в силу послідовної роботи та довгострокового мислення.",
+    fact1Label: "ОСВІТА",
+    fact1: "Медичний університет",
+    fact2Label: "МЕДІА",
+    fact2: "Автор LIGA.net",
+    fact3Label: "ІНТЕРЕСИ",
+    fact3: "Медицина й суспільство",
+    fact4Label: "ПІДХІД",
+    fact4: "Постійний розвиток",
+
+    fieldsTitle: "Три напрями.<br><em>Спільна мета.</em>",
+    fieldsIntro: "Різні сфери, які доповнюють одна одну та формують моє бачення майбутнього.",
+    field1Title: "Медицина",
+    field1Text: "Фундаментальна освіта, клінічне мислення, доказовий підхід і прагнення стати фахівцем, якому довіряють.",
+    field2Title: "Журналістика",
+    field2Text: "Робота з інформацією, пошук змісту, пояснення складних тем і створення текстів, що допомагають краще розуміти події.",
+    field3Title: "Громадська діяльність",
+    field3Text: "Студентське представництво, комунікація, командна робота та інтерес до процесів, які впливають на життя людей.",
+    principleTitle: "Міждисциплінарне мислення",
+    principleText: "Медицина вчить відповідальності за людину. Журналістика — відповідальності за інформацію. Обидві сфери починаються з уваги до фактів.",
+
+    journeyTitle: "Освіта та<br><em>мій шлях.</em>",
+    journeyIntro: "Кожен етап — новий досвід, нові виклики та можливість рухатися далі.",
+    journeyDate1: "ШКІЛЬНІ РОКИ",
+    journeyTitle1: "Чорнобаївський ліцей",
+    journeyText1: "Завершення шкільної освіти з відзнакою. Формування академічної бази, інтересів і прагнення до подальшого розвитку.",
+    journeyTitle2: "Національний медичний університет",
+    journeyText2: "Початок навчання в НМУ імені О. О. Богомольця на медичному напрямі.",
+    journeyTitle3: "Перші кроки в медіа",
+    journeyText3: "Публікація авторського матеріалу на платформі LIGA.net та розвиток журналістського напряму.",
+    journeyDate4: "МАЙБУТНЄ",
+    journeyTitle4: "Розвиток і нові можливості",
+    journeyText4: "Поглиблення медичних знань, робота над текстами, нові проєкти та професійне зростання.",
+
+    writingTitle: "Слова мають<br><em>значення.</em>",
+    writingIntro: "Журналістика для мене — спосіб досліджувати реальність, ставити запитання та ділитися думками.",
+    publicationTitle: "Моя авторська сторінка на LIGA.net",
+    publicationText: "Публікація на одній із відомих українських медіаплатформ. Переглянути матеріал та авторський профіль.",
+    publicationButton: "ПЕРЕГЛЯНУТИ МАТЕРІАЛ",
+    publicationNote: "Портфоліо оновлюватиметься в міру появи нових опублікованих матеріалів.",
+
+    communityTitle: "Бути частиною<br><em>спільноти.</em>",
+    communityIntro: "Університет — це не лише навчання, а й взаємодія, ініціативи та спільна відповідальність.",
+    activity1Title: "Студентське представництво",
+    activity1Text: "Участь у профспілковій діяльності НМУ та представлення інтересів студентів своєї групи.",
+    activity2Title: "Комунікація",
+    activity2Text: "Взаємодія зі студентами, організація комунікації та участь у спільних ініціативах.",
+
+    valuesTitle: "На чому<br><em>будую шлях.</em>",
+    valuesIntro: "Принципи, які визначають мій підхід до навчання, роботи та взаємодії з людьми.",
+    value1Title: "Дисципліна",
+    value1Text: "Послідовність у діях і навчанні.",
+    value2Title: "Допитливість",
+    value2Text: "Бажання розуміти більше.",
+    value3Title: "Відповідальність",
+    value3Text: "Усвідомлення власних рішень.",
+    value4Title: "Розвиток",
+    value4Text: "Готовність вчитися та змінюватися.",
+
+    quoteLabel: "ОСОБИСТА ФІЛОСОФІЯ",
+    quoteText: "Великий шлях починається не з гучних заяв, а з рішень, які ти приймаєш щодня.",
+
+    visionTitle: "Погляд<br><em>у майбутнє.</em>",
+    visionIntro: "Мета — не просто здобути освіту, а перетворити знання на реальну цінність для людей.",
+    visionP1: "Мій професійний орієнтир — медицина, у якій поєднуються глибокі знання, людяність і висока відповідальність.",
+    visionP2: "У перспективі я прагну розвиватися в хірургії, здобувати практичний досвід і працювати над тим, щоб ставати компетентним лікарем.",
+    visionP3: "Водночас хочу зберегти журналістський напрям — досліджувати важливі теми, писати та брати участь у суспільному діалозі.",
+    visionItem1: "Медична освіта",
+    visionItem2: "Хірургія",
+    visionItem3: "Журналістика",
+    visionItem4: "Користь людям",
+
+    contactTitle: "Відкритий<br><em>до діалогу.</em>",
+    contactIntro: "Для професійних пропозицій, медійних проєктів, співпраці та цікавих ідей.",
+    contactEyebrow: "ЗАЛИШАЙМОСЯ НА ЗВ'ЯЗКУ",
+    contactDescription: "Якщо у вас є цікава пропозиція, ідея для матеріалу або можливість співпраці — буду радий обговорити її.",
+    footerText: "УСІ ПРАВА ЗАХИЩЕНО"
+  },
+
+  en: {
+    navAbout: "About",
+    navFields: "Fields",
+    navJourney: "Education",
+    navWriting: "Publications",
+    navContact: "Contact",
+
+    heroEyebrow: "Personal website · Ukraine",
+    heroDescription: "Medical student, author at <strong>LIGA.net</strong>, and someone working to connect medicine, journalism, and ideas that matter.",
+    heroButton1: "Discover my story",
+    heroButton2: "My publications",
+    heroMeta1: "EDUCATION",
+    heroMeta2: "WRITING",
+    heroMeta3: "ORIGIN",
+    heroNoteLabel: "PERSONAL PRINCIPLE",
+    heroNote: "Substance matters more than noise.",
+
+    aboutTitle: "More than<br><em>one profession.</em>",
+    aboutIntro: "My path is shaped by knowledge, communication, responsibility, and continuous growth.",
+    aboutP1: "I am interested not only in how the world works, but also in how to make it more understandable and better. That is why medicine and journalism both have a place in my life.",
+    aboutP2: "I am currently studying at O. O. Bogomolets National Medical University. Alongside my studies, I develop my writing skills, explore social issues, and work on finding my professional voice.",
+    aboutP3: "Curiosity, discipline, independence, and taking responsibility for my decisions matter to me. I believe in consistent work and long-term thinking.",
+    fact1Label: "EDUCATION",
+    fact1: "Medical university",
+    fact2Label: "MEDIA",
+    fact2: "LIGA.net author",
+    fact3Label: "INTERESTS",
+    fact3: "Medicine and society",
+    fact4Label: "APPROACH",
+    fact4: "Continuous growth",
+
+    fieldsTitle: "Three fields.<br><em>One purpose.</em>",
+    fieldsIntro: "Different areas that complement one another and shape my vision for the future.",
+    field1Title: "Medicine",
+    field1Text: "A strong academic foundation, clinical thinking, an evidence-based approach, and the ambition to become a trusted professional.",
+    field2Title: "Journalism",
+    field2Text: "Working with information, finding meaning, explaining complex topics, and creating stories that help people understand events.",
+    field3Title: "Community involvement",
+    field3Text: "Student representation, communication, teamwork, and an interest in processes that shape people's lives.",
+    principleTitle: "Interdisciplinary thinking",
+    principleText: "Medicine teaches responsibility for people. Journalism teaches responsibility for information. Both fields begin with attention to facts.",
+
+    journeyTitle: "Education and<br><em>my journey.</em>",
+    journeyIntro: "Every stage brings new experience, new challenges, and an opportunity to move forward.",
+    journeyDate1: "SCHOOL YEARS",
+    journeyTitle1: "Chornobai Lyceum",
+    journeyText1: "Graduated with honors. Built an academic foundation, developed interests, and prepared for further education.",
+    journeyTitle2: "National Medical University",
+    journeyText2: "Began studying medicine at O. O. Bogomolets National Medical University.",
+    journeyTitle3: "First steps in media",
+    journeyText3: "Published an original article on LIGA.net and began developing my journalism portfolio.",
+    journeyDate4: "THE FUTURE",
+    journeyTitle4: "Growth and new opportunities",
+    journeyText4: "Further medical studies, writing, new projects, and professional development.",
+
+    writingTitle: "Words have<br><em>meaning.</em>",
+    writingIntro: "For me, journalism is a way to explore reality, ask questions, and share ideas.",
+    publicationTitle: "My author profile on LIGA.net",
+    publicationText: "An article published on a well-known Ukrainian media platform. Explore the publication and my author profile.",
+    publicationButton: "READ THE ARTICLE",
+    publicationNote: "This portfolio will grow as new articles are published.",
+
+    communityTitle: "Being part of a<br><em>community.</em>",
+    communityIntro: "University is about more than studying. It is also about collaboration, initiative, and shared responsibility.",
+    activity1Title: "Student representation",
+    activity1Text: "Involvement in the NMU trade union and representing the interests of students in my group.",
+    activity2Title: "Communication",
+    activity2Text: "Connecting with students, supporting communication, and taking part in shared initiatives.",
+
+    valuesTitle: "The principles<br><em>behind my path.</em>",
+    valuesIntro: "The principles that shape my approach to learning, work, and relationships with others.",
+    value1Title: "Discipline",
+    value1Text: "Consistency in action and learning.",
+    value2Title: "Curiosity",
+    value2Text: "A desire to understand more.",
+    value3Title: "Responsibility",
+    value3Text: "Taking ownership of decisions.",
+    value4Title: "Growth",
+    value4Text: "A willingness to learn and adapt.",
+
+    quoteLabel: "PERSONAL PHILOSOPHY",
+    quoteText: "A meaningful journey does not begin with grand statements, but with the decisions you make every day.",
+
+    visionTitle: "Looking<br><em>ahead.</em>",
+    visionIntro: "The goal is not simply to earn a degree, but to turn knowledge into something valuable for people.",
+    visionP1: "My professional direction is medicine, where deep knowledge, compassion, and a strong sense of responsibility come together.",
+    visionP2: "In the long term, I hope to develop in surgery, gain practical experience, and work towards becoming a competent physician.",
+    visionP3: "I also intend to keep journalism as part of my journey: exploring important topics, writing, and contributing to public discussion.",
+    visionItem1: "Medical education",
+    visionItem2: "Surgery",
+    visionItem3: "Journalism",
+    visionItem4: "Making a difference",
+
+    contactTitle: "Open to<br><em>conversation.</em>",
+    contactIntro: "For professional opportunities, media projects, collaboration, and interesting ideas.",
+    contactEyebrow: "LET'S CONNECT",
+    contactDescription: "If you have an interesting proposal, an idea for an article, or an opportunity to collaborate, I would be glad to hear from you.",
+    footerText: "ALL RIGHTS RESERVED"
+  }
+};
+
+let currentLanguage = localStorage.getItem("yv-language") || "uk";
+
+function setLanguage(language) {
+  currentLanguage = language;
+  document.documentElement.lang = language;
+
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    const key = element.dataset.i18n;
+    const value = translations[language][key];
+    if (value !== undefined) {
+      element.innerHTML = value;
+    }
+  });
+
+  document.getElementById("languageButton").textContent =
+    language === "uk" ? "EN" : "UA";
+
+  localStorage.setItem("yv-language", language);
+}
+
+document.getElementById("languageButton").addEventListener("click", () => {
+  setLanguage(currentLanguage === "uk" ? "en" : "uk");
+});
+
+setLanguage(currentLanguage);
+
+/* THEME */
+
+const themeButton = document.getElementById("themeButton");
+
+function setTheme(theme) {
+  document.body.classList.toggle("dark", theme === "dark");
+  themeButton.textContent = theme === "dark" ? "☀" : "◐";
+  localStorage.setItem("yv-theme", theme);
+}
+
+setTheme(localStorage.getItem("yv-theme") || "light");
+
+themeButton.addEventListener("click", () => {
+  const nextTheme = document.body.classList.contains("dark")
+    ? "light"
+    : "dark";
+  setTheme(nextTheme);
+});
+
+/* MOBILE MENU */
+
+const menuButton = document.getElementById("menuButton");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuButton.addEventListener("click", () => {
+  const isOpen = mobileMenu.style.display === "block";
+  mobileMenu.style.display = isOpen ? "none" : "block";
+  menuButton.textContent = isOpen ? "☰" : "×";
+});
+
+mobileMenu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    mobileMenu.style.display = "none";
+    menuButton.textContent = "☰";
+  });
+});
+
+/* SCROLL PROGRESS */
+
+const topline = document.getElementById("topline");
+
+window.addEventListener("scroll", () => {
+  const maxScroll =
+    document.documentElement.scrollHeight - window.innerHeight;
+
+  const progress = maxScroll > 0
+    ? (window.scrollY / maxScroll) * 100
+    : 0;
+
+  topline.style.width = progress + "%";
+});
+
+/* REVEAL ANIMATION */
+
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.12
+});
+
+document.querySelectorAll(".reveal").forEach(element => {
+  revealObserver.observe(element);
+});
+
+/* ACTIVE NAVIGATION */
+
+const sections = document.querySelectorAll("main section[id]");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle(
+          "active",
+          link.getAttribute("href") === "#" + entry.target.id
+        );
+      });
+    }
+  });
+}, {
+  rootMargin: "-35% 0px -55% 0px"
+});
+
+sections.forEach(section => sectionObserver.observe(section));
+
+/* YEAR */
+
+document.getElementById("currentYear").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>
