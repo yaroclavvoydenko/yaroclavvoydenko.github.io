@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YV — Yaroslav Voydenko | Medicine, Healthcare, Technology &amp; Society</title>
+  <meta name="description" content="Personal editorial and analytical platform of Yaroslav Voydenko — Medical Student at Bogomolets National Medical University, independent author writing on medicine, healthcare systems, technology, and society." />
+  <meta name="author" content="Yaroslav Voydenko" />
+  <meta name="robots" content="index, follow" />
+  <!-- Configurable Canonical URL -->
+  <link rel="canonical" href="https://yavoidenko.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="YV — Yaroslav Voydenko" />
+  <meta property="og:description" content="Personal platform: Medicine, Healthcare, Technology, Society. Independent author and medical student." />
+  <meta property="og:url" content="https://yavoidenko.com/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="uk_UA" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="YV — Yaroslav Voydenko" />
+  <meta name="twitter:description" content="Personal platform: Medicine, Healthcare, Technology, Society." />
+
+  <!-- Inline SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230B0D10'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23C5A059' stroke-width='1.5'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23F4F4F0' font-family='Georgia, serif' font-size='26' letter-spacing='2'%3EYV%3C/text%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Editorial Serif + Swiss Sans + Technical Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Schema.org Structured Data (Verified Information Only) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yaroslav Voydenko",
+    "alternateName": "Ярослав Войденко",
+    "description": "Medical Student at Bogomolets National Medical University and independent author focusing on medicine, healthcare systems, medical technology, and society.",
+    "affiliation": {
+      "@type": "EducationalOrganization",
+      "name": "Bogomolets National Medical University"
+    },
+    "nationality": "Ukrainian",
+    "sameAs": [
+      "https://blog.liga.net/user/yavoidenko",
+      "https://www.linkedin.com/in/%D1%8F%D1%80%D0%BE%D1%81%D0%BB%D0%B0%D0%B2-%D0%B2%D0%BE%D0%B9%D0%B4%D0%B5%D0%BD%D0%BA%D0%BE-a35560449/",
+      "https://t.me/y_voydenko"
+    ]
+  }
+  </script>
+
+  <style>
+    /* ==========================================================================
+       1. DESIGN SYSTEM & TOKENS
+       ========================================================================== */
+    :root {
+      /* Typography */
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Spacing & Layout */
+      --container-max: 1360px;
+      --gutter: clamp(1.25rem, 4vw, 3.5rem);
+      --section-pad: clamp(4.5rem, 9vw, 8.5rem);
+      --header-height: 76px;
+
+      /* Radii */
+      --radius-none: 0px;
+      --radius-sm: 2px;
+      --radius-md: 4px;
+
+      /* Transitions */
+      --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+      --t-fast: 0.25s var(--ease-editorial);
+      --t-med: 0.55s var(--ease-editorial);
+      --t-slow: 0.9s var(--ease-editorial);
+    }
+
+    /* DARK MODE (Default: Deep Graphite, Midnight Blue, Noble Green, Gold) */
+    [data-theme="dark"] {
+      --bg-primary: #0B0D10;
+      --bg-secondary: #11151B;
+      --bg-elevated: #161B22;
+      --bg-accent-green: #0E1F1A;
+      --bg-accent-blue: #0D1624;
+
+      --text-primary: #F2F2EE;
+      --text-secondary: #A6ACB8;
+      --text-muted: #6E7684;
+
+      --accent-gold: #C5A059;
+      --accent-gold-soft: rgba(197, 160, 89, 0.14);
+      --accent-platinum: #D4D8DF;
+      --accent-green: #2A5C4B;
+
+      --border-subtle: rgba(212, 216, 223, 0.1);
+      --border-strong: rgba(197, 160, 89, 0.35);
+      --grid-line: rgba(212, 216, 223, 0.04);
+
+      --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+      --header-bg: rgba(11, 13, 16, 0.85);
+    }
+
+    /* LIGHT MODE (Milky, Warm White, Light Grey, Deep Blue, Restrained Gold) */
+    [data-theme="light"] {
+      --bg-primary: #F7F6F2;
+      --bg-secondary: #EFECE6;
+      --bg-elevated: #FFFFFF;
+      --bg-accent-green: #E8EFEA;
+      --bg-accent-blue: #E7ECF2;
+
+      --text-primary: #12171E;
+      --text-secondary: #434B57;
+      --text-muted: #6C7480;
+
+      --accent-gold: #9A7632;
+      --accent-gold-soft: rgba(154, 118, 50, 0.1);
+      --accent-platinum: #2B3544;
+      --accent-green: #1B4332;
+
+      --border-subtle: rgba(18, 23, 30, 0.1);
+      --border-strong: rgba(154, 118, 50, 0.4);
+      --grid-line: rgba(18, 23, 30, 0.04);
+
+      --shadow-card: 0 20px 40px -15px rgba(18, 23, 30, 0.08);
+      --header-bg: rgba(247, 246, 242, 0.88);
+    }
+
+    /* ==========================================================================
+       2. RESET & BASE
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-weight: 400;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      transition: background-color var(--t-med), color var(--t-med);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent-gold);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ==========================================================================
+       3. LOADING SCREEN & SCROLL PROGRESS
+       ========================================================================== */
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background-color: var(--bg-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      transition: opacity 0.6s var(--ease-editorial), visibility 0.6s;
+    }
+
+    .loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-mark {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      letter-spacing: 0.25em;
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+      padding: 0.6rem 1.4rem;
+    }
+
+    .loader-bar {
+      width: 140px;
+      height: 1px;
+      background: var(--border-subtle);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loader-bar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--accent-gold);
+      transform: translateX(-100%);
+      animation: loadProgress 0.8s var(--ease-editorial) forwards;
+    }
+
+    @keyframes loadProgress {
+      to { transform: translateX(0); }
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-green), var(--accent-gold));
+      z-index: 1001;
+      transition: width 0.08s linear;
+    }
+
+    /* ==========================================================================
+       4. HEADER & NAVIGATION
+       ========================================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      z-index: 1000;
+      border-bottom: 1px solid transparent;
+      transition: background-color var(--t-med), border-color var(--t-med), backdrop-filter var(--t-med);
+    }
+
+    .site-header.is-scrolled {
+      background-color: var(--header-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom-color: var(--border-subtle);
+    }
+
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      z-index: 1002;
+    }
+
+    .brand-monogram {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--border-strong);
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--accent-gold);
+      transition: border-color var(--t-fast), background-color var(--t-fast);
+    }
+
+    .brand:hover .brand-monogram {
+      background-color: var(--accent-gold-soft);
+    }
+
+    .brand-name {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+
+    .nav-desktop {
+      display: none;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      position: relative;
+      padding: 0.35rem 0;
+      transition: color var(--t-fast);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--accent-gold);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform var(--t-fast);
+    }
+
+    .nav-link:hover,
+    .nav-link.is-active {
+      color: var(--text-primary);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.is-active::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 1002;
+    }
+
+    .ctrl-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 34px;
+      padding: 0 0.65rem;
+      border: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      transition: border-color var(--t-fast), color var(--t-fast), background-color var(--t-fast);
+    }
+
+    .ctrl-btn:hover {
+      border-color: var(--border-strong);
+      color: var(--text-primary);
+      background-color: var(--accent-gold-soft);
+    }
+
+    .ctrl-btn svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    /* Mobile Menu Button */
+    .menu-toggle {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 16px;
+      height: 1.5px;
+      background-color: var(--text-primary);
+      transition: transform var(--t-fast), opacity var(--t-fast);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(3.25px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      transform: translateY(-3.25px) rotate(-45deg);
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      inset: 0;
+      background-color: var(--bg-primary);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem var(--gutter) 3rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-12px);
+      transition: opacity var(--t-med), visibility var(--t-med), transform var(--t-med);
+    }
+
+    .mobile-drawer.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .mobile-nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .mobile-nav-link {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 7vw, 2.75rem);
+      color: var(--text-primary);
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.75rem;
+      transition: color var(--t-fast), padding-left var(--t-fast);
+    }
+
+    .mobile-nav-link span {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-gold);
+    }
+
+    .mobile-nav-link:hover {
+      color: var(--accent-gold);
+      padding-left: 0.5rem;
+    }
+
+    @media (min-width: 1024px) {
+      .nav-desktop { display: flex; }
+      .menu-toggle { display: none; }
+    }
+
+    /* ==========================================================================
+       5. TYPOGRAPHY & SECTION ARCHITECTURE
+       ========================================================================== */
+    .section {
+      padding-top: var(--section-pad);
+      padding-bottom: var(--section-pad);
+      border-bottom: 1px solid var(--border-subtle);
+      position: relative;
+    }
+
+    .section-alt {
+      background-color: var(--bg-secondary);
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    @media (min-width: 768px) {
+      .section-header {
+        grid-template-columns: 220px 1fr;
+        align-items: end;
+      }
+    }
+
+    .section-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-kicker::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background-color: var(--accent-gold);
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    /* ==========================================================================
+       6. HERO SECTION (Editorial Cover + Orbital System)
+       ========================================================================== */
+    .hero {
+      min-height: 100svh;
+      padding-top: calc(var(--header-height) + 2.5rem);
+      padding-bottom: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    /* Architectural Coordinate Grid */
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(circle at 50% 45%, black 35%, transparent 85%);
+      -webkit-mask-image: radial-gradient(circle at 50% 45%, black 35%, transparent 85%);
+      pointer-events: none;
+    }
+
+    /* Abstract Orbital Global System */
+    .hero-orbital {
+      position: absolute;
+      right: -12%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: min(680px, 85vw);
+      height: min(680px, 85vw);
+      pointer-events: none;
+      opacity: 0.55;
+    }
+
+    .hero-orbital svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .orbit-ring-slow {
+      transform-origin: center;
+      animation: rotateSlow 60s linear infinite;
+    }
+
+    .orbit-ring-reverse {
+      transform-origin: center;
+      animation: rotateSlow 42s linear infinite reverse;
+    }
+
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    .hero-meta-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem 2rem;
+      margin-bottom: 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.25rem, 9.5vw, 8.25rem);
+      font-weight: 500;
+      line-height: 0.94;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 2rem;
+    }
+
+    .hero-title .line {
+      display: block;
+      overflow: hidden;
+    }
+
+    .hero-title .line-inner {
+      display: block;
+      transform: translateY(105%);
+      animation: textReveal 0.9s var(--ease-editorial) forwards;
+    }
+
+    .hero-title .line:nth-child(2) .line-inner {
+      animation-delay: 0.15s;
+    }
+
+    @keyframes textReveal {
+      to { transform: translateY(0); }
+    }
+
+    .hero-pillars {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 1.5rem;
+      margin-bottom: 2.25rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+      max-width: 780px;
+    }
+
+    .hero-pillar {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .hero-pillar::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background-color: var(--accent-gold);
+      transform: rotate(45deg);
+    }
+
+    .hero-lead {
+      max-width: 600px;
+      font-size: clamp(1rem, 1.35vw, 1.15rem);
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.95rem 1.75rem;
+      background-color: var(--text-primary);
+      color: var(--bg-primary);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: background-color var(--t-fast), transform var(--t-fast);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-gold);
+      color: #0B0D10;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.95rem 1.75rem;
+      border: 1px solid var(--border-strong);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: background-color var(--t-fast), border-color var(--t-fast);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--accent-gold-soft);
+      border-color: var(--accent-gold);
+    }
+
+    .hero-footer {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .scroll-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .scroll-line {
+      width: 36px;
+      height: 1px;
+      background-color: var(--accent-gold);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--text-primary);
+      animation: scrollPulse 2s infinite;
+    }
+
+    @keyframes scrollPulse {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* ==========================================================================
+       7. PROFILE & JOURNEY
+       ========================================================================== */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    @media (min-width: 960px) {
+      .profile-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 4.5rem;
+      }
+    }
+
+    .profile-bio {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .profile-bio strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .dossier-card {
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      padding: 2rem;
+    }
+
+    .dossier-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .dossier-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.92rem;
+    }
+
+    .dossier-row:last-child {
+      border-bottom: none;
+    }
+
+    .dossier-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    .dossier-value {
+      color: var(--text-primary);
+    }
+
+    /* Journey Timeline */
+    .timeline {
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .timeline {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .timeline-item {
+      padding: 1.75rem;
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-top: 2px solid var(--accent-gold);
+      transition: transform var(--t-fast), border-color var(--t-fast);
+    }
+
+    .timeline-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .timeline-period {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      color: var(--accent-gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-role {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       8. AREAS OF FOCUS (01 - 08 Interactive Grid)
+       ========================================================================== */
+    .focus-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--border-subtle);
+      border-left: 1px solid var(--border-subtle);
+    }
+
+    @media (min-width: 640px) {
+      .focus-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .focus-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .focus-card {
+      padding: 2.25rem 1.75rem;
+      border-right: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      background-color: var(--bg-primary);
+      position: relative;
+      transition: background-color var(--t-fast);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 240px;
+    }
+
+    .focus-card:hover {
+      background-color: var(--bg-elevated);
+    }
+
+    .focus-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .focus-num {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-gold);
+    }
+
+    .focus-geo {
+      width: 22px;
+      height: 22px;
+      stroke: var(--text-muted);
+      fill: none;
+      stroke-width: 1.25;
+      transition: stroke var(--t-fast), transform var(--t-med);
+    }
+
+    .focus-card:hover .focus-geo {
+      stroke: var(--accent-gold);
+      transform: rotate(45deg);
+    }
+
+    .focus-title {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .focus-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       9. EDITORIAL STATEMENT & CURRENT INTERESTS
+       ========================================================================== */
+    .statement-box {
+      background-color: var(--bg-accent-green);
+      border: 1px solid var(--border-strong);
+      padding: clamp(2rem, 5vw, 4rem);
+      position: relative;
+    }
+
+    .statement-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      line-height: 1.35;
+      color: var(--text-primary);
+      max-width: 920px;
+      margin-bottom: 1.5rem;
+    }
+
+    .statement-author {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    /* ==========================================================================
+       10. PUBLICATIONS & LATEST UPDATES
+       ========================================================================== */
+    .pub-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    @media (min-width: 900px) {
+      .pub-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .pub-card {
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+      transition: border-color var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
+    }
+
+    .pub-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .pub-platform {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 1rem;
+    }
+
+    .pub-title {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .pub-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    .pub-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .pub-link svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--accent-gold);
+      fill: none;
+      stroke-width: 1.5;
+      transition: transform var(--t-fast);
+    }
+
+    .pub-card:hover .pub-link svg {
+      transform: translate(4px, -4px);
+    }
+
+    .updates-slot {
+      margin-top: 3rem;
+      padding: 2rem;
+      border: 1px dashed var(--border-strong);
+      background-color: var(--bg-primary);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .updates-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    .updates-text {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+
+    /* ==========================================================================
+       11. EDITORIAL PRINCIPLES (01 - 06)
+       ========================================================================== */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .principles-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1100px) {
+      .principles-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .principle-item {
+      padding: 2rem;
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-elevated);
+    }
+
+    .principle-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .principle-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 0.65rem;
+    }
+
+    .principle-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       12. MEDIA & COLLABORATION + CONTACT
+       ========================================================================== */
+    .collab-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .collab-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .collab-card {
+      padding: 1.75rem;
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-primary);
+    }
+
+    .collab-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .collab-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    .contact-section {
+      background-color: var(--bg-accent-blue);
+      padding-top: var(--section-pad);
+      padding-bottom: var(--section-pad);
+    }
+
+    .contact-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 6vw, 5.25rem);
+      line-height: 1.02;
+      color: var(--text-primary);
+      margin-bottom: 2rem;
+      max-width: 900px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border-subtle);
+      background-color: var(--bg-primary);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* ==========================================================================
+       13. SCROLL REVEAL & REDUCED MOTION
+       ========================================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s var(--ease-editorial), transform 0.75s var(--ease-editorial);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-mark">YV</div>
+    <div class="loader-bar"></div>
+  </div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="Yaroslav Voydenko Home">
+        <span class="brand-monogram">YV</span>
+        <span class="brand-name">Yaroslav Voydenko</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Primary Navigation">
+        <a href="#profile" class="nav-link" data-i18n="nav.profile">Profile</a>
+        <a href="#focus" class="nav-link" data-i18n="nav.focus">Focus</a>
+        <a href="#publications" class="nav-link" data-i18n="nav.publications">Publications</a>
+        <a href="#principles" class="nav-link" data-i18n="nav.principles">Principles</a>
+        <a href="#collaboration" class="nav-link" data-i18n="nav.collaboration">Media</a>
+        <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="header-controls">
+        <button type="button" class="ctrl-btn" id="langToggle" aria-label="Switch language">EN / UA</button>
+        <button type="button" class="ctrl-btn" id="themeToggle" aria-label="Toggle color theme">
+          <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open navigation menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav aria-label="Mobile Navigation">
+      <ul class="mobile-nav-list">
+        <li><a href="#profile" class="mobile-nav-link"><span>01</span><em data-i18n="nav.profile">Profile</em></a></li>
+        <li><a href="#focus" class="mobile-nav-link"><span>02</span><em data-i18n="nav.focus">Focus</em></a></li>
+        <li><a href="#publications" class="mobile-nav-link"><span>03</span><em data-i18n="nav.publications">Publications</em></a></li>
+        <li><a href="#principles" class="mobile-nav-link"><span>04</span><em data-i18n="nav.principles">Principles</em></a></li>
+        <li><a href="#collaboration" class="mobile-nav-link"><span>05</span><em data-i18n="nav.collaboration">Media</em></a></li>
+        <li><a href="#contact" class="mobile-nav-link"><span>06</span><em data-i18n="nav.contact">Contact</em></a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="top">
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="hero-orbital" aria-hidden="true">
+        <svg viewBox="0 0 600 600">
+          <g class="orbit-ring-slow" stroke="currentColor" fill="none" stroke-width="0.75" opacity="0.35">
+            <circle cx="300" cy="300" r="240" stroke-dasharray="4 8" />
+            <circle cx="300" cy="300" r="180" />
+            <ellipse cx="300" cy="300" rx="240" ry="95" transform="rotate(25 300 300)" />
+          </g>
+          <g class="orbit-ring-reverse" stroke="#C5A059" fill="none" stroke-width="0.9" opacity="0.55">
+            <ellipse cx="300" cy="300" rx="220" ry="80" transform="rotate(-30 300 300)" />
+            <circle cx="300" cy="60" r="4" fill="#C5A059" />
+            <circle cx="120" cy="300" r="3" fill="#C5A059" />
+          </g>
+          <line x1="300" y1="20" x2="300" y2="580" stroke="currentColor" stroke-width="0.5" opacity="0.2" />
+          <line x1="20" y1="300" x2="580" y2="300" stroke="currentColor" stroke-width="0.5" opacity="0.2" />
+        </svg>
+      </div>
+
+      <div class="container hero-content">
+        <div class="hero-meta-top">
+          <span data-i18n="hero.kicker">Personal Editorial Platform</span>
+          <span>Bogomolets NMU — Ukraine</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="line"><span class="line-inner">YAROSLAV</span></span>
+          <span class="line"><span class="line-inner">VOYDENKO</span></span>
+        </h1>
+
+        <div class="hero-pillars">
+          <span class="hero-pillar" data-i18n="hero.p1">Medicine</span>
+          <span class="hero-pillar" data-i18n="hero.p2">Healthcare</span>
+          <span class="hero-pillar" data-i18n="hero.p3">Technology</span>
+          <span class="hero-pillar" data-i18n="hero.p4">Society</span>
+        </div>
+
+        <p class="hero-lead" data-i18n="hero.lead">
+          Independent author, analytical columnist, and medical student exploring the intersection of modern medicine, healthcare systems, emerging technology, and public discourse.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#publications" class="btn-primary" data-i18n="hero.cta1">Read Publications</a>
+          <a href="#profile" class="btn-secondary" data-i18n="hero.cta2">Explore Profile</a>
+        </div>
+      </div>
+
+      <div class="container hero-footer">
+        <span data-i18n="hero.edition">Edition 2026 / Digital Office</span>
+        <a href="#profile" class="scroll-indicator">
+          <span data-i18n="hero.scroll">Scroll</span>
+          <span class="scroll-line"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- PROFILE & JOURNEY -->
+    <section class="section" id="profile">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker" data-i18n="profile.kicker">01 / Profile</span>
+          <h2 class="section-title" data-i18n="profile.title">Academic Foundation &amp; Editorial Voice</h2>
+        </div>
+
+        <div class="profile-grid">
+          <div class="profile-bio reveal">
+            <p data-i18n="profile.p1">
+              <strong>Yaroslav Voydenko</strong> is a medical student at Bogomolets National Medical University in Ukraine and an independent author focusing on healthcare, medical technology, and social transformation.
+            </p>
+            <p data-i18n="profile.p2">
+              Combining foundational medical education with analytical writing, his work examines how clinical innovation, artificial intelligence, and public health policy shape modern society.
+            </p>
+          </div>
+
+          <aside class="dossier-card reveal" aria-label="Structured Profile Information">
+            <div class="dossier-title" data-i18n="profile.dossier">Institutional Dossier</div>
+            <div class="dossier-row">
+              <span class="dossier-label" data-i18n="dossier.nameLabel">Name</span>
+              <span class="dossier-value" data-i18n="dossier.nameVal">Yaroslav Voydenko</span>
+            </div>
+            <div class="dossier-row">
+              <span class="dossier-label" data-i18n="dossier.statusLabel">Status</span>
+              <span class="dossier-value" data-i18n="dossier.statusVal">Medical Student &amp; Writer</span>
+            </div>
+            <div class="dossier-row">
+              <span class="dossier-label" data-i18n="dossier.instLabel">Institution</span>
+              <span class="dossier-value" data-i18n="dossier.instVal">Bogomolets National Medical University</span>
+            </div>
+            <div class="dossier-row">
+              <span class="dossier-label" data-i18n="dossier.locLabel">Location</span>
+              <span class="dossier-value" data-i18n="dossier.locVal">Ukraine</span>
+            </div>
+            <div class="dossier-row">
+              <span class="dossier-label" data-i18n="dossier.intLabel">Interests</span>
+              <span class="dossier-value" data-i18n="dossier.intVal">Medicine, Healthcare, Medical Technology, Artificial Intelligence, Public Health</span>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Journey Chronology -->
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-period" data-i18n="journey.t1.period">Foundation</div>
+            <h3 class="timeline-role" data-i18n="journey.t1.title">Secondary Education &amp; Academic Preparation</h3>
+            <p class="timeline-desc" data-i18n="journey.t1.desc">Completed secondary education in Ukraine with focused preparation in biology, chemistry, and humanities.</p>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-period" data-i18n="journey.t2.period">2026 — Present</div>
+            <h3 class="timeline-role" data-i18n="journey.t2.title">Bogomolets National Medical University</h3>
+            <p class="timeline-desc" data-i18n="journey.t2.desc">Enrolled as a first-year medical student, building core competencies in anatomy, bioethics, and medical sciences.</p>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-period" data-i18n="journey.t3.period">Ongoing</div>
+            <h3 class="timeline-role" data-i18n="journey.t3.title">Independent Author &amp; Columnist</h3>
+            <p class="timeline-desc" data-i18n="journey.t3.desc">Publishing analytical commentary on healthcare systems, medical education, and public health on LIGA.net and digital platforms.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AREAS OF FOCUS -->
+    <section class="section section-alt" id="focus">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker" data-i18n="focus.kicker">02 / Areas of Focus</span>
+          <h2 class="section-title" data-i18n="focus.title">Core Domains of Inquiry</h2>
+        </div>
+
+        <div class="focus-grid">
+          <article class="focus-card reveal">
+            <div class="focus-top">
+              <span class="focus-num">01</span>
+              <svg class="focus-geo" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16"/></svg>
+            </div>
+            <div>
+              <h3 class="focus-title" data-i18n="focus.f1.title">Healthcare Systems</h3>
+              <p class="focus-desc" data-i18n="focus.f1.desc">Structure, resilience, and institutional reform of modern healthcare delivery.</p>
+            </div>
+          </article>
+
+          <article class="focus-card reveal">
+            <div class="focus-top">
+              <span class="focus-num">02</span>
+              <svg class="focus-geo" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg>
+            </div>
+            <div>
+              <h3 class="focus-title" data-i18n="focus.f2.title">Modern Medicine</h3>
+              <p class="focus-desc" data-i18n="focus.f2.desc">Evidence-based clinical perspectives, medical education, and evolving standards of care.</p>
+            </div>
+          </article>
+
+          <article class="focus-card reveal">
+            <div class="focus-top">
+              <span class="focus-num">03</span>
+              <svg class="focus-geo" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,3 21,19 3,19"/></svg>
+            </div>
+            <div>
+              <h3 class="focus-title" data-i18n="focus.f3.title">Medical Technology</h3>
+              <p class="focus-desc" data-i18n="focus.f3.desc">Digital diagnostics, health-tech infrastructure, and tools transforming patient outcomes.</p>
+            </div>
+          </article>
+
+          <article class="focus-card reveal">
+            <div class="focus-top">
+              <span class="focus-num">04</span>
+              <svg class="focus-geo" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg>
+            </div>
+            <div>
+              <h3 class="focus-title" data-i18n="focus.f4.title">Artificial Intelligence in Healthcare</h3>
+              <p class="focus-desc" data-i18n="focus.f4.desc">Algorithmic decision support, ethical boundaries, and integration in clinical workflows.</p>
+            </div>
+          </article>
+
+          <article class="focus-card reveal">
+            <div class="focus-top">
+              <span class="focus-num">05</span>
+              <svg class="focus-geo" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+            </div>
+            <div>
+              <h3 class="focus-title" data-i18n="focus.f5.title">Public Health</h3>
+              <p class="focus-desc" data-i18n="focus.f5.desc">Population-level prevention, health literacy, and long-term societal well-being.</p>
+            </div>
+          </article>
+
+          <article class="focus-card reveal">
+            <div class="focus-top">
+              <span class="focus-num">06</span>
+              <svg class="focus-geo" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" transform="rotate(45 12 12)"/></svg>
+            </div>
+            <div>
+              <h3 class="focus-title" data-i18n="focus.f6.title">Medicine &amp; Society</h3>
+              <p class="focus-desc" data-i18n="focus.f6.desc">Social determinants of health, bioethics, and public trust in medical institutions.</p>
+            </div>
+          </article>
+
+          <article class="focus-card reveal">
+            <div class="focus-top">
+              <span class="focus-num">07</span>
+              <svg class="focus-geo" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18 L12 6 L20 18"/></svg>
+            </div>
+            <div>
+              <h3 class="focus-title" data-i18n="focus.f7.title">Health Policy</h3>
+              <p class="focus-desc" data-i18n="focus.f7.desc">Strategic governance, institutional accountability, and sustainable healthcare financing.</p>
+            </div>
+          </article>
+
+          <article class="focus-card reveal">
+            <div class="focus-top">
+              <span class="focus-num">08</span>
+              <svg class="focus-geo" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg>
+            </div>
+            <div>
+              <h3 class="focus-title" data-i18n="focus.f8.title">Medical Innovation</h3>
+              <p class="focus-desc" data-i18n="focus.f8.desc">Emerging research paradigms and interdisciplinary approaches to future healthcare.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITORIAL STATEMENT -->
+    <section class="section">
+      <div class="container">
+        <div class="statement-box reveal">
+          <blockquote class="statement-quote" data-i18n="statement.quote">
+            “Medicine cannot exist in isolation from society. Understanding healthcare requires looking simultaneously at clinical science, technological progress, and human responsibility.”
+          </blockquote>
+          <div class="statement-author" data-i18n="statement.author">Editorial Statement — Yaroslav Voydenko</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS & DIGITAL PRESENCE -->
+    <section class="section section-alt" id="publications">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker" data-i18n="pub.kicker">03 / Publications</span>
+          <h2 class="section-title" data-i18n="pub.title">Editorial Channels &amp; Writing</h2>
+        </div>
+
+        <div class="pub-grid">
+          <article class="pub-card reveal">
+            <div>
+              <div class="pub-platform">LIGA.net Blog</div>
+              <h3 class="pub-title" data-i18n="pub.liga.title">Analytical Columns</h3>
+              <p class="pub-desc" data-i18n="pub.liga.desc">Opinion pieces and analytical essays addressing healthcare, medical education, and social issues in Ukraine.</p>
+            </div>
+            <a href="https://blog.liga.net/user/yavoidenko" target="_blank" rel="noopener noreferrer" class="pub-link">
+              <span data-i18n="pub.visit">Read on LIGA.net</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </article>
+
+          <article class="pub-card reveal">
+            <div>
+              <div class="pub-platform">LinkedIn</div>
+              <h3 class="pub-title" data-i18n="pub.li.title">Professional Network</h3>
+              <p class="pub-desc" data-i18n="pub.li.desc">Academic milestones, commentary on medical technology, and international professional dialogue.</p>
+            </div>
+            <a href="https://www.linkedin.com/in/%D1%8F%D1%80%D0%BE%D1%81%D0%BB%D0%B0%D0%B2-%D0%B2%D0%BE%D0%B9%D0%B4%D0%B5%D0%BD%D0%BA%D0%BE-a35560449/" target="_blank" rel="noopener noreferrer" class="pub-link">
+              <span data-i18n="pub.visitLi">Connect on LinkedIn</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </article>
+
+          <article class="pub-card reveal">
+            <div>
+              <div class="pub-platform">Telegram</div>
+              <h3 class="pub-title" data-i18n="pub.tg.title">Direct Channel</h3>
+              <p class="pub-desc" data-i18n="pub.tg.desc">Concise notes, links to new publications, and direct communication.</p>
+            </div>
+            <a href="https://t.me/y_voydenko" target="_blank" rel="noopener noreferrer" class="pub-link">
+              <span data-i18n="pub.visitTg">Open Telegram</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </article>
+        </div>
+
+        <!-- Latest Updates Placeholder -->
+        <div class="updates-slot reveal">
+          <span class="updates-label" data-i18n="updates.label">Latest Updates</span>
+          <p class="updates-text" data-i18n="updates.text">New essays, commentary, and academic notes are published regularly via LIGA.net and LinkedIn.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITORIAL PRINCIPLES -->
+    <section class="section" id="principles">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker" data-i18n="princ.kicker">04 / Editorial Principles</span>
+          <h2 class="section-title" data-i18n="princ.title">Standards of Writing &amp; Inquiry</h2>
+        </div>
+
+        <div class="principles-grid">
+          <article class="principle-item reveal">
+            <span class="principle-num">01</span>
+            <h3 class="principle-title" data-i18n="princ.p1.title">Accuracy</h3>
+            <p class="principle-desc" data-i18n="princ.p1.desc">Every claim is grounded in verified facts, primary sources, and precise terminology.</p>
+          </article>
+          <article class="principle-item reveal">
+            <span class="principle-num">02</span>
+            <h3 class="principle-title" data-i18n="princ.p2.title">Independence</h3>
+            <p class="principle-desc" data-i18n="princ.p2.desc">Analytical perspectives remain free from commercial or institutional bias.</p>
+          </article>
+          <article class="principle-item reveal">
+            <span class="principle-num">03</span>
+            <h3 class="principle-title" data-i18n="princ.p3.title">Clarity</h3>
+            <p class="principle-desc" data-i18n="princ.p3.desc">Complex medical and policy topics are communicated with structural rigor and accessibility.</p>
+          </article>
+          <article class="principle-item reveal">
+            <span class="principle-num">04</span>
+            <h3 class="principle-title" data-i18n="princ.p4.title">Responsibility</h3>
+            <p class="principle-desc" data-i18n="princ.p4.desc">Health-related writing carries ethical weight and avoids sensationalism.</p>
+          </article>
+          <article class="principle-item reveal">
+            <span class="principle-num">05</span>
+            <h3 class="principle-title" data-i18n="princ.p5.title">Evidence</h3>
+            <p class="principle-desc" data-i18n="princ.p5.desc">Arguments prioritize peer-reviewed research and empirical data over speculation.</p>
+          </article>
+          <article class="principle-item reveal">
+            <span class="principle-num">06</span>
+            <h3 class="principle-title" data-i18n="princ.p6.title">Transparency</h3>
+            <p class="principle-desc" data-i18n="princ.p6.desc">Clear distinction between established scientific consensus and personal analytical opinion.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEDIA & COLLABORATION -->
+    <section class="section section-alt" id="collaboration">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker" data-i18n="collab.kicker">05 / Media &amp; Collaboration</span>
+          <h2 class="section-title" data-i18n="collab.title">Editorial &amp; Institutional Dialogue</h2>
+        </div>
+
+        <div class="collab-grid">
+          <article class="collab-card reveal">
+            <h3 data-i18n="collab.c1.title">Editorial Inquiries &amp; Columns</h3>
+            <p data-i18n="collab.c1.desc">Open to contributing analytical columns and essays on healthcare systems, medical education, and technology.</p>
+          </article>
+          <article class="collab-card reveal">
+            <h3 data-i18n="collab.c2.title">Interviews &amp; Discussions</h3>
+            <p data-i18n="collab.c2.desc">Available for interviews, youth medical community perspectives, and public health discussions.</p>
+          </article>
+          <article class="collab-card reveal">
+            <h3 data-i18n="collab.c3.title">Professional Networking</h3>
+            <p data-i18n="collab.c3.desc">Connecting with researchers, editors, health-tech builders, and organizations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-kicker" style="margin-bottom: 1.5rem;" data-i18n="contact.kicker">06 / Contact</div>
+        <h2 class="contact-headline reveal" data-i18n="contact.headline">Initiate a Conversation or Editorial Inquiry.</h2>
+
+        <div class="contact-links reveal">
+          <a href="https://www.linkedin.com/in/%D1%8F%D1%80%D0%BE%D1%81%D0%BB%D0%B0%D0%B2-%D0%B2%D0%BE%D0%B9%D0%B4%D0%B5%D0%BD%D0%BA%D0%BE-a35560449/" target="_blank" rel="noopener noreferrer" class="btn-primary">LinkedIn</a>
+          <a href="https://t.me/y_voydenko" target="_blank" rel="noopener noreferrer" class="btn-secondary">Telegram</a>
+          <a href="https://blog.liga.net/user/yavoidenko" target="_blank" rel="noopener noreferrer" class="btn-secondary">LIGA.net</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 Yaroslav Voydenko</span>
+      <span data-i18n="footer.rights">Personal Editorial Platform — Ukraine</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* ----------------------------------------------------------------------
+         1. BILINGUAL DICTIONARY (EN Default / UA)
+         ---------------------------------------------------------------------- */
+      const i18n = {
+        en: {
+          'nav.profile': 'Profile',
+          'nav.focus': 'Focus',
+          'nav.publications': 'Publications',
+          'nav.principles': 'Principles',
+          'nav.collaboration': 'Media',
+          'nav.contact': 'Contact',
+          'hero.kicker': 'Personal Editorial Platform',
+          'hero.p1': 'Medicine',
+          'hero.p2': 'Healthcare',
+          'hero.p3': 'Technology',
+          'hero.p4': 'Society',
+          'hero.lead': 'Independent author, analytical columnist, and medical student exploring the intersection of modern medicine, healthcare systems, emerging technology, and public discourse.',
+          'hero.cta1': 'Read Publications',
+          'hero.cta2': 'Explore Profile',
+          'hero.edition': 'Edition 2026 / Digital Office',
+          'hero.scroll': 'Scroll',
+          'profile.kicker': '01 / Profile',
+          'profile.title': 'Academic Foundation & Editorial Voice',
+          'profile.p1': '<strong>Yaroslav Voydenko</strong> is a medical student at Bogomolets National Medical University in Ukraine and an independent author focusing on healthcare, medical technology, and social transformation.',
+          'profile.p2': 'Combining foundational medical education with analytical writing, his work examines how clinical innovation, artificial intelligence, and public health policy shape modern society.',
+          'profile.dossier': 'Institutional Dossier',
+          'dossier.nameLabel': 'Name',
+          'dossier.nameVal': 'Yaroslav Voydenko',
+          'dossier.statusLabel': 'Status',
+          'dossier.statusVal': 'Medical Student & Writer',
+          'dossier.instLabel': 'Institution',
+          'dossier.instVal': 'Bogomolets National Medical University',
+          'dossier.locLabel': 'Location',
+          'dossier.locVal': 'Ukraine',
+          'dossier.intLabel': 'Interests',
+          'dossier.intVal': 'Medicine, Healthcare, Medical Technology, Artificial Intelligence, Public Health',
+          'journey.t1.period': 'Foundation',
+          'journey.t1.title': 'Secondary Education & Academic Preparation',
+          'journey.t1.desc': 'Completed secondary education in Ukraine with focused preparation in biology, chemistry, and humanities.',
+          'journey.t2.period': '2026 — Present',
+          'journey.t2.title': 'Bogomolets National Medical University',
+          'journey.t2.desc': 'Enrolled as a first-year medical student, building core competencies in anatomy, bioethics, and medical sciences.',
+          'journey.t3.period': 'Ongoing',
+          'journey.t3.title': 'Independent Author & Columnist',
+          'journey.t3.desc': 'Publishing analytical commentary on healthcare systems, medical education, and public health on LIGA.net and digital platforms.',
+          'focus.kicker': '02 / Areas of Focus',
+          'focus.title': 'Core Domains of Inquiry',
+          'focus.f1.title': 'Healthcare Systems',
+          'focus.f1.desc': 'Structure, resilience, and institutional reform of modern healthcare delivery.',
+          'focus.f2.title': 'Modern Medicine',
+          'focus.f2.desc': 'Evidence-based clinical perspectives, medical education, and evolving standards of care.',
+          'focus.f3.title': 'Medical Technology',
+          'focus.f3.desc': 'Digital diagnostics, health-tech infrastructure, and tools transforming patient outcomes.',
+          'focus.f4.title': 'Artificial Intelligence in Healthcare',
+          'focus.f4.desc': 'Algorithmic decision support, ethical boundaries, and integration in clinical workflows.',
+          'focus.f5.title': 'Public Health',
+          'focus.f5.desc': 'Population-level prevention, health literacy, and long-term societal well-being.',
+          'focus.f6.title': 'Medicine & Society',
+          'focus.f6.desc': 'Social determinants of health, bioethics, and public trust in medical institutions.',
+          'focus.f7.title': 'Health Policy',
+          'focus.f7.desc': 'Strategic governance, institutional accountability, and sustainable healthcare financing.',
+          'focus.f8.title': 'Medical Innovation',
+          'focus.f8.desc': 'Emerging research paradigms and interdisciplinary approaches to future healthcare.',
+          'statement.quote': '“Medicine cannot exist in isolation from society. Understanding healthcare requires looking simultaneously at clinical science, technological progress, and human responsibility.”',
+          'statement.author': 'Editorial Statement — Yaroslav Voydenko',
+          'pub.kicker': '03 / Publications',
+          'pub.title': 'Editorial Channels & Writing',
+          'pub.liga.title': 'Analytical Columns',
+          'pub.liga.desc': 'Opinion pieces and analytical essays addressing healthcare, medical education, and social issues in Ukraine.',
+          'pub.li.title': 'Professional Network',
+          'pub.li.desc': 'Academic milestones, commentary on medical technology, and international professional dialogue.',
+          'pub.tg.title': 'Direct Channel',
+          'pub.tg.desc': 'Concise notes, links to new publications, and direct communication.',
+          'pub.visit': 'Read on LIGA.net',
+          'pub.visitLi': 'Connect on LinkedIn',
+          'pub.visitTg': 'Open Telegram',
+          'updates.label': 'Latest Updates',
+          'updates.text': 'New essays, commentary, and academic notes are published regularly via LIGA.net and LinkedIn.',
+          'princ.kicker': '04 / Editorial Principles',
+          'princ.title': 'Standards of Writing & Inquiry',
+          'princ.p1.title': 'Accuracy',
+          'princ.p1.desc': 'Every claim is grounded in verified facts, primary sources, and precise terminology.',
+          'princ.p2.title': 'Independence',
+          'princ.p2.desc': 'Analytical perspectives remain free from commercial or institutional bias.',
+          'princ.p3.title': 'Clarity',
+          'princ.p3.desc': 'Complex medical and policy topics are communicated with structural rigor and accessibility.',
+          'princ.p4.title': 'Responsibility',
+          'princ.p4.desc': 'Health-related writing carries ethical weight and avoids sensationalism.',
+          'princ.p5.title': 'Evidence',
+          'princ.p5.desc': 'Arguments prioritize peer-reviewed research and empirical data over speculation.',
+          'princ.p6.title': 'Transparency',
+          'princ.p6.desc': 'Clear distinction between established scientific consensus and personal analytical opinion.',
+          'collab.kicker': '05 / Media & Collaboration',
+          'collab.title': 'Editorial & Institutional Dialogue',
+          'collab.c1.title': 'Editorial Inquiries & Columns',
+          'collab.c1.desc': 'Open to contributing analytical columns and essays on healthcare systems, medical education, and technology.',
+          'collab.c2.title': 'Interviews & Discussions',
+          'collab.c2.desc': 'Available for interviews, youth medical community perspectives, and public health discussions.',
+          'collab.c3.title': 'Professional Networking',
+          'collab.c3.desc': 'Connecting with researchers, editors, health-tech builders, and organizations.',
+          'contact.kicker': '06 / Contact',
+          'contact.headline': 'Initiate a Conversation or Editorial Inquiry.',
+          'footer.rights': 'Personal Editorial Platform — Ukraine'
+        },
+        uk: {
+          'nav.profile': 'Профіль',
+          'nav.focus': 'Напрями',
+          'nav.publications': 'Публікації',
+          'nav.principles': 'Принципи',
+          'nav.collaboration': 'Медіа',
+          'nav.contact': 'Контакти',
+          'hero.kicker': 'Персональна редакційна платформа',
+          'hero.p1': 'Медицина',
+          'hero.p2': 'Охорона здоров’я',
+          'hero.p3': 'Технології',
+          'hero.p4': 'Суспільство',
+          'hero.lead': 'Незалежний автор, аналітичний колумніст і студент-медик, який досліджує перетин сучасної медицини, систем охорони здоров’я, новітніх технологій та суспільних процесів.',
+          'hero.cta1': 'Читати публікації',
+          'hero.cta2': 'Переглянути профіль',
+          'hero.edition': 'Видання 2026 / Цифровий офіс',
+          'hero.scroll': 'Гортайте',
+          'profile.kicker': '01 / Профіль',
+          'profile.title': 'Академічна основа та авторський голос',
+          'profile.p1': '<strong>Ярослав Войденко</strong> — студент-медик Національного медичного університету імені О. О. Богомольця та незалежний автор, який пише про охорону здоров’я, медичні технології та суспільні трансформації.',
+          'profile.p2': 'Поєднуючи базову медичну освіту з аналітичною публіцистикою, він досліджує, як клінічні інновації, штучний інтелект та політика у сфері охорони здоров’я формують сучасне суспільство.',
+          'profile.dossier': 'Інституційне досьє',
+          'dossier.nameLabel': 'Ім’я',
+          'dossier.nameVal': 'Ярослав Войденко',
+          'dossier.statusLabel': 'Статус',
+          'dossier.statusVal': 'Студент-медик та автор',
+          'dossier.instLabel': 'Заклад',
+          'dossier.instVal': 'НМУ імені О. О. Богомольця',
+          'dossier.locLabel': 'Локація',
+          'dossier.locVal': 'Україна',
+          'dossier.intLabel': 'Інтереси',
+          'dossier.intVal': 'Медицина, охорона здоров’я, медичні технології, штучний інтелект, громадське здоров’я',
+          'journey.t1.period': 'Основа',
+          'journey.t1.title': 'Середня освіта та академічна підготовка',
+          'journey.t1.desc': 'Завершення середньої освіти в Україні з поглибленою підготовкою з біології, хімії та гуманітарних дисциплін.',
+          'journey.t2.period': '2026 — Дотепер',
+          'journey.t2.title': 'НМУ імені О. О. Богомольця',
+          'journey.t2.desc': 'Навчання на першому курсі медичного університету, формування фундаментальних знань з анатомії, біоетики та медичних наук.',
+          'journey.t3.period': 'Постійна діяльність',
+          'journey.t3.title': 'Незалежний автор та колумніст',
+          'journey.t3.desc': 'Публікація аналітичних матеріалів про системи охорони здоров’я, медичну освіту та суспільство на LIGA.net і цифрових платформах.',
+          'focus.kicker': '02 / Напрями фокусу',
+          'focus.title': 'Ключові сфери дослідження',
+          'focus.f1.title': 'Системи охорони здоров’я',
+          'focus.f1.desc': 'Структура, стійкість та інституційна трансформація сучасної медичної допомоги.',
+          'focus.f2.title': 'Сучасна медицина',
+          'focus.f2.desc': 'Доказові клінічні підходи, медична освіта та розвиток стандартів лікування.',
+          'focus.f3.title': 'Медичні технології',
+          'focus.f3.desc': 'Цифрова діагностика, інфраструктура health-tech та інструменти, що змінюють результати лікування.',
+          'focus.f4.title': 'Штучний інтелект у медицині',
+          'focus.f4.desc': 'Алгоритмічна підтримка рішень, етичні межі та інтеграція в клінічні процеси.',
+          'focus.f5.title': 'Громадське здоров’я',
+          'focus.f5.desc': 'Профілактика на рівні популяції, медична грамотність та довгостроковий добробут суспільства.',
+          'focus.f6.title': 'Медицина і суспільство',
+          'focus.f6.desc': 'Соціальні детермінанти здоров’я, біоетика та суспільна довіра до медичних інституцій.',
+          'focus.f7.title': 'Політика охорони здоров’я',
+          'focus.f7.desc': 'Стратегічне управління, інституційна підзвітність та стале фінансування медицини.',
+          'focus.f8.title': 'Медичні інновації',
+          'focus.f8.desc': 'Новітні дослідницькі парадигми та міждисциплінарні підходи до медицини майбутнього.',
+          'statement.quote': '«Медицина не може існувати ізольовано від суспільства. Розуміння охорони здоров’я вимагає одночасного погляду на клінічну науку, технологічний прогрес та людську відповідальність.»',
+          'statement.author': 'Редакційний маніфест — Ярослав Войденко',
+          'pub.kicker': '03 / Публікації',
+          'pub.title': 'Редакційні канали та тексти',
+          'pub.liga.title': 'Аналітичні колонки',
+          'pub.liga.desc': 'Авторські колонки та аналітичні есеї про охорону здоров’я, медичну освіту та суспільні питання в Україні.',
+          'pub.li.title': 'Професійна мережа',
+          'pub.li.desc': 'Академічні етапи, коментарі щодо медичних технологій та міжнародний професійний діалог.',
+          'pub.tg.title': 'Прямий канал',
+          'pub.tg.desc': 'Стислі нотатки, посилання на нові публікації та пряма комунікація.',
+          'pub.visit': 'Читати на LIGA.net',
+          'pub.visitLi': 'Перейти в LinkedIn',
+          'pub.visitTg': 'Відкрити Telegram',
+          'updates.label': 'Останні оновлення',
+          'updates.text': 'Нові есеї, коментарі та академічні нотатки регулярно публікуються на LIGA.net та в LinkedIn.',
+          'princ.kicker': '04 / Редакційні принципи',
+          'princ.title': 'Стандарти письма та аналізу',
+          'princ.p1.title': 'Точність',
+          'princ.p1.desc': 'Кожне твердження базується на перевірених фактах, першоджерелах і точній термінології.',
+          'princ.p2.title': 'Незалежність',
+          'princ.p2.desc': 'Аналітична позиція залишається вільною від комерційного чи інституційного впливу.',
+          'princ.p3.title': 'Ясність',
+          'princ.p3.desc': 'Складні медичні та управлінські теми подаються структурно й зрозуміло.',
+          'princ.p4.title': 'Відповідальність',
+          'princ.p4.desc': 'Тексти про здоров’я мають етичну вагу та виключають сенсаційність.',
+          'princ.p5.title': 'Доказовість',
+          'princ.p5.desc': 'Аргументація спирається на рецензовані дослідження та емпіричні дані.',
+          'princ.p6.title': 'Прозорість',
+          'princ.p6.desc': 'Чітке розмежування між науковим консенсусом та особистою аналітичною думкою.',
+          'collab.kicker': '05 / Медіа та співпраця',
+          'collab.title': 'Редакційний та інституційний діалог',
+          'collab.c1.title': 'Редакційні запити та колонки',
+          'collab.c1.desc': 'Відкритий до підготовки аналітичних колонок і есеїв про системи охорони здоров’я, медичну освіту та технології.',
+          'collab.c2.title': 'Інтерв’ю та дискусії',
+          'collab.c2.desc': 'Доступний для інтерв’ю, обговорень позиції молодіжної медичної спільноти та тем громадського здоров’я.',
+          'collab.c3.title': 'Професійний нетворкінг',
+          'collab.c3.desc': 'Співпраця з дослідниками, редакторами, розробниками health-tech та організаціями.',
+          'contact.kicker': '06 / Контакти',
+          'contact.headline': 'Розпочати діалог або надіслати редакційний запит.',
+          'footer.rights': 'Персональна редакційна платформа — Україна'
+        }
+      };
+
+      /* ----------------------------------------------------------------------
+         2. LANGUAGE & THEME PERSISTENCE
+         ---------------------------------------------------------------------- */
+      const htmlEl = document.documentElement;
+      const langToggle = document.getElementById('langToggle');
+      const themeToggle = document.getElementById('themeToggle');
+
+      function applyLanguage(lang) {
+        const dict = i18n[lang] || i18n.en;
+        htmlEl.setAttribute('lang', lang);
+        document.querySelectorAll('[data-i18n]').forEach((el) => {
+          const key = el.getAttribute('data-i18n');
+          if (dict[key]) {
+            el.innerHTML = dict[key];
+          }
+        });
+        langToggle.textContent = lang === 'en' ? 'EN / UA' : 'UA / EN';
+        localStorage.setItem('yv_lang', lang);
+      }
+
+      function applyTheme(theme) {
+        htmlEl.setAttribute('data-theme', theme);
+        localStorage.setItem('yv_theme', theme);
+      }
+
+      const savedLang = localStorage.getItem('yv_lang') || 'en';
+      const savedTheme = localStorage.getItem('yv_theme') || 'dark';
+      applyLanguage(savedLang);
+      applyTheme(savedTheme);
+
+      langToggle.addEventListener('click', () => {
+        const nextLang = htmlEl.getAttribute('lang') === 'en' ? 'uk' : 'en';
+        applyLanguage(nextLang);
+      });
+
+      themeToggle.addEventListener('click', () => {
+        const nextTheme = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(nextTheme);
+      });
+
+      /* ----------------------------------------------------------------------
+         3. LOADER, SCROLL PROGRESS & HEADER STATE
+         ---------------------------------------------------------------------- */
+      window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        setTimeout(() => loader.classList.add('is-hidden'), 450);
+      });
+
+      const header = document.getElementById('siteHeader');
+      const progress = document.getElementById('scrollProgress');
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progress.style.width = pct + '%';
+        header.classList.toggle('is-scrolled', scrollTop > 40);
+      }, { passive: true });
+
+      /* ----------------------------------------------------------------------
+         4. MOBILE NAVIGATION
+         ---------------------------------------------------------------------- */
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+
+      function setMenuState(open) {
+        menuToggle.setAttribute('aria-expanded', String(open));
+        mobileDrawer.setAttribute('aria-hidden', String(!open));
+        mobileDrawer.classList.toggle('is-open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+
+      menuToggle.addEventListener('click', () => {
+        const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+        setMenuState(!isOpen);
+      });
+
+      mobileDrawer.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setMenuState(false));
+      });
+
+      /* ----------------------------------------------------------------------
+         5. INTERSECTION OBSERVER (REVEAL & ACTIVE NAV)
+         ---------------------------------------------------------------------- */
+      const revealObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach((link) => {
+              link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+
+      document.querySelectorAll('section[id]').forEach((sec) => sectionObserver.observe(sec));
+    })();
+  </script>
+</body>
+</html>
