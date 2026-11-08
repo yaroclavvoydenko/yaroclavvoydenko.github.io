@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101c30">
+<meta name="description" content="Персональний цифровий портал Ярослава Войденка. Біографія, освіта, медицина, журналістика та публікації.">
+<meta property="og:title" content="Ярослав Войденко | Персональний портал">
+<meta property="og:description" content="Освіта. Медицина. Журналістика. Суспільство.">
+<title>Ярослав Войденко — персональний портал</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --navy:#101c30;
+ --navy2:#172943;
+ --navy3:#223955;
+ --gold:#c2a16b;
+ --gold2:#dfc596;
+ --paper:#f5f4f0;
+ --white:#ffffff;
+ --ink:#202b3a;
+ --muted:#788391;
+ --line:rgba(16,28,48,.13);
+ --card:#fff;
+ --shadow:0 20px 65px rgba(16,28,48,.09);
+ --serif:'Playfair Display',serif;
+ --sans:'Manrope',sans-serif;
+ --body:'DM Sans',sans-serif;
+}
+body.dark{
+ --paper:#101722;
+ --white:#172333;
+ --ink:#edf0f4;
+ --muted:#a4afbc;
+ --line:rgba(255,255,255,.13);
+ --card:#192637;
+ --shadow:0 20px 65px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{
+ background:var(--paper);color:var(--ink);
+ font-family:var(--body);
+ transition:background .3s,color .3s;
+ overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{
+ outline:2px solid var(--gold);outline-offset:4px;
+}
+.container{width:min(1240px,90%);margin:auto}
+svg{display:block}
+
+/* LOADER */
+.loader{
+ position:fixed;inset:0;z-index:9999;
+ background:var(--navy);
+ display:grid;place-items:center;
+ transition:opacity .6s,visibility .6s;
+}
+.loader.hidden{opacity:0;visibility:hidden}
+.loader-inner{text-align:center}
+.loader-logo{
+ width:95px;height:95px;border:1px solid var(--gold);
+ display:grid;place-items:center;
+ color:var(--gold2);font:60px var(--serif);
+ margin:auto;
+ animation:loaderPulse 1.5s infinite alternate;
+}
+.loader-label{
+ color:#c6b48f;font-size:9px;
+ letter-spacing:4px;text-transform:uppercase;margin-top:22px;
+}
+@keyframes loaderPulse{to{transform:scale(1.04);opacity:.7}}
+
+/* PROGRESS */
+.progress{
+ position:fixed;top:0;left:0;height:3px;
+ background:var(--gold);width:0;z-index:2000;
+}
+
+/* TOP BAR */
+.topbar{
+ background:#0b1525;color:#c5ccd5;
+ font-size:10px;letter-spacing:1.4px;
+ text-transform:uppercase;
+}
+.topbar-inner{
+ min-height:36px;display:flex;
+ align-items:center;justify-content:space-between;
+ gap:15px;
+}
+.topbar-left{display:flex;align-items:center;gap:10px}
+.topbar-dot{
+ width:6px;height:6px;border-radius:50%;
+ background:var(--gold);display:inline-block;
+}
+.topbar-right{color:#9ba8b8}
+
+/* HEADER */
+header{
+ position:sticky;top:0;z-index:1000;
+ background:var(--white);
+ border-bottom:1px solid var(--line);
+ transition:background .3s;
+}
+.header-inner{
+ min-height:88px;display:flex;
+ align-items:center;justify-content:space-between;
+ gap:25px;
+}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-symbol{
+ width:49px;height:49px;border:1px solid var(--gold);
+ display:grid;place-items:center;
+ color:var(--gold);font:31px var(--serif);
+}
+.brand-name{
+ display:block;font:800 14px var(--sans);
+ letter-spacing:1.1px;text-transform:uppercase;
+}
+.brand-sub{
+ display:block;color:var(--muted);
+ font-size:8px;letter-spacing:2px;
+ text-transform:uppercase;margin-top:5px;
+}
+.nav{display:flex;align-items:center;gap:25px}
+.nav a{
+ font-size:11px;font-weight:700;
+ color:var(--ink);position:relative;
+ transition:color .2s;
+}
+.nav a:after{
+ content:"";position:absolute;left:0;bottom:-10px;
+ width:0;height:2px;background:var(--gold);
+ transition:width .25s;
+}
+.nav a:hover{color:var(--gold)}
+.nav a:hover:after{width:100%}
+.actions{display:flex;align-items:center;gap:8px}
+.tool-btn{
+ width:37px;height:37px;border:1px solid var(--line);
+ background:transparent;color:var(--ink);
+ display:grid;place-items:center;transition:.2s;
+}
+.tool-btn:hover{border-color:var(--gold);color:var(--gold)}
+.tool-btn svg{width:17px;height:17px}
+.menu-btn{display:none}
+
+/* HERO */
+.hero{
+ position:relative;background:var(--navy);
+ color:white;overflow:hidden;
+}
+.hero:before{
+ content:"";position:absolute;inset:0;
+ background:
+ linear-gradient(90deg,transparent 49.8%,rgba(255,255,255,.035) 50%,transparent 50.2%),
+ linear-gradient(0deg,transparent 49.8%,rgba(255,255,255,.025) 50%,transparent 50.2%);
+ background-size:100px 100px;
+}
+.hero:after{
+ content:"";position:absolute;
+ width:650px;height:650px;border-radius:50%;
+ border:1px solid rgba(194,161,107,.2);
+ right:-220px;top:-250px;
+ box-shadow:0 0 0 55px rgba(194,161,107,.025),
+ 0 0 0 110px rgba(194,161,107,.018);
+}
+.hero-inner{
+ position:relative;z-index:2;
+ display:grid;grid-template-columns:1.15fr .85fr;
+ align-items:center;gap:55px;
+ min-height:690px;padding:95px 0;
+}
+.kicker{
+ display:flex;align-items:center;gap:13px;
+ color:var(--gold2);font-size:10px;
+ letter-spacing:3px;text-transform:uppercase;
+ font-weight:700;
+}
+.kicker:before{content:"";width:38px;height:1px;background:var(--gold)}
+.hero h1{
+ font:800 clamp(54px,7.5vw,98px)/1.02 var(--sans);
+ letter-spacing:-5px;margin:32px 0 25px;
+}
+.hero h1 span{color:var(--gold2)}
+.hero-text{
+ max-width:550px;color:#c5cfdb;
+ font-size:15px;line-height:1.95;
+}
+.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:38px}
+.btn{
+ min-height:49px;padding:0 23px;
+ display:inline-flex;align-items:center;justify-content:center;
+ gap:10px;font-size:10px;letter-spacing:1.4px;
+ text-transform:uppercase;font-weight:700;
+ transition:.25s;border:1px solid transparent;
+}
+.btn-primary{background:var(--gold);color:var(--navy)}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-3px)}
+.btn-secondary{border-color:rgba(255,255,255,.35);color:white}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold2)}
+.hero-visual{min-height:440px;display:grid;place-items:center;position:relative}
+.emblem{
+ width:min(365px,80vw);height:365px;
+ border:1px solid rgba(194,161,107,.65);
+ display:grid;place-items:center;
+ position:relative;
+ background:linear-gradient(140deg,rgba(255,255,255,.05),transparent);
+}
+.emblem:before,.emblem:after{
+ content:"";position:absolute;border:1px solid rgba(194,161,107,.3);
+}
+.emblem:before{inset:17px}
+.emblem:after{inset:32px}
+.emblem-letter{
+ position:relative;z-index:2;
+ font:170px var(--serif);color:var(--gold2);
+}
+.emblem-caption{
+ position:absolute;bottom:49px;
+ color:#c6b48f;font-size:8px;
+ letter-spacing:4px;text-transform:uppercase;
+}
+.hero-coordinate{
+ position:absolute;right:0;bottom:15px;
+ color:rgba(255,255,255,.4);
+ font:14px var(--serif);
+}
+
+/* GOLD STRIP */
+.gold-strip{background:var(--gold);color:var(--navy)}
+.gold-strip-inner{
+ min-height:62px;display:flex;
+ align-items:center;justify-content:space-between;
+ flex-wrap:wrap;gap:15px;
+}
+.gold-strip span{
+ font:700 10px var(--sans);
+ letter-spacing:2px;text-transform:uppercase;
+}
+
+/* SECTION COMMON */
+section{padding:105px 0}
+.section-head{margin-bottom:48px}
+.section-index{
+ color:var(--gold);font-size:10px;
+ font-weight:700;letter-spacing:3px;
+ text-transform:uppercase;margin-bottom:16px;
+}
+.section-title{
+ font:800 clamp(34px,4.5vw,53px)/1.15 var(--sans);
+ letter-spacing:-2px;
+}
+.section-description{
+ max-width:620px;color:var(--muted);
+ font-size:14px;line-height:1.9;margin-top:17px;
+}
+.gold-line{width:58px;height:2px;background:var(--gold);margin-top:23px}
+
+/* PROFILE */
+.profile-grid{
+ display:grid;grid-template-columns:.78fr 1.22fr;
+ gap:75px;align-items:start;
+}
+.profile-panel{
+ background:var(--navy);color:white;
+ padding:40px;position:relative;overflow:hidden;
+}
+.profile-panel:after{
+ content:"V";position:absolute;right:-12px;bottom:-105px;
+ font:290px var(--serif);color:rgba(255,255,255,.035);
+}
+.profile-panel-label{
+ color:var(--gold2);font-size:9px;
+ letter-spacing:3px;text-transform:uppercase;
+}
+.profile-panel h3{
+ font:600 36px/1.3 var(--serif);
+ margin:31px 0 22px;
+}
+.profile-panel p{
+ position:relative;z-index:1;
+ color:#c4ceda;font-size:13px;line-height:1.9;
+}
+.profile-list{display:grid}
+.profile-row{
+ display:grid;grid-template-columns:155px 1fr;
+ gap:20px;padding:19px 0;
+ border-bottom:1px solid var(--line);
+}
+.profile-row span:first-child{
+ color:var(--muted);font-size:10px;
+ letter-spacing:1.3px;text-transform:uppercase;
+}
+.profile-row span:last-child{font-size:13px;font-weight:700}
+
+/* FEATURE CARDS */
+.feature-section{background:var(--white)}
+.cards{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+.card{
+ background:var(--card);border:1px solid var(--line);
+ padding:35px 30px;min-height:275px;
+ position:relative;transition:.3s;
+}
+.card:hover{
+ transform:translateY(-7px);
+ border-color:var(--gold);box-shadow:var(--shadow);
+}
+.card-number{color:var(--gold);font:16px var(--serif)}
+.card-icon{
+ width:49px;height:49px;margin:27px 0 22px;
+ border:1px solid var(--line);
+ display:grid;place-items:center;color:var(--gold);
+}
+.card-icon svg{width:23px;height:23px}
+.card h3{font:700 19px var(--sans);margin-bottom:12px}
+.card p{color:var(--muted);font-size:12px;line-height:1.9}
+.card-more{
+ display:inline-block;color:var(--gold);
+ font-size:10px;font-weight:700;
+ letter-spacing:1px;text-transform:uppercase;margin-top:20px;
+}
+
+/* TIMELINE */
+.timeline{max-width:900px;position:relative}
+.timeline:before{
+ content:"";position:absolute;left:8px;top:8px;bottom:10px;
+ width:1px;background:var(--line);
+}
+.timeline-item{padding:0 0 45px 45px;position:relative}
+.timeline-item:before{
+ content:"";position:absolute;left:3px;top:5px;
+ width:11px;height:11px;background:var(--gold);
+ border:3px solid var(--paper);outline:1px solid var(--gold);
+ border-radius:50%;
+}
+.timeline-year{
+ color:var(--gold);font-size:10px;
+ letter-spacing:2px;font-weight:700;
+}
+.timeline-item h3{font:700 20px var(--sans);margin:11px 0}
+.timeline-item p{color:var(--muted);font-size:13px;line-height:1.9}
+
+/* PUBLICATIONS */
+.publications{background:var(--navy);color:white}
+.publications .section-description{color:#bac5d2}
+.publication{
+ display:grid;grid-template-columns:150px 1fr;
+ border:1px solid rgba(255,255,255,.17);
+ transition:.25s;
+}
+.publication:hover{border-color:var(--gold)}
+.publication-mark{
+ background:rgba(194,161,107,.12);
+ color:var(--gold2);display:grid;place-items:center;
+ font:65px var(--serif);
+}
+.publication-body{padding:36px}
+.publication-type{
+ color:var(--gold2);font-size:9px;
+ letter-spacing:2px;text-transform:uppercase;
+}
+.publication-body h3{font:700 24px var(--sans);margin:14px 0}
+.publication-body p{color:#bdc8d5;font-size:13px;line-height:1.9}
+.publication-link{
+ display:inline-flex;align-items:center;gap:12px;
+ color:var(--gold2);font-size:10px;
+ letter-spacing:1.3px;text-transform:uppercase;
+ font-weight:700;margin-top:24px;
+}
+
+/* VALUES */
+.values{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+}
+.value{border-top:2px solid var(--gold);padding-top:23px}
+.value h3{font:600 22px var(--serif);margin-bottom:12px}
+.value p{color:var(--muted);font-size:12px;line-height:1.9}
+
+/* CONTACT */
+.contact-section{border-top:1px solid var(--line)}
+.contact-panel{
+ background:var(--navy);color:white;
+ padding:65px;display:grid;
+ grid-template-columns:1fr 1fr;gap:55px;
+ align-items:center;position:relative;overflow:hidden;
+}
+.contact-panel:after{
+ content:"";position:absolute;
+ width:370px;height:370px;border-radius:50%;
+ border:1px solid rgba(194,161,107,.2);
+ right:-130px;bottom:-240px;
+}
+.contact-panel h2{
+ font:800 clamp(34px,4vw,52px)/1.15 var(--sans);
+ letter-spacing:-2px;
+}
+.contact-panel p{
+ color:#bdc8d5;font-size:13px;
+ line-height:1.9;margin-top:18px;
+}
+.contact-list{position:relative;z-index:2;display:grid}
+.contact-item{
+ display:flex;align-items:center;gap:16px;
+ padding:16px 0;border-bottom:1px solid rgba(255,255,255,.17);
+ transition:.2s;
+}
+.contact-item:hover{color:var(--gold2)}
+.contact-icon{
+ width:45px;height:45px;flex-shrink:0;
+ border:1px solid rgba(194,161,107,.55);
+ display:grid;place-items:center;color:var(--gold2);
+}
+.contact-icon svg{width:20px;height:20px}
+.contact-copy small{
+ display:block;color:#9baabc;
+ font-size:9px;letter-spacing:1.5px;
+ text-transform:uppercase;margin-bottom:5px;
+}
+.contact-copy strong{font-size:13px;font-weight:600}
+
+/* FOOTER */
+footer{background:#091322;color:#b8c3d0;padding:32px 0}
+.footer-inner{
+ display:flex;align-items:center;
+ justify-content:space-between;gap:20px;flex-wrap:wrap;
+}
+.footer-name{
+ color:white;font:700 12px var(--sans);
+ letter-spacing:1.5px;text-transform:uppercase;
+}
+.footer-copy{font-size:10px;line-height:1.8}
+.footer-social{display:flex;gap:10px}
+.social{
+ width:41px;height:41px;
+ border:1px solid rgba(255,255,255,.22);
+ display:grid;place-items:center;
+ color:white;transition:.25s;
+}
+.social:hover{color:var(--gold2);border-color:var(--gold);transform:translateY(-3px)}
+.social svg{width:19px;height:19px}
+
+/* SEARCH */
+.search-screen{
+ position:fixed;inset:0;z-index:3000;
+ background:rgba(5,12,22,.94);
+ display:none;justify-content:center;
+ align-items:flex-start;padding:17vh 20px 30px;
+}
+.search-screen.open{display:flex}
+.search-content{width:min(680px,100%)}
+.search-content input{
+ width:100%;background:transparent;color:white;
+ border:0;border-bottom:2px solid var(--gold);
+ padding:20px 4px;font-size:24px;outline:none;
+}
+.search-hint{color:#aab5c2;font-size:11px;margin-top:15px}
+.search-results{display:grid;gap:9px;margin-top:20px}
+.search-result{
+ color:white;padding:14px;border:1px solid rgba(255,255,255,.17);
+ font-size:13px;transition:.2s;
+}
+.search-result:hover{border-color:var(--gold);color:var(--gold2)}
+
+/* TOAST */
+.toast{
+ position:fixed;left:50%;bottom:25px;
+ transform:translate(-50%,20px);
+ opacity:0;visibility:hidden;
+ background:var(--navy);color:white;
+ padding:13px 20px;font-size:12px;
+ z-index:4000;transition:.3s;
+ border:1px solid var(--gold);
+}
+.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+/* BACK TO TOP */
+.back-top{
+ position:fixed;right:22px;bottom:22px;
+ width:44px;height:44px;border:0;
+ background:var(--gold);color:var(--navy);
+ display:grid;place-items:center;
+ opacity:0;visibility:hidden;transition:.25s;z-index:500;
+}
+.back-top.visible{opacity:1;visibility:visible}
+.back-top svg{width:19px;height:19px}
+
+/* ANIMATION */
+.reveal{opacity:0;transform:translateY(23px);transition:.7s}
+.reveal.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1050px){
+ .nav{gap:14px}
+ .nav a{font-size:10px}
+ .profile-grid{gap:40px}
+}
+@media(max-width:780px){
+ .topbar-right{display:none}
+ .topbar-inner{justify-content:center}
+ .header-inner{min-height:73px}
+ .brand-symbol{width:41px;height:41px;font-size:26px}
+ .brand-name{font-size:11px}
+ .brand-sub{font-size:7px}
+ .menu-btn{display:grid}
+ .nav{
+  display:none;position:absolute;top:100%;left:0;right:0;
+  background:var(--white);border-bottom:1px solid var(--line);
+  padding:10px 5%;flex-direction:column;align-items:stretch;gap:0;
+ }
+ .nav.open{display:flex}
+ .nav a{padding:15px 0;border-bottom:1px solid var(--line);font-size:12px}
+ .nav a:after{display:none}
+ .hero-inner{
+  grid-template-columns:1fr;gap:30px;
+  min-height:auto;padding:75px 0 55px;
+ }
+ .hero h1{font-size:58px;letter-spacing:-3px}
+ .hero-visual{min-height:285px}
+ .emblem{width:250px;height:250px}
+ .emblem-letter{font-size:115px}
+ .emblem-caption{bottom:34px;font-size:7px}
+ section{padding:76px 0}
+ .profile-grid{grid-template-columns:1fr;gap:25px}
+ .cards{grid-template-columns:1fr}
+ .card{min-height:220px}
+ .values{grid-template-columns:1fr 1fr}
+ .contact-panel{grid-template-columns:1fr;padding:36px 25px;gap:30px}
+ .publication{grid-template-columns:80px 1fr}
+ .publication-mark{font-size:36px}
+ .publication-body{padding:23px 18px}
+ .publication-body h3{font-size:18px}
+ .profile-row{grid-template-columns:115px 1fr;gap:10px}
+}
+@media(max-width:430px){
+ .hero h1{font-size:47px}
+ .values{grid-template-columns:1fr}
+ .publication{grid-template-columns:1fr}
+ .publication-mark{padding:15px}
+ .gold-strip-inner{justify-content:center}
+ .footer-inner{justify-content:center;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{
+  scroll-behavior:auto!important;
+  animation-duration:.01ms!important;
+  transition-duration:.01ms!important;
+ }
+}
+@media print{
+ header,.topbar,.progress,.hero-actions,.back-top,
+ .contact-list,.footer-social,.gold-strip,.loader{display:none!important}
+ body{background:white!important;color:#111!important}
+ .hero,.publications,.profile-panel,.contact-panel{
+  background:white!important;color:#111!important;
+ }
+ .hero-text,.publication-body p,.contact-panel p,
+ .profile-panel p{color:#333!important}
+ section{padding:25px 0}
+ .reveal{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+
+<body>
+
+<div class="loader" id="loader">
+ <div class="loader-inner">
+  <div class="loader-logo">V</div>
+  <div class="loader-label">Yaroslav Voidenko</div>
+ </div>
+</div>
+
+<div class="progress" id="progress"></div>
+
+<div class="topbar">
+ <div class="container topbar-inner">
+  <div class="topbar-left"><span class="topbar-dot"></span> Персональний цифровий портал</div>
+  <div class="topbar-right">Україна · Київ</div>
+ </div>
+</div>
+
+<header>
+ <div class="container header-inner">
+  <a class="brand" href="#home" aria-label="На головну">
+   <div class="brand-symbol">V</div>
+   <div>
+    <span class="brand-name">Ярослав Войденко</span>
+    <span class="brand-sub">Personal digital portal</span>
+   </div>
+  </a>
+
+  <nav class="nav" id="nav">
+   <a href="#profile">Біографія</a>
+   <a href="#activity">Діяльність</a>
+   <a href="#education">Освіта</a>
+   <a href="#publications">Публікації</a>
+   <a href="#values">Принципи</a>
+   <a href="#contacts">Контакти</a>
+  </nav>
+
+  <div class="actions">
+   <button class="tool-btn" id="searchOpen" aria-label="Пошук на сайті">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+     <circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path>
+    </svg>
+   </button>
+   <button class="tool-btn" id="themeToggle" aria-label="Змінити тему">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+     <path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z"></path>
+    </svg>
+   </button>
+   <button class="tool-btn" id="languageToggle" aria-label="Змінити мову">
+    <span style="font-size:10px;font-weight:800">EN</span>
+   </button>
+   <button class="tool-btn menu-btn" id="menuToggle" aria-label="Відкрити меню">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+     <path d="M3 7h18M3 12h18M3 17h18"></path>
+    </svg>
+   </button>
+  </div>
+ </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="home">
+ <div class="container hero-inner">
+  <div class="reveal">
+   <div class="kicker" data-ua="Персональний портал" data-en="Personal portal">Персональний портал</div>
+   <h1>Ярослав<br><span>Войденко</span></h1>
+   <p class="hero-text"
+      data-ua="Студент-медик Національного медичного університету імені О. О. Богомольця, автор публікацій на LIGA.net. Освіта, медицина, журналістика та суспільство."
+      data-en="Medical student at Bogomolets National Medical University and contributor to LIGA.net. Education, medicine, journalism and society.">
+    Студент-медик Національного медичного університету імені О. О. Богомольця, автор публікацій на LIGA.net. Освіта, медицина, журналістика та суспільство.
+   </p>
+   <div class="hero-actions">
+    <a href="#profile" class="btn btn-primary">Ознайомитися з профілем <span>→</span></a>
+    <a href="#contacts" class="btn btn-secondary">Контакти</a>
+   </div>
+  </div>
+
+  <div class="hero-visual reveal">
+   <div class="emblem">
+    <div class="emblem-letter">V</div>
+    <div class="emblem-caption">Yaroslav Voidenko</div>
+   </div>
+   <div class="hero-coordinate">01 / 06</div>
+  </div>
+ </div>
+</section>
+
+<div class="gold-strip">
+ <div class="container gold-strip-inner">
+  <span>Освіта</span><span>Медицина</span>
+  <span>Журналістика</span><span>Суспільство</span>
+ </div>
+</div>
+
+<!-- PROFILE -->
+<section id="profile">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="section-index">01 — Особистий профіль</div>
+   <h2 class="section-title">Біографія</h2>
+   <div class="gold-line"></div>
+  </div>
+
+  <div class="profile-grid">
+   <div class="profile-panel reveal">
+    <div class="profile-panel-label">Personal profile</div>
+    <h3>Знання.<br>Відповідальність.<br>Розвиток.</h3>
+    <p>
+     Цей портал представляє освітній шлях, професійні інтереси,
+     авторські матеріали та напрями діяльності.
+     Його мета — створити відкритий простір для знайомства,
+     комунікації та професійної співпраці.
+    </p>
+   </div>
+
+   <div class="profile-list reveal">
+    <div class="profile-row"><span>Ім'я</span><span>Ярослав Войденко</span></div>
+    <div class="profile-row"><span>Освіта</span><span>НМУ імені О. О. Богомольця</span></div>
+    <div class="profile-row"><span>Спеціальність</span><span>Медицина</span></div>
+    <div class="profile-row"><span>Медійна діяльність</span><span>Автор на LIGA.net</span></div>
+    <div class="profile-row"><span>Місто</span><span>Київ, Україна</span></div>
+    <div class="profile-row"><span>Інтереси</span><span>Медицина, медіа, освіта, суспільство</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ACTIVITY -->
+<section class="feature-section" id="activity">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="section-index">02 — Напрями</div>
+   <h2 class="section-title">Сфери діяльності</h2>
+   <p class="section-description">
+    Освітні та творчі напрями, які формують мій професійний шлях.
+   </p>
+   <div class="gold-line"></div>
+  </div>
+
+  <div class="cards">
+   <article class="card reveal">
+    <div class="card-number">01 / MEDICINE</div>
+    <div class="card-icon">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="12" cy="12" r="9"></circle><path d="M12 7v10M7 12h10"></path>
+     </svg>
+    </div>
+    <h3>Медицина</h3>
+    <p>Навчання в НМУ імені О. О. Богомольця, опанування медичних дисциплін і професійне становлення.</p>
+    <a class="card-more" href="#education">Освітній шлях →</a>
+   </article>
+
+   <article class="card reveal">
+    <div class="card-number">02 / JOURNALISM</div>
+    <div class="card-icon">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5"></path>
+     </svg>
+    </div>
+    <h3>Журналістика</h3>
+    <p>Авторські матеріали, робота із суспільно важливими темами та розвиток навичок комунікації.</p>
+    <a class="card-more" href="#publications">Публікації →</a>
+   </article>
+
+   <article class="card reveal">
+    <div class="card-number">03 / SOCIETY</div>
+    <div class="card-icon">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="9" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle>
+      <path d="M3 20c0-4 2.5-6 6-6s6 2 6 6M15 15c3.5-.5 6 1.5 6 5"></path>
+     </svg>
+    </div>
+    <h3>Суспільство</h3>
+    <p>Інтерес до громадських процесів, освіти, молодіжних ініціатив і розвитку України.</p>
+    <a class="card-more" href="#values">Цінності →</a>
+   </article>
+  </div>
+ </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="section-index">03 — Академічний шлях</div>
+   <h2 class="section-title">Освіта</h2>
+   <p class="section-description">Основні етапи навчання та академічного становлення.</p>
+   <div class="gold-line"></div>
+  </div>
+
+  <div class="timeline">
+   <div class="timeline-item reveal">
+    <div class="timeline-year">2026 — ДОТЕПЕР</div>
+    <h3>Національний медичний університет імені О. О. Богомольця</h3>
+    <p>Навчання за спеціальністю «Медицина».</p>
+   </div>
+   <div class="timeline-item reveal">
+    <div class="timeline-year">2026</div>
+    <h3>Чорнобаївський ліцей</h3>
+    <p>Завершення повної загальної середньої освіти з відзнакою.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="publications" id="publications">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="section-index">04 — Авторська діяльність</div>
+   <h2 class="section-title">Публікації</h2>
+   <p class="section-description">
+    Авторські матеріали та публікаційна діяльність на українських медіаплатформах.
+   </p>
+   <div class="gold-line"></div>
+  </div>
+
+  <article class="publication reveal">
+   <div class="publication-mark">L</div>
+   <div class="publication-body">
+    <div class="publication-type">LIGA.net · Авторська платформа</div>
+    <h3>Профіль автора Ярослава Войденка</h3>
+    <p>
+     Сторінка автора з опублікованими матеріалами.
+     Переглянути тексти та ознайомитися з авторською діяльністю
+     можна безпосередньо на платформі видання.
+    </p>
+    <a class="publication-link" href="https://blog.liga.net/user/yavoidenko"
+       target="_blank" rel="noopener noreferrer">
+     Перейти до профілю <span>↗</span>
+    </a>
+   </div>
+  </article>
+ </div>
+</section>
+
+<!-- VALUES -->
+<section id="values">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="section-index">05 — Особисті орієнтири</div>
+   <h2 class="section-title">Принципи та цінності</h2>
+   <div class="gold-line"></div>
+  </div>
+
+  <div class="values">
+   <article class="value reveal">
+    <h3>Відповідальність</h3>
+    <p>Усвідомлення наслідків власних рішень та дій.</p>
+   </article>
+   <article class="value reveal">
+    <h3>Професіоналізм</h3>
+    <p>Повага до знань, якості роботи та етичних стандартів.</p>
+   </article>
+   <article class="value reveal">
+    <h3>Розвиток</h3>
+    <p>Постійне навчання та вдосконалення навичок.</p>
+   </article>
+   <article class="value reveal">
+    <h3>Відкритість</h3>
+    <p>Готовність до діалогу, співпраці та нових ідей.</p>
+   </article>
+  </div>
+ </div>
+</section>
+
+<!-- CONTACTS -->
+<section class="contact-section" id="contacts">
+ <div class="container">
+  <div class="contact-panel reveal">
+   <div>
+    <div class="section-index">06 — Зворотний зв'язок</div>
+    <h2>Відкритий до<br>спілкування.</h2>
+    <p>
+     Для професійних пропозицій, медійної співпраці,
+     запитань і ділового листування.
+    </p>
+   </div>
+
+   <div class="contact-list">
+    <a class="contact-item" href="mailto:yaroslavvoydenko@gmail.com">
+     <span class="contact-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+       <rect x="3" y="5" width="18" height="14" rx="1"></rect>
+       <path d="m3 7 9 6 9-6"></path>
+      </svg>
+     </span>
+     <span class="contact-copy">
+      <small>Електронна пошта</small>
+      <strong>yaroslavvoydenko@gmail.com</strong>
+     </span>
+    </a>
+
+    <a class="contact-item" href="https://www.instagram.com/y_voydenko/"
+       target="_blank" rel="noopener noreferrer">
+     <span class="contact-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+       <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+       <circle cx="12" cy="12" r="4"></circle>
+       <circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"></circle>
+      </svg>
+     </span>
+     <span class="contact-copy">
+      <small>Instagram</small>
+      <strong>@y_voydenko</strong>
+     </span>
+    </a>
+
+    <a class="contact-item" href="https://blog.liga.net/user/yavoidenko"
+       target="_blank" rel="noopener noreferrer">
+     <span class="contact-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+       <path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"></path>
+      </svg>
+     </span>
+     <span class="contact-copy">
+      <small>Авторський профіль</small>
+      <strong>LIGA.net</strong>
+     </span>
+    </a>
+   </div>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ <div class="container footer-inner">
+  <div>
+   <div class="footer-name">Ярослав Войденко</div>
+   <div class="footer-copy">Персональний цифровий портал</div>
+  </div>
+
+  <div class="footer-copy">
+   © <span id="year"></span> Ярослав Войденко.<br>
+   Усі права захищено.
+  </div>
+
+  <div class="footer-social">
+   <a class="social" href="https://www.instagram.com/y_voydenko/"
+      target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+     <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+     <circle cx="12" cy="12" r="4"></circle>
+     <circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"></circle>
+    </svg>
+   </a>
+   <a class="social" href="mailto:yaroslavvoydenko@gmail.com" aria-label="Email">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+     <rect x="3" y="5" width="18" height="14" rx="1"></rect>
+     <path d="m3 7 9 6 9-6"></path>
+    </svg>
+   </a>
+  </div>
+ </div>
+</footer>
+
+<!-- SEARCH -->
+<div class="search-screen" id="searchScreen">
+ <div class="search-content">
+  <input id="searchInput" type="search" placeholder="Пошук на сайті..." autocomplete="off">
+  <div class="search-hint">Введіть назву розділу. ESC — закрити.</div>
+  <div class="search-results" id="searchResults"></div>
+ </div>
+</div>
+
+<div class="toast" id="toast">Скопійовано</div>
+
+<button class="back-top" id="backTop" aria-label="Нагору">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <path d="m5 14 7-7 7 7"></path>
+ </svg>
+</button>
+
+<script>
+/* INITIALIZATION */
+window.addEventListener('load',()=>{
+ setTimeout(()=>document.getElementById('loader').classList.add('hidden'),450);
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+
+/* MOBILE NAVIGATION */
+const nav=document.getElementById('nav');
+document.getElementById('menuToggle').addEventListener('click',()=>{
+ nav.classList.toggle('open');
+});
+nav.querySelectorAll('a').forEach(a=>{
+ a.addEventListener('click',()=>nav.classList.remove('open'));
+});
+
+/* THEME */
+const themeButton=document.getElementById('themeToggle');
+if(localStorage.getItem('voydenko-theme')==='dark'){
+ document.body.classList.add('dark');
+}
+themeButton.addEventListener('click',()=>{
+ document.body.classList.toggle('dark');
+ localStorage.setItem('voydenko-theme',
+  document.body.classList.contains('dark')?'dark':'light');
+});
+
+/* LANGUAGE */
+let language=localStorage.getItem('voydenko-language')||'ua';
+const languageButton=document.getElementById('languageToggle');
+
+const translations={
+ ua:{
+  nav:['Біографія','Діяльність','Освіта','Публікації','Принципи','Контакти'],
+  search:'Пошук на сайті...',
+  kicker:'Персональний портал',
+  hero:'Ознайомитися з профілем',
+  contact:'Контакти'
+ },
+ en:{
+  nav:['Biography','Activity','Education','Publications','Principles','Contacts'],
+  search:'Search the website...',
+  kicker:'Personal portal',
+  hero:'Explore profile',
+  contact:'Contacts'
+ }
+};
+
+function setLanguage(lang){
+ language=lang;
+ document.documentElement.lang=lang;
+ document.querySelectorAll('.nav a').forEach((a,i)=>{
+  a.textContent=translations[lang].nav[i];
+ });
+ document.querySelectorAll('[data-ua]').forEach(el=>{
+  el.textContent=el.dataset[lang];
+ });
+ document.getElementById('searchInput').placeholder=translations[lang].search;
+ languageButton.innerHTML='<span style="font-size:10px;font-weight:800">'+
+  (lang==='ua'?'EN':'UA')+'</span>';
+ localStorage.setItem('voydenko-language',lang);
+}
+setLanguage(language);
+languageButton.addEventListener('click',()=>{
+ setLanguage(language==='ua'?'en':'ua');
+});
+
+/* SCROLL PROGRESS */
+const progress=document.getElementById('progress');
+const backTop=document.getElementById('backTop');
+window.addEventListener('scroll',()=>{
+ const max=document.documentElement.scrollHeight-window.innerHeight;
+ progress.style.width=(max>0?window.scrollY/max*100:0)+'%';
+ backTop.classList.toggle('visible',window.scrollY>450);
+});
+backTop.addEventListener('click',()=>{
+ window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* REVEAL */
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add('visible');
+   observer.unobserve(entry.target);
+  }
+ });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+/* SEARCH */
+const searchScreen=document.getElementById('searchScreen');
+const searchInput=document.getElementById('searchInput');
+const searchResults=document.getElementById('searchResults');
+
+const sections=[
+ {title:'Головна',id:'home',words:'головна ярослав войденко'},
+ {title:'Біографія',id:'profile',words:'біографія профіль про мене'},
+ {title:'Сфери діяльності',id:'activity',words:'медицина журналістика суспільство'},
+ {title:'Освіта',id:'education',words:'університет навчання ліцей'},
+ {title:'Публікації',id:'publications',words:'статті автор liga'},
+ {title:'Принципи та цінності',id:'values',words:'принципи цінності розвиток'},
+ {title:'Контакти',id:'contacts',words:'email пошта instagram зв’язок'}
+];
+
+function openSearch(){
+ searchScreen.classList.add('open');
+ searchInput.value='';
+ searchResults.innerHTML='';
+ setTimeout(()=>searchInput.focus(),100);
+}
+function closeSearch(){searchScreen.classList.remove('open')}
+
+document.getElementById('searchOpen').addEventListener('click',openSearch);
+searchScreen.addEventListener('click',e=>{
+ if(e.target===searchScreen)closeSearch();
+});
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape')closeSearch();
+ if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){
+  e.preventDefault();openSearch();
+ }
+});
+searchInput.addEventListener('input',()=>{
+ const q=searchInput.value.trim().toLowerCase();
+ searchResults.innerHTML='';
+ if(!q)return;
+ const found=sections.filter(s=>
+  (s.title+' '+s.words).toLowerCase().includes(q)
+ );
+ if(!found.length){
+  searchResults.textContent='Нічого не знайдено.';
+  return;
+ }
+ found.forEach(s=>{
+  const link=document.createElement('a');
+  link.className='search-result';
+  link.href='#'+s.id;
+  link.textContent='→ '+s.title;
+  link.addEventListener('click',closeSearch);
+  searchResults.appendChild(link);
+ });
+});
+
+/* SHARE */
+async function shareWebsite(){
+ const data={
+  title:'Ярослав Войденко',
+  text:'Персональний цифровий портал Ярослава Войденка',
+  url:window.location.href
+ };
+ try{
+  if(navigator.share)await navigator.share(data);
+  else{
+   await navigator.clipboard.writeText(window.location.href);
+   showToast('Посилання скопійовано');
+  }
+ }catch(e){}
+}
+
+/* TOAST */
+function showToast(message){
+ const toast=document.getElementById('toast');
+ toast.textContent=message;
+ toast.classList.add('show');
+ setTimeout(()=>toast.classList.remove('show'),2200);
+}
+</script>
+</body>
+</html>
