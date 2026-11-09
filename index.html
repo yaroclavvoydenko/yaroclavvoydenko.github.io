@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#04070d">
+<meta name="description" content="Ярослав Войденко — автор аналітичних матеріалів на перетині медицини, охорони здоров’я та державної політики.">
+<title>Ярослав Войденко — Офіційний міжнародний портал</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --gold:#d4af37;
+  --gold-light:#f3e5ab;
+  --gold-glow:rgba(212, 175, 55, 0.12);
+  --dark:#04070d;
+  --dark-2:#080e1a;
+  --dark-3:#0d1626;
+  --white:#fcfbfa;
+  --muted:#8b9bb4;
+  --line:rgba(212, 175, 55, 0.18);
+  --panel:rgba(255, 255, 255, 0.018);
+  --panel-hover:rgba(255, 255, 255, 0.04);
+  --shadow:0 40px 120px rgba(0, 0, 0, 0.5);
+  --transition:all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html[data-theme="light"] {
+  --dark:#f7f5ef;
+  --dark-2:#eeeee6;
+  --dark-3:#e2dfd3;
+  --white:#080e1a;
+  --muted:#5c6b82;
+  --line:rgba(180, 145, 60, 0.22);
+  --panel:rgba(255, 255, 255, 0.75);
+  --panel-hover:rgba(255, 255, 255, 0.95);
+  --gold:#9a7b2c;
+  --gold-light:#b8973d;
+  --gold-glow:rgba(154, 123, 44, 0.08);
+  --shadow:0 40px 100px rgba(40, 30, 10, 0.06);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--dark);
+  color:var(--white);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  overflow-x:hidden;
+  transition:background 0.6s ease, color 0.6s ease;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+::selection{background:var(--gold);color:#fff}
+
+.container{width:min(1160px, 86%);margin:auto}
+.serif{font-family:'Playfair Display',serif}
+.gold{color:var(--gold)}
+
+#progress{
+  position:fixed;top:0;left:0;height:2px;width:0;
+  background:linear-gradient(90deg,var(--gold),var(--gold-light));
+  z-index:1001;
+  transition:width 0.1s ease-out;
+  box-shadow:0 0 12px var(--gold);
+}
+
+.noise{
+  position:fixed;inset:0;pointer-events:none;z-index:999;
+  opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
+}
+
+.eyebrow{
+  font-size:10px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.eyebrow:before{
+  content:"";
+  width:36px;height:1px;
+  background:var(--gold);
+}
+
+.section{padding:140px 0;position:relative}
+.section-head{margin-bottom:60px}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(36px, 4.5vw, 58px);
+  font-weight:400;
+  line-height:1.15;
+  margin-top:18px;
+  letter-spacing:-0.5px;
+}
+.section-intro{
+  color:var(--muted);
+  font-size:15px;
+  line-height:2.1;
+  max-width:620px;
+  margin-top:18px;
+  font-weight:300;
+}
+
+/* HEADER */
+
+.header{
+  position:fixed;top:0;left:0;width:100%;
+  z-index:100;
+  padding:30px 0;
+  transition:var(--transition);
+  border-bottom:1px solid transparent;
+}
+.header.scrolled{
+  padding:16px 0;
+  background:color-mix(in srgb, var(--dark) 88%, transparent);
+  backdrop-filter:blur(30px);
+  -webkit-backdrop-filter:blur(30px);
+  border-color:var(--line);
+  box-shadow:0 10px 40px rgba(0,0,0,0.15);
+}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+.brand{display:flex;align-items:center;gap:14px}
+.monogram{
+  width:44px;height:44px;
+  display:grid;place-items:center;
+  border:1px solid var(--line);
+  color:var(--gold);
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+  letter-spacing:-1px;
+  transition:var(--transition);
+  background:var(--panel);
+}
+.monogram:hover {
+  border-color:var(--gold);
+  background:var(--gold);
+  color:var(--dark);
+  transform:scale(1.04);
+  box-shadow:0 0 25px var(--gold-glow);
+}
+.brand-name{font-size:11px;letter-spacing:2.5px;font-weight:600}
+.brand-sub{font-size:8px;letter-spacing:2px;color:var(--muted);margin-top:3px}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:32px;
+}
+.nav-links a{
+  font-size:10px;
+  letter-spacing:1.8px;
+  color:var(--muted);
+  transition:color .3s, transform .3s;
+  position:relative;
+  font-weight:500;
+}
+.nav-links a::after {
+  content:'';
+  position:absolute;
+  bottom:-4px;left:0;
+  width:0;height:1px;
+  background:var(--gold);
+  transition:width 0.3s ease;
+}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{width:100%;}
+
+.header-controls{display:flex;align-items:center;gap:10px}
+.control{
+  height:36px;
+  min-width:36px;
+  padding:0 10px;
+  border:1px solid var(--line);
+  background:var(--panel);
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:var(--transition);
+  display:grid;place-items:center;
+  font-weight:600;
+}
+.control:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);transform:translateY(-1px);}
+.lang-switch{display:flex;gap:3px}
+.lang-switch button.active{background:var(--gold);color:var(--dark);border-color:var(--gold);}
+
+.menu-btn{
+  display:none;
+  background:none;
+  border:0;
+  font-size:24px;
+  cursor:pointer;
+  color:var(--gold);
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 80% 30%, rgba(212, 175, 55, 0.06), transparent 50%),
+    radial-gradient(ellipse at 15% 75%, rgba(45, 65, 95, 0.12), transparent 55%),
+    linear-gradient(135deg, var(--dark), var(--dark-2));
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(212, 175, 55, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.035) 1px, transparent 1px);
+  background-size:100px 100px;
+  mask-image:radial-gradient(circle at 60% 40%, black 25%, transparent 80%);
+}
+.hero-orbit{
+  position:absolute;
+  right:-120px;top:10%;
+  width:640px;height:640px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 50px rgba(212,175,55,0.01),
+    0 0 0 100px rgba(212,175,55,0.005);
+  animation:rotate 70s linear infinite;
+}
+.hero-orbit:before{
+  content:"";
+  position:absolute;
+  width:8px;height:8px;
+  background:var(--gold);
+  border-radius:50%;
+  top:100px;left:80px;
+  box-shadow:0 0 25px var(--gold);
+}
+.hero-content{
+  position:relative;z-index:2;
+  max-width:820px;
+  padding-top:110px;
+}
+.hero-kicker{margin-bottom:30px}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(54px, 8.5vw, 108px);
+  line-height:1.02;
+  font-weight:400;
+  letter-spacing:-2.5px;
+  margin-bottom:32px;
+}
+.hero h1 span{
+  display:block;
+  color:var(--gold);
+  font-style:italic;
+  text-shadow:0 10px 40px rgba(212,175,55,0.12);
+}
+.hero-desc{
+  max-width:650px;
+  color:var(--muted);
+  font-size:16px;
+  line-height:2.1;
+  font-weight:300;
+}
+.hero-actions{
+  display:flex;gap:16px;flex-wrap:wrap;
+  margin-top:40px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:16px;
+  padding:17px 28px;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  transition:var(--transition);
+  position:relative;
+  overflow:hidden;
+  font-weight:600;
+}
+.btn-primary{background:var(--gold);color:var(--dark); border:1px solid var(--gold);}
+.btn-primary:hover{
+  background:var(--gold-light);
+  transform:translateY(-3px); 
+  box-shadow:0 15px 35px rgba(212,175,55,0.25);
+}
+.btn-outline{border:1px solid var(--line);color:var(--gold); background:var(--panel);}
+.btn-outline:hover{background:var(--panel-hover); border-color:var(--gold); transform:translateY(-3px); box-shadow:0 10px 30px rgba(0,0,0,0.1);}
+.svg-arrow{width:14px;height:14px;display:block; transition:transform 0.3s;}
+.btn:hover .svg-arrow {transform:translateX(4px);}
+.hero-bottom{
+  position:absolute;bottom:36px;left:7%;right:7%;
+  display:flex;justify-content:space-between;
+  font-size:9px;letter-spacing:2.5px;color:var(--muted);
+}
+.scroll-indicator{
+  width:35px;height:1px;background:var(--gold);
+  display:inline-block;vertical-align:middle;margin-right:12px;
+}
+
+/* ABOUT */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  align-items:center;
+  gap:80px;
+}
+.about-visual{
+  min-height:460px;
+  position:relative;
+  display:grid;place-items:center;
+  overflow:hidden;
+  background:linear-gradient(145deg, var(--dark-3), var(--dark-2));
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  transition:var(--transition);
+}
+.about-visual:hover {border-color:var(--gold); box-shadow:0 35px 100px rgba(212,175,55,0.1);}
+.about-visual:before,.about-visual:after{
+  content:"";
+  position:absolute;
+  width:260px;height:260px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  animation:rotate 40s linear infinite reverse;
+}
+.about-visual:after{width:360px;height:360px; animation-duration: 60s; animation-direction: normal;}
+.seal{
+  position:relative;z-index:2;
+  width:150px;height:150px;
+  display:grid;place-items:center;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  font-family:'Playfair Display',serif;
+  font-size:46px;
+  color:var(--gold);
+  box-shadow:0 0 60px rgba(212,175,55,0.1);
+  background:var(--panel);
+  transition:var(--transition);
+}
+.about-visual:hover .seal {transform:scale(1.05); background:var(--dark-3); box-shadow:0 0 35px var(--gold-glow);}
+.about-visual-label{
+  position:absolute;bottom:28px;
+  font-size:9px;letter-spacing:3px;color:var(--muted);
+}
+.about-text p{
+  font-size:15px;
+  line-height:2.1;
+  color:var(--muted);
+  margin:22px 0;
+  font-weight:300;
+}
+.about-facts{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:32px;
+}
+.fact{
+  padding:20px;
+  border-left:2px solid var(--gold);
+  background:var(--panel);
+  transition:var(--transition);
+}
+.fact:hover {transform:translateX(4px); background:var(--dark-3); border-color:var(--gold-light);}
+.fact strong{
+  display:block;
+  font-family:'Playfair Display',serif;
+  font-size:19px;
+  font-weight:400;
+}
+.fact span{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-top:6px;
+  letter-spacing:1px;
+}
+
+/* FOCUS */
+
+.focus-section{
+  background:var(--dark-2);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.focus-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  border:1px solid var(--line);
+  background:var(--line);
+  box-shadow:var(--shadow);
+}
+.focus-card{
+  background:var(--dark-2);
+  padding:40px 32px;
+  min-height:220px;
+  transition:var(--transition);
+  position:relative;
+  overflow:hidden;
+}
+.focus-card:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top right, var(--gold-glow), transparent 70%);
+  opacity:0;
+  transition:opacity 0.5s;
+}
+.focus-card:hover{
+  background:var(--dark-3);
+  transform:translateY(-4px);
+}
+.focus-card:hover:before {opacity:1;}
+.card-number{font-family:'Playfair Display',serif;color:var(--gold);font-size:14px}
+.focus-card h3{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:400;
+  margin:24px 0 12px;
+}
+.focus-card p{color:var(--muted);font-size:13px;line-height:1.9;font-weight:300}
+
+/* PUBLICATIONS */
+
+.publications-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+.pub-card{
+  min-height:200px;
+  position:relative;
+  padding:32px;
+  border:1px solid var(--line);
+  background:var(--panel);
+  overflow:hidden;
+  transition:var(--transition);
+}
+.pub-card:after{
+  content:"";
+  position:absolute;
+  width:160px;height:160px;
+  right:-70px;bottom:-90px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  transition:0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pub-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--gold);
+  box-shadow:var(--shadow);
+  background:var(--panel-hover);
+}
+.pub-card:hover:after{transform:scale(1.4); border-color:var(--gold);}
+.pub-top{display:flex;justify-content:space-between;align-items:center}
+.pub-logo{
+  font-family:'Playfair Display',serif;
+  color:var(--gold);
+  font-size:28px;
+}
+.pub-type{font-size:9px;letter-spacing:2.5px;color:var(--muted)}
+.pub-card h3{font-size:16px;font-weight:500;margin-top:26px}
+.pub-card p{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.8;font-weight:300}
+.pub-link{
+  position:absolute;right:28px;top:28px;
+  width:18px;height:18px;color:var(--gold);
+  transition:transform 0.3s;
+}
+.pub-card:hover .pub-link{transform:translate(3px,-3px)}
+
+/* EDUCATION */
+
+.education{
+  background:var(--dark-2);
+  border-top:1px solid var(--line);
+}
+.timeline{max-width:850px;border-left:1px solid var(--line);margin-left:8px}
+.timeline-item{padding:0 0 45px 38px;position:relative}
+.timeline-item:before{
+  content:"";
+  position:absolute;left:-5px;top:4px;
+  width:10px;height:10px;
+  background:var(--gold);
+  border-radius:50%;
+  box-shadow:0 0 15px rgba(212,175,55,0.6);
+}
+.timeline-item small{color:var(--gold);font-size:10px;letter-spacing:2.5px; font-weight:600;}
+.timeline-item h3{
+  font-family:'Playfair Display',serif;
+  font-size:24px;font-weight:400;margin:12px 0;
+}
+.timeline-item p{color:var(--muted);font-size:13px;line-height:1.9;font-weight:300}
+
+/* PRINCIPLES */
+
+.principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.principle{padding:30px; border:1px solid var(--line); background:var(--panel); transition:var(--transition);}
+.principle:hover {transform:translateY(-5px); border-color:var(--gold); box-shadow:var(--shadow); background:var(--panel-hover);}
+.principle-number{color:var(--gold);font-size:11px;letter-spacing:2.5px; font-weight:600;}
+.principle h3{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:400;margin:16px 0;
+}
+.principle p{font-size:13px;color:var(--muted);line-height:1.9;font-weight:300}
+
+/* CONTACT */
+
+.contact{
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% 100%, rgba(212,175,55,0.06), transparent 60%),
+    var(--dark);
+  border-top:1px solid var(--line);
+}
+.contact .eyebrow{justify-content:center}
+.contact .eyebrow:after{content:"";width:36px;height:1px;background:var(--gold)}
+.contact .section-title{max-width:740px;margin:22px auto}
+.contact-description{color:var(--muted);font-size:14px;line-height:2;font-weight:300}
+.contact-links{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:12px;margin-top:38px;
+}
+.contact-links a{
+  border:1px solid var(--line);
+  padding:15px 24px;
+  font-size:10px;letter-spacing:1.5px;
+  color:var(--gold);
+  background:var(--panel);
+  transition:var(--transition);
+  font-weight:600;
+}
+.contact-links a:hover{background:var(--gold);color:var(--dark); border-color:var(--gold); transform:translateY(-3px); box-shadow:0 10px 25px rgba(212,175,55,0.25);}
+
+/* FOOTER */
+
+.footer{border-top:1px solid var(--line);padding:30px 0}
+.footer-inner{
+  display:flex;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;
+}
+.footer span{font-size:9px;letter-spacing:2px;color:var(--muted)}
+
+/* ANIMATION REVEAL */
+
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.hero-content>*{animation:appear 1s cubic-bezier(0.16, 1, 0.3, 1) both}
+.hero-kicker{animation-delay:.1s}
+.hero h1{animation-delay:.2s}
+.hero-desc{animation-delay:.35s}
+.hero-actions{animation-delay:.5s}
+
+@keyframes appear{
+  from{opacity:0;transform:translateY(25px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes rotate{to{transform:rotate(360deg)}}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
+  .nav-links{gap:16px}
+  .nav-links a{font-size:9px}
+  .about-grid{gap:45px}
+}
+@media(max-width:850px){
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:75px;left:0;width:100%;
+    padding:30px 6%;
+    background:var(--dark-2);
+    border-bottom:1px solid var(--line);
+    flex-direction:column;
+    align-items:flex-start;
+    box-shadow:var(--shadow);
+  }
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+  .about-grid{grid-template-columns:1fr}
+  .focus-grid{grid-template-columns:1fr 1fr}
+  .principles-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .container{width:90%}
+  .section{padding:90px 0}
+  .hero h1{font-size:48px;letter-spacing:-1.5px}
+  .hero-desc{font-size:14px}
+  .hero-bottom{font-size:8px}
+  .focus-grid,.publications-grid,.principles-grid{grid-template-columns:1fr}
+  .about-visual{min-height:330px}
+  .header{padding:15px 0}
+  .brand-name{font-size:11px}
+  .brand-sub{font-size:7px}
+  .monogram{width:38px;height:38px}
+  .control{height:34px;min-width:34px;padding:0 8px}
+  .header-controls{gap:6px}
+  .footer-inner{flex-direction:column; text-align:center; align-items:center;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+
+<body>
+<div id="progress"></div>
+<div class="noise"></div>
+
+<header class="header" id="header">
+  <div class="container nav">
+    <a href="#home" class="brand">
+      <div class="monogram">YV</div>
+      <div>
+        <div class="brand-name">ЯРОСЛАВ ВОЙДЕНКО</div>
+        <div class="brand-sub" data-i18n="brandSub">ОФІЦІЙНИЙ ПОРТАЛ</div>
+      </div>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#about" data-i18n="navAbout">ПРО МЕНЕ</a>
+      <a href="#focus" data-i18n="navFocus">НАПРЯМИ</a>
+      <a href="#publications" data-i18n="navPublications">ПУБЛІКАЦІЇ</a>
+      <a href="#education" data-i18n="navEducation">ОСВІТА</a>
+      <a href="#contact" data-i18n="navContact">КОНТАКТИ</a>
+    </nav>
+
+    <div class="header-controls">
+      <div class="lang-switch">
+        <button class="control active" data-lang="uk">UA</button>
+        <button class="control" data-lang="en">EN</button>
+      </div>
+      <button class="control" id="themeBtn" aria-label="Change theme">
+        <svg id="themeIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>
+        </svg>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">≡</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-orbit"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-kicker eyebrow" data-i18n="heroKicker">ОСОБИСТИЙ ТА ПРОФЕСІЙНИЙ ПРОФІЛЬ</div>
+      <h1>Ярослав <span>Войденко.</span></h1>
+      <p class="hero-desc" data-i18n="heroDesc">
+        Автор аналітичних матеріалів на перетині медицини, охорони здоров’я та державної політики. Студент НМУ імені О.О. Богомольця. Досліджую медичну економіку, Health Policy, цифрову трансформацію медицини та впровадження штучного інтелекту в охорону здоров’я.
+      </p>
+      <div class="hero-actions">
+        <a href="#publications" class="btn btn-primary">
+          <span data-i18n="heroButton1">МОЇ ПУБЛІКАЦІЇ</span>
+          <svg class="svg-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 12h15M13 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="#about" class="btn btn-outline">
+          <span data-i18n="heroButton2">ДЕТАЛЬНІШЕ ПРО МЕНЕ</span>
+          <svg class="svg-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 12h15M13 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <span><i class="scroll-indicator"></i><span data-i18n="scroll">ПРОДОВЖИТИ СКРОЛІНГ</span></span>
+    <span>УКРАЇНА · 2026</span>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container about-grid">
+    <div class="about-visual reveal">
+      <div class="seal">YV</div>
+      <div class="about-visual-label">ЯРОСЛАВ ВОЙДЕНКО · УКРАЇНА</div>
+    </div>
+    <div class="about-text reveal">
+      <div class="eyebrow" data-i18n="aboutEyebrow">01 — ПРОФІЛЬ</div>
+      <h2 class="section-title" data-i18n="aboutTitle">Про мене</h2>
+      <p data-i18n="aboutP1">
+        Автор аналітичних матеріалів на перетині медицини, охорони здоров’я та державної політики. Студент НМУ імені О.О. Богомольця. Досліджую медичну економіку, Health Policy, цифрову трансформацію медицини та впровадження штучного інтелекту в охорону здоров’я.
+      </p>
+      <p data-i18n="aboutP2">
+        Поєдную медичну освіту з аналітичною діяльністю та публікаціями в провідних українських медіа (LIGA.net, SPEKA, STX).
+      </p>
+      <div class="about-facts">
+        <div class="fact"><strong data-i18n="fact1">Медицина</strong><span data-i18n="fact1Sub">Освітній напрям</span></div>
+        <div class="fact"><strong data-i18n="fact2">Аналітика</strong><span data-i18n="fact2Sub">Авторська діяльність</span></div>
+        <div class="fact"><strong>HealthTech</strong><span data-i18n="fact3Sub">Технологічний інтерес</span></div>
+        <div class="fact"><strong data-i18n="fact4">Україна</strong><span data-i18n="fact4Sub">Основний фокус</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section focus-section" id="focus">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="focusEyebrow">02 — НАПРЯМИ ІНТЕРЕСІВ</div>
+      <h2 class="section-title" data-i18n="focusTitle">Напрями діяльності</h2>
+      <p class="section-intro" data-i18n="focusIntro">Теми, які формують мій інтелектуальний і професійний фокус.</p>
+    </div>
+    <div class="focus-grid">
+      <article class="focus-card reveal">
+        <span class="card-number">01</span>
+        <h3 data-i18n="focus1Title">Охорона здоров’я</h3>
+        <p data-i18n="focus1Desc">Розвиток медичної системи, доступність допомоги та якість медичних послуг.</p>
+      </article>
+      <article class="focus-card reveal">
+        <span class="card-number">02</span>
+        <h3 data-i18n="focus2Title">Медичні інновації</h3>
+        <p data-i18n="focus2Desc">Цифрова медицина, HealthTech, штучний інтелект і нові технологічні рішення.</p>
+      </article>
+      <article class="focus-card reveal">
+        <span class="card-number">03</span>
+        <h3 data-i18n="focus3Title">Громадське здоров’я</h3>
+        <p data-i18n="focus3Desc">Суспільні чинники здоров’я, профілактика та розвиток системних підходів.</p>
+      </article>
+      <article class="focus-card reveal">
+        <span class="card-number">04</span>
+        <h3 data-i18n="focus4Title">Медична освіта</h3>
+        <p data-i18n="focus4Desc">Підготовка майбутніх медиків, освітні стандарти та професійний розвиток.</p>
+      </article>
+      <article class="focus-card reveal">
+        <span class="card-number">05</span>
+        <h3 data-i18n="focus5Title">Аналітика</h3>
+        <p data-i18n="focus5Desc">Дослідження тенденцій, аналіз рішень і пояснення суспільних процесів.</p>
+      </article>
+      <article class="focus-card reveal">
+        <span class="card-number">06</span>
+        <h3 data-i18n="focus6Title">Майбутнє України</h3>
+        <p data-i18n="focus6Desc">Відновлення, інституційний розвиток і трансформації післявоєнної України.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="publications">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="pubEyebrow">03 — МЕДІА ТА ПУБЛІКАЦІЇ</div>
+      <h2 class="section-title" data-i18n="pubTitle">Медійна діяльність</h2>
+      <p class="section-intro" data-i18n="pubIntro">
+        Авторські матеріали, аналітичні публікації та присутність на українських медіаплатформах.
+      </p>
+    </div>
+
+    <div class="publications-grid">
+      <a class="pub-card reveal" href="https://blog.liga.net/user/yavoidenko/profile" target="_blank" rel="noopener">
+        <svg class="pub-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M7 17 17 7M7 7h10v10"/>
+        </svg>
+        <div class="pub-top"><span class="pub-logo">LIGA.net</span><span class="pub-type">БЛОГ-ПЛАТФОРМА</span></div>
+        <h3 data-i18n="pub1Title">Авторський профіль</h3>
+        <p data-i18n="pub1Desc">Аналітичні матеріали та авторські публікації на LIGA.net.</p>
+      </a>
+
+      <a class="pub-card reveal" href="https://dou.ua" target="_blank" rel="noopener">
+        <svg class="pub-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M7 17 17 7M7 7h10v10"/>
+        </svg>
+        <div class="pub-top"><span class="pub-logo">DOU</span><span class="pub-type">IT & TECHNOLOGY</span></div>
+        <h3 data-i18n="pub2Title">Матеріали на DOU</h3>
+        <p data-i18n="pub2Desc">Технології, цифрові трансформації та перетин IT і медицини.</p>
+      </a>
+
+      <a class="pub-card reveal" href="https://speka.ua" target="_blank" rel="noopener">
+        <svg class="pub-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M7 17 17 7M7 7h10v10"/>
+        </svg>
+        <div class="pub-top"><span class="pub-logo">SPEKA</span><span class="pub-type">TECH & BUSINESS</span></div>
+        <h3 data-i18n="pub3Title">Публікації на SPEKA</h3>
+        <p data-i18n="pub3Desc">Інновації, технології, підприємництво та суспільні зміни.</p>
+      </a>
+
+      <a class="pub-card reveal" href="https://stx.kr.ua" target="_blank" rel="noopener">
+        <svg class="pub-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M7 17 17 7M7 7h10v10"/>
+        </svg>
+        <div class="pub-top"><span class="pub-logo">STX</span><span class="pub-type">COLUMNIST</span></div>
+        <h3 data-i18n="pub4Title">Columnist STX</h3>
+        <p data-i18n="pub4Desc">Авторська колонка та публікації на платформі.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section education" id="education">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="eduEyebrow">04 — ОСВІТА</div>
+      <h2 class="section-title" data-i18n="eduTitle">Освітній шлях</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <small>2026 — ДОТЕПЕР</small>
+        <h3 data-i18n="edu1Title">Національний медичний університет імені О. О. Богомольця</h3>
+        <p data-i18n="edu1Desc">Медична освіта. Формування фундаментальних знань і професійної основи в галузі медицини.</p>
+      </div>
+      <div class="timeline-item reveal">
+        <small data-i18n="edu2Date">СЕРЕДНЯ ОСВІТА</small>
+        <h3 data-i18n="edu2Title">Чорнобаївський ліцей</h3>
+        <p data-i18n="edu2Desc">Успішне завершення навчання у Чорнобаївському ліцеї.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="principlesEyebrow">05 — ПРИНЦИПИ</div>
+      <h2 class="section-title" data-i18n="principlesTitle">Професійні орієнтири</h2>
+    </div>
+    <div class="principles-grid">
+      <article class="principle reveal">
+        <span class="principle-number">01 /</span>
+        <h3 data-i18n="principle1Title">Відповідальність</h3>
+        <p data-i18n="principle1Desc">Уважне ставлення до фактів, джерел і суспільного значення інформації.</p>
+      </article>
+      <article class="principle reveal">
+        <span class="principle-number">02 /</span>
+        <h3 data-i18n="principle2Title">Аналітичність</h3>
+        <p data-i18n="principle2Desc">Прагнення бачити не лише події, а й причини, наслідки та взаємозв’язки.</p>
+      </article>
+      <article class="principle reveal">
+        <span class="principle-number">03 /</span>
+        <h3 data-i18n="principle3Title">Розвиток</h3>
+        <p data-i18n="principle3Desc">Постійне навчання, відкритість до нових знань і професійне зростання.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="container reveal">
+    <div class="eyebrow" data-i18n="contactEyebrow">06 — КОНТАКТИ</div>
+    <h2 class="section-title" data-i18n="contactTitle">Відкритий до професійного діалогу</h2>
+    <p class="contact-description" data-i18n="contactDesc">
+      Для редакцій, медіа, професійних спільнот та співпраці.
+    </p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/%D1%8F%D1%80%D0%BE%D1%81%D0%BB%D0%B0%D0%B2-%D0%B2%D0%BE%D0%B9%D0%B4%D0%B5%D0%BD%D0%BA%D0%BE-a35560449/" target="_blank" rel="noopener">LINKEDIN</a>
+      <a href="https://blog.liga.net/user/yavoidenko/profile" target="_blank" rel="noopener">LIGA.NET</a>
+      <a href="https://dou.ua" target="_blank" rel="noopener">DOU</a>
+      <a href="https://speka.ua" target="_blank" rel="noopener">SPEKA</a>
+      <a href="https://stx.kr.ua" target="_blank" rel="noopener">STX</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>© 2026 ЯРОСЛАВ ВОЙДЕНКО</span>
+    <span data-i18n="footerCenter">ОФІЦІЙНИЙ ПОРТАЛ</span>
+    <span>УКРАЇНА</span>
+  </div>
+</footer>
+
+<script>
+const translations = {
+  uk: {
+    brandSub:"ОФІЦІЙНИЙ ПОРТАЛ",
+    navAbout:"ПРО МЕНЕ",navFocus:"НАПРЯМИ",navPublications:"ПУБЛІКАЦІЇ",navEducation:"ОСВІТА",navContact:"КОНТАКТИ",
+    heroKicker:"ОСОБИСТИЙ ТА ПРОФЕСІЙНИЙ ПРОФІЛЬ",
+    heroDesc:"Автор аналітичних матеріалів на перетині медицини, охорони здоров’я та державної політики. Студент НМУ імені О.О. Богомольця. Досліджую медичну економіку, Health Policy, цифрову трансформацію медицини та впровадження штучного інтелекту в охорону здоров’я.",
+    heroButton1:"МОЇ ПУБЛІКАЦІЇ",heroButton2:"ДЕТАЛЬНІШЕ ПРО МЕНЕ",scroll:"ПРОДОВЖИТИ СКРОЛІНГ",
+    aboutEyebrow:"01 — ПРОФІЛЬ",aboutTitle:"Про мене",
+    aboutP1:"Автор аналітичних матеріалів на перетині медицини, охорони здоров’я та державної політики. Студент НМУ імені О.О. Богомольця. Досліджую медичну економіку, Health Policy, цифрову трансформацію медицини та впровадження штучного інтелекту в охорону здоров’я.",
+    aboutP2:"Поєдную медичну освіту з аналітичною діяльністю та публікаціями в провідних українських медіа (LIGA.net, SPEKA, STX).",
+    fact1:"Медицина",fact1Sub:"Освітній напрям",fact2:"Аналітика",fact2Sub:"Авторська діяльність",fact3Sub:"Технологічний інтерес",fact4:"Україна",fact4Sub:"Основний фокус",
+    focusEyebrow:"02 — НАПРЯМИ ІНТЕРЕСІВ",focusTitle:"Напрями діяльності",focusIntro:"Теми, які формують мій інтелектуальний і професійний фокус.",
+    focus1Title:"Охорона здоров’я",focus1Desc:"Розвиток медичної системи, доступність допомоги та якість медичних послуг.",
+    focus2Title:"Медичні інновації",focus2Desc:"Цифрова медицина, HealthTech, штучний інтелект і нові технологічні рішення.",
+    focus3Title:"Громадське здоров’я",focus3Desc:"Суспільні чинники здоров’я, профілактика та розвиток системних підходів.",
+    focus4Title:"Медична освіта",focus4Desc:"Підготовка майбутніх медиків, освітні стандарти та професійний розвиток.",
+    focus5Title:"Аналітика",focus5Desc:"Дослідження тенденцій, аналіз рішень і пояснення суспільних процесів.",
+    focus6Title:"Майбутнє України",focus6Desc:"Відновлення, інституційний розвиток і трансформації післявоєнної України.",
+    pubEyebrow:"03 — МЕДІА ТА ПУБЛІКАЦІЇ",pubTitle:"Медійна діяльність",pubIntro:"Авторські матеріали, аналітичні публікації та присутність на українських медіаплатформах.",
+    pub1Title:"Авторський профіль",pub1Desc:"Аналітичні матеріали та авторські публікації на LIGA.net.",
+    pub2Title:"Матеріали на DOU",pub2Desc:"Технології, цифрові трансформації та перетин IT і медицини.",
+    pub3Title:"Публікації на SPEKA",pub3Desc:"Інновації, технології, підприємництво та суспільні зміни.",
+    pub4Title:"Columnist STX",pub4Desc:"Авторська колонка та публікації на платформі.",
+    eduEyebrow:"04 — ОСВІТА",eduTitle:"Освітній шлях",
+    edu1Title:"Національний медичний університет імені О. О. Богомольця",edu1Desc:"Медична освіта. Формування фундаментальних знань і професійної основи в галузі медицини.",
+    edu2Date:"СЕРЕДНЯ ОСВІТА",edu2Title:"Чорнобаївський ліцей",edu2Desc:"Успішне завершення навчання у Чорнобаївському ліцеї.",
+    principlesEyebrow:"05 — ПРИНЦИПИ",principlesTitle:"Професійні орієнтири",
+    principle1Title:"Відповідальність",principle1Desc:"Уважне ставлення до фактів, джерел і суспільного значення інформації.",
+    principle2Title:"Аналітичність",principle2Desc:"Прагнення бачити не лише події, а й причини, наслідки та взаємозв’язки.",
+    principle3Title:"Розвиток",principle3Desc:"Постійне навчання, відкритість до нових знань і професійне зростання.",
+    contactEyebrow:"06 — КОНТАКТИ",contactTitle:"Відкритий до професійного діалогу",contactDesc:"Для редакцій, медіа, професійних спільнот та співпраці.",
+    footerCenter:"ОФІЦІЙНИЙ ПОРТАЛ"
+  },
+  en: {
+    brandSub:"OFFICIAL PORTAL",
+    navAbout:"ABOUT",navFocus:"FOCUS AREAS",navPublications:"PUBLICATIONS",navEducation:"EDUCATION",navContact:"CONTACT",
+    heroKicker:"PERSONAL & PROFESSIONAL PROFILE",
+    heroDesc:"Author of analytical publications at the intersection of medicine, healthcare and public policy. Student at Bogomolets National Medical University. Exploring medical economics, Health Policy, digital health transformation and the implementation of AI in healthcare.",
+    heroButton1:"MY PUBLICATIONS",heroButton2:"ABOUT ME",scroll:"SCROLL TO EXPLORE",
+    aboutEyebrow:"01 — PROFILE",aboutTitle:"About me",
+    aboutP1:"Author of analytical publications at the intersection of medicine, healthcare and public policy. Student at Bogomolets National Medical University. Exploring medical economics, Health Policy, digital health transformation and the implementation of AI in healthcare.",
+    aboutP2:"Combining medical education with analytical activities and publications in leading Ukrainian media outlets (LIGA.net, SPEKA, STX).",
+    fact1:"Medicine",fact1Sub:"Academic field",fact2:"Analysis",fact2Sub:"Editorial activity",fact3Sub:"Technology interests",fact4:"Ukraine",fact4Sub:"Primary focus",
+    focusEyebrow:"02 — AREAS OF INTEREST",focusTitle:"Areas of focus",focusIntro:"The subjects that shape my intellectual and professional interests.",
+    focus1Title:"Healthcare",focus1Desc:"Healthcare system development, access to care and the quality of medical services.",
+    focus2Title:"Medical Innovation",focus2Desc:"Digital health, HealthTech, artificial intelligence and emerging technologies.",
+    focus3Title:"Public Health",focus3Desc:"Social determinants of health, prevention and systemic approaches.",
+    focus4Title:"Medical Education",focus4Desc:"Medical training, educational standards and professional development.",
+    focus5Title:"Analysis",focus5Desc:"Exploring trends, evaluating decisions and explaining social developments.",
+    focus6Title:"Ukraine's Future",focus6Desc:"Recovery, institutional development and post-war transformation.",
+    pubEyebrow:"03 — MEDIA & PUBLICATIONS",pubTitle:"Media presence",pubIntro:"Editorial work, analytical publications and presence across Ukrainian media platforms.",
+    pub1Title:"Author profile",pub1Desc:"Analytical articles and editorial publications on LIGA.net.",
+    pub2Title:"Contributions to DOU",pub2Desc:"Technology, digital transformation and the intersection of IT and medicine.",
+    pub3Title:"Contributions to SPEKA",pub3Desc:"Innovation, technology, entrepreneurship and social change.",
+    pub4Title:"STX Columnist",pub4Desc:"Opinion columns and editorial contributions to the platform.",
+    eduEyebrow:"04 — EDUCATION",eduTitle:"Education",
+    edu1Title:"Bogomolets National Medical University",edu1Desc:"Medical education. Building foundational knowledge and professional competencies in medicine.",
+    edu2Date:"SECONDARY EDUCATION",edu2Title:"Chornobai Lyceum",edu2Desc:"Completed secondary education at Chornobai Lyceum.",
+    principlesEyebrow:"05 — PRINCIPLES",principlesTitle:"Professional principles",
+    principle1Title:"Responsibility",principle1Desc:"A careful approach to facts, sources and the public significance of information.",
+    principle2Title:"Analytical thinking",principle2Desc:"Looking beyond events to understand their causes, consequences and connections.",
+    principle3Title:"Development",principle3Desc:"Continuous learning, openness to new knowledge and professional growth.",
+    contactEyebrow:"06 — CONTACT & CONNECTION",contactTitle:"Open to professional dialogue",contactDesc:"For editorial teams, media organisations, professional communities and collaboration.",
+    footerCenter:"OFFICIAL PORTAL"
+  }
+};
+
+function setLanguage(lang){
+  const dictionary=translations[lang]||translations.uk;
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key=el.dataset.i18n;
+    if(dictionary[key])el.textContent=dictionary[key];
+  });
+  document.querySelectorAll("[data-lang]").forEach(btn=>{
+    btn.classList.toggle("active",btn.dataset.lang===lang);
+  });
+  localStorage.setItem("yv-language",lang);
+}
+
+document.querySelectorAll("[data-lang]").forEach(btn=>{
+  btn.addEventListener("click",()=>setLanguage(btn.dataset.lang));
+});
+
+const themeBtn=document.getElementById("themeBtn");
+const themeIcon=document.getElementById("themeIcon");
+
+function setTheme(theme){
+  document.documentElement.dataset.theme=theme;
+  localStorage.setItem("yv-theme",theme);
+  document.querySelector('meta[name="theme-color"]').content=
+    theme==="dark"?"#04070d":"#f7f5ef";
+
+  themeIcon.innerHTML=theme==="dark"
+  ?'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>'
+  :'<path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"/>';
+}
+
+themeBtn.addEventListener("click",()=>{
+  const current=document.documentElement.dataset.theme;
+  setTheme(current==="dark"?"light":"dark");
+});
+
+setTheme(localStorage.getItem("yv-theme")||"dark");
+setLanguage(localStorage.getItem("yv-language")||"uk");
+
+const header=document.getElementById("header");
+const progress=document.getElementById("progress");
+
+window.addEventListener("scroll",()=>{
+  header.classList.toggle("scrolled",window.scrollY>35);
+  const total=document.documentElement.scrollHeight-window.innerHeight;
+  progress.style.width=(total>0?window.scrollY/total*100:0)+"%";
+},{passive:true});
+
+const menuBtn=document.getElementById("menuBtn");
+const navLinks=document.getElementById("navLinks");
+
+menuBtn.addEventListener("click",()=>{
+  navLinks.classList.toggle("open");
+  menuBtn.textContent=navLinks.classList.contains("open")?"×":"≡";
+});
+
+document.querySelectorAll(".nav-links a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    navLinks.classList.remove("open");
+    menuBtn.textContent="≡";
+  });
+});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
